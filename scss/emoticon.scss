@@ -1,0 +1,115 @@
+@import url('http://fonts.googleapis.com/earlyaccess/"Noto Sans KR".css');
+
+.emoticon-container{
+    width : 28px;
+    height: 28px;
+    display: inline-block;
+    position: relative;
+
+    overflow: visible;
+}
+
+.emoticon-img{
+    width : 28px;
+    height: 28px;
+    position: relative;
+
+    object-fit: contain;
+}
+
+.tw-tooltip{
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    background-color: #040109;
+    border-radius: 4px;
+    color: #fff;
+    display: none;
+    left: 0;
+    line-height: 1.2;
+    padding: 3px 6px;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 2000;
+
+    overflow: visible;
+
+
+    font-family: "Noto Sans KR";
+    font-size : 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.47;
+    letter-spacing: normal;
+
+}
+
+.tw-tooltip--align-center{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.tw-tooltip--down{
+    margin-top: 6px;
+    top: 100%;
+}
+
+.emoticon-container{
+    padding: 3px;
+}
+
+.emoticon-container:hover{
+    background-color: rgba(119,44,232,.2);
+    //transition: background-color 0.5s, box-shadow 0.5s;
+}
+
+.emoticon-container:hover:after{
+    background-color: rgba(0,0,0,0);
+}
+
+.tw-tooltip:before {
+    height: calc(100% + 12px);
+    left: -6px;
+    top: -6px;
+    width: calc(100% + 12px);
+    z-index: -1;
+
+    box-sizing: border-box;
+
+}
+
+.emoticon-container:hover .tw-tooltip{
+    display: block;
+}
+
+.tw-tooltip:after, .tw-tooltip:before {
+    content: "";
+    position: absolute;
+}
+
+.tw-tooltip--align-center:after {
+    left: 50%;
+    margin-left: -3px;
+}
+.tw-tooltip--down:after {
+    border-radius: 2px 0 0;
+    border-radius: var(--border-radius-small) 0 0;
+    top: -3px;
+}
+
+.tw-tooltip:after {
+    background-color: #040109;
+    height: 6px;
+    transform: rotate(45deg);
+    width: 6px;
+    z-index: -1;
+}
+.tw-tooltip:after, .tw-tooltip:before {
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+}

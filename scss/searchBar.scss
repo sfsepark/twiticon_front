@@ -1,0 +1,117 @@
+@import url('http://fonts.googleapis.com/earlyaccess/"Noto Sans KR".css');
+
+.searchbar{
+    border: solid 4px #6441a5;
+    background-color: #ffffff;
+
+    text-align:center; 
+
+    display:inline-block;
+
+    z-index: 1;
+}
+.search-bar-wrapper{
+    width: 100%;
+    height: 100%;
+    display:flex;
+}
+
+.searchbar-header{
+    width : 321px;
+    height: 38px;
+    
+    border-radius: 15px;
+
+    margin-right: 13px;
+    margin-top:27px;
+
+}
+
+.searchbar-banner{
+    width: 928px;
+    height: 80px;
+    border-radius: 15px;
+
+    margin-top:34px;
+
+    margin-left : calc((100% - 928px)/2);
+
+    vertical-align: top;
+}
+
+
+
+.searchbar-textarea{
+
+    font-family: "Noto Sans KR";
+    font-weight:normal;
+    line-height: 1.48;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    resize: none;
+
+    border : 0px;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    display: inline-block;
+}
+
+.searchbar-header .searchbar-textarea{
+    margin-left :13px;
+    margin-top : 4px;
+
+    width : 251px;
+    height: 31px;
+    
+    font-size: 20px;
+}
+
+.searchbar-banner .searchbar-textarea{
+    margin-left :15px;
+    margin-top : 10px;
+
+    height : 60px;
+    width : 818px;
+
+    font-size: 40px;
+}
+
+.searchbar-textarea:focus{
+    outline: 0px;
+    
+}
+
+.searchbar-search-button{
+    border: solid 1px #6441a5;
+    background-color: #6441a5;
+
+    cursor: pointer;
+    display: inline-block;
+
+    position: relative;
+
+    z-index: 100;
+
+    border-top-right-radius: 10 px;;
+    border-bottom-right-radius: 10px;;
+}
+
+.searchbar-banner .searchbar-search-button{
+    width: 80px;
+    height: 65px;
+    padding-top : 15px;
+    margin-left: 13px;
+}
+
+.searchbar-header .searchbar-search-button{
+    width: 38px;
+    height: 33px;
+
+    padding-top : 5px;
+
+    margin-left : 17px;
+}

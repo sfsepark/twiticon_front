@@ -1,0 +1,115 @@
+@import url('http://fonts.googleapis.com/earlyaccess/"Noto Sans KR".css');
+
+.emoticon-tier-1-table, .emoticon-tier-2-table , .emoticon-tier-3-table{
+    overflow: visible;
+}
+
+.emoticon-selector-flex{
+    display: flex;
+}
+
+.emoticon-selector-container{
+    width: 410px;
+    height: 152px;
+    border: solid 2px #d1d1d1;
+    background-color: #ffffff;
+}
+
+.emoticon-selector-search{
+    height: 40px;
+    width : 100%;
+
+    border-bottom:solid 2px #d1d1d1 ;
+    text-align: left;
+}
+
+.emoticon-selector-searchmark{
+    width: 40px;
+    height: 40px;
+    background-color: #d1d1d1;
+    text-align: center;
+    display: inline-block;
+}
+
+.emoticon-selector-searchmark-svg{
+    margin-top : 7.6px;
+}
+
+.emoticon-selector-searchbar{
+    margin-left : 10px;
+    margin-right: 10px;
+    margin-top : 5px;
+    width: calc(100% - 40px - 24px);
+    height: 30px;
+    font-family: "Noto Sans KR";
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.47;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+    display: inline-block;
+
+    resize: none;
+
+    border : 0px;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+}
+
+.emoticon-table{
+    
+    width: 100%;
+    text-align: center;
+
+}
+
+.emoticon-selector-list{
+    width : 100%;
+    height: 112px;
+    overflow-y : scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none; // IE에서 스크롤바 감춤
+    &::-webkit-scrollbar { 
+      display: none !important; // 윈도우 크롬 등
+    }
+}
+
+.emoticon-tier-1-table{
+    width : calc(100% - 50px);
+    margin-bottom : 6px;
+    display: block;
+
+    margin-top : 12px;
+    padding-left : 25px;
+    padding-right : 25px;
+    text-align : left;
+}
+
+.emoticon-tier-2-table{
+    width : calc(49% - 13px);
+    display: inline-block;
+    text-align : left;
+    margin-left : 24px;
+    margin-bottom: 50px;
+}
+
+.emoticon-tier-3-table{
+    width : calc(49% - 13px);
+    display: inline-block;
+    text-align : left;
+}
+
+.emoticon-wrapper-button{
+    margin-left : 3px;
+    margin-right : 3px;
+    margin-bottom : 6px;
+    display : inline-block;
+
+    overflow: visible;
+}
+

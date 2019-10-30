@@ -27,16 +27,20 @@ a{
     height: 93px;
     width: 100%;
     background-color: #ffffff;  
-    padding-left : calc((100% - 1047px ) /2 );
-    padding-right : calc((100% - 1047px ) /2 );
+    padding-left : calc((100% - 1146px ) /2 );
+    padding-right : calc((100% - 1146px ) /2 );
+}
+
+.header-box-sub{
+    border: solid 1px #d9d9de;
+}
+
+.header-logo{
+    margin-top: 24px;
+    cursor: pointer;
 }
 
 .header-logo-twiti{
-
-    
-
-    margin-top:24px;
-
     width: 103px;
     height: 38px;
     font-family: "Godo";
@@ -50,9 +54,12 @@ a{
     color: #b465b4;
 }
 
+
+
 .header-logo-con{
 
-    margin-top: 24px;
+    margin-left: -6px;
+    
 
     width: 40px;
     height: 45px;
@@ -82,9 +89,17 @@ a{
     color: #707070;
 }
 
+
 .header-basic-emote{
-    margin-left: 374px;
     width: 119px;
+}
+
+.header-box-main .header-basic-emote{
+    margin-left: 374px;
+}
+
+.header-box-sub .header-basic-emote{
+    margin-left: 61px;
 }
 
 .header-usage{
@@ -100,4 +115,18 @@ a{
 .header-notice{
     margin-left : 20px;
     width: 77px;
+}
+
+.header-box-sub .header-notice{
+    margin-right: 20px;
+}
+
+.header-box-main .header-notice{
+    margin-right: 41px;
+}
+
+.header-login {
+    margin-left:41px;
+    width: 77px;
+
 }
