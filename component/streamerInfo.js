@@ -12,21 +12,23 @@ import EmoticonList from './EmoticonList'
 class StreamerInfo extends React.Component{
 
     handleSelectEmoticon(ids){
- 
-        var emoticonInfo = JSON.parse(JSON.stringify(this.props.emoticonInfo));
 
         var curState = JSON.parse(JSON.stringify(this.state));
-        var filteredEmoticonInfo = {};
+        
 
-        for(var i = 0 ; i < ids.length ; i ++){
-            let id = ids[i];
-
-            if(emoticonInfo[id] != undefined){
-                filteredEmoticonInfo[id] = emoticonInfo[id];
-            }
+        if(ids == undefined){
+            curState.activeEmoticon = JSON.parse(JSON.stringify(this.emoticonKeys));
         }
+        else{
+            var activeEmoticon = [];
+            var emoticonInfo = JSON.parse(JSON.stringify(this.props.emoticonInfo));
+            var emoticonList = Object.values(emoticonInfo);
+            for(let i = 0 ; i < emoticonList.length ; i ++){
+                activeEmoticon = activeEmoticon.concat(emoticonList[i].map(info => info.id).filter(id => id in ids));
+            }
 
-        curState.emoticonInfo = filteredEmoticonInfo;
+            curState.activeEmoticon = activeEmoticon;
+        }
 
         this.setState(curState);
         
@@ -37,8 +39,14 @@ class StreamerInfo extends React.Component{
 
         var emoticonInfo = JSON.parse(JSON.stringify(this.props.emoticonInfo));
 
+        this.emoticonKeys = [];
+        var emoticonList = Object.values(emoticonInfo);
+        for(let i = 0 ; i < emoticonList.length ; i ++){
+            this.emoticonKeys = this.emoticonKeys.concat(emoticonList[i].map(info => info.id));
+        }
+
         this.state = {
-            emoticonInfo : emoticonInfo
+            activeEmoticon : JSON.parse(JSON.stringify(this.emoticonKeys))
         }
 
         this.handleSelectEmoticon = this.handleSelectEmoticon.bind(this);
@@ -77,7 +85,7 @@ class StreamerInfo extends React.Component{
                 </div>
                 <EmoticonList
                     emoticonInfo = {this.props.emoticonInfo}
-                    activeEmoticon = {this.state.emoticonInfo} /> 
+                    activeEmoticon = {this.state.activeEmoticon} /> 
                 
             </div>
         );
