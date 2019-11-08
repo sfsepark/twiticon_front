@@ -82,7 +82,7 @@ class Search extends React.Component{
         var SearchResults ;
 
         if(streamerRes.length == 0){
-            SearchResults = <div>이런! 결과를 찾을 수 없습니다!</div>
+            SearchResults = <div style = {{'margin-left': '28px'}}>이런! 결과를 찾을 수 없습니다!</div>
         }
         else{
             //유사도 분석 후 정렬해서 보여줘야 한다.

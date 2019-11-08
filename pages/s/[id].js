@@ -8,7 +8,7 @@ import '../../scss/streamer_contents.scss';
 import StreamerInfo  from '../../component/streamerInfo.js';
 import '../../scss/body.scss'
 
-import {apiURL} from '../URL'
+import {apiURL} from '../../URL'
 
 const axios  = require('axios');
 

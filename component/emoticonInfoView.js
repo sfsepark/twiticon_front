@@ -13,7 +13,7 @@ class EmoticonInfoView extends React.Component{
         this.state = {
             info : JSON.parse(JSON.stringify(this.props.info)),
             edit : false,
-            dispatch : 1
+            dispatch : 0
         }
 
         this.old_alias = this.props.info.alias_list;
@@ -183,7 +183,9 @@ class EmoticonInfoView extends React.Component{
         if(this.state.dispatch == 1){
             loader = (
                 <div className = 'emotcion-info-view-lodaer-container'>
-                    <div className = 'emoticon-info-view-loader'/>
+                    <div className = 'emoticon-info-view-loader-wrapper'>
+                        <div className = 'emoticon-info-view-loader'/>
+                    </div>
                 </div>
             )
         }

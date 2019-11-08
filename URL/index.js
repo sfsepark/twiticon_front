@@ -1,4 +1,7 @@
-export default {
-    apiURL : 'http://twiticon.com',
-    baseURL : 'http://localhost:3000'
+var apiURL = 'http://twiticon.com';
+var baseURL = 'http://localhost:3000'
+
+export  {
+    apiURL,
+    baseURL
 }
