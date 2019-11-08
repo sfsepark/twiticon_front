@@ -1,3 +1,5 @@
+@import url('http://fonts.googleapis.com/earlyaccess/"Noto Sans KR".css');
+
 //components/EmoticonList.js
 
 .emoticon-info-view-visible{
@@ -10,6 +12,34 @@
 
 //components/EmoticonInfoView.js
 
+.emoticon-info-view-flex{
+    display: flex;
+}
+
+.emotcion-info-view-lodaer-container{
+    width : 100%;
+    height: 100%;
+
+    position: absolute;
+    background-color: rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.emoticon-info-view-loader{
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+
+    margin-top : calc(50% - 25px);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .emoticon-info-view-container{
     width : 100%;
     height: 151px;
@@ -18,4 +48,106 @@
 
     display : flex;
     justify-content: space-between;
+
+    position: relative;
+
+    margin-top : 22px;
+}
+
+.emoticon-info-view-x4{
+    display:inline-block;
+    width: 112px;
+    height: 112px;
+    object-fit: cover;
+}
+
+.emoticon-info-view-contents{
+    margin-left : 19px;
+    display: inline-block;
+}
+
+.emoticon-info-view-title{
+    display : block
+}
+
+.emoticon-info-view-icon{
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+    display: inline-block;
+}
+
+.emoticon-info-view-name{
+    height: 28px;
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+    display: inline-block;
+}
+
+.emoticon-info-view-contents-label{
+    height: 30px;
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    display: block;
+    margin-top : 8px;
+}
+
+.emoticon-info-view-aliases{
+    width: 58px;
+    display : block;
+    height: 39px;
+    overflow-x : visible;
+    margin-top : 7px;
+}
+
+//components/EmoticonAlias.js
+
+.emoticon-info-alias{
+    background-color: #000000;
+    height: 49px;
+    border-radius: 5px;
+    display: inline-block;
+    position: relative;
+}
+
+.emoticon-info-alias-text{
+    margin-left : 10px;
+    margin-right : 10px;
+    height: 43px;
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 29px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.48;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+}
+
+.emoticon-info-alias-arrow{
+    background-color: #000000;
+    height: 11px;
+    width: 11px;
+    transform: rotate(45deg);;
+
+    position: absolute;
+
+    top : 11px;
+    left : -16px;
 }

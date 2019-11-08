@@ -1,6 +1,6 @@
 import EmoticonInfoView from './emoticonInfoView.js'
 
-import './scss/emoticonList.scss';
+import '../scss/emoticonList.scss';
 
 class EmoticonList extends React.Component{
     constructor(props){
@@ -11,17 +11,33 @@ class EmoticonList extends React.Component{
 
         var activeEmoticon = this.props.activeEmoticon;
 
-        var emoticonList = this.props.emoticonInfo.map(info => 
-            (
-                <div className = {'emoticon-info-view' + (info.id in activeEmoticon ? '-visible' : '-invisible')}>
-                    <EmoticonInfoView info = {info}/>
-                </div>
-            )
+        var emoticonInfoValues = Object.values(this.props.emoticonInfo);
+
+        var emoticonList = [];
+
+        for(var i = 0 ; i < emoticonInfoValues.length ; i ++){
+            emoticonList = emoticonList.concat(emoticonInfoValues[i]);
+        }
+
+        var twitchToken = this.props.twitchToken;
+
+        var emoticonListComponent = emoticonList.map(info => {
+                return (
+                    <div className = {'emoticon-info-view' + (activeEmoticon.includes(info.id) ? '-visible' : '-invisible')}>
+                        <EmoticonInfoView 
+                            info = {info}
+                            twitchToken = {twitchToken}/>
+                    </div>
+                )
+            }
         )
 
         return (
-            {emoticonList}
+            <div className = 'streamer-info-container'>
+                {emoticonListComponent}
+            </div>
         )
+
     }
 }
 

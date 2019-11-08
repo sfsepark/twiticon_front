@@ -85,7 +85,8 @@ class StreamerInfo extends React.Component{
                 </div>
                 <EmoticonList
                     emoticonInfo = {this.props.emoticonInfo}
-                    activeEmoticon = {this.state.activeEmoticon} /> 
+                    activeEmoticon = {this.state.activeEmoticon} 
+                    twitchToken = {this.props.twitchToken}/> 
                 
             </div>
         );
