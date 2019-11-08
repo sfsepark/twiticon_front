@@ -1,6 +1,7 @@
 import React from 'react'
 import '../scss/emoticonSelector.scss'
 import Emoticon from './emoticon'
+import Hangul from '../methods/hangul.min'
 
 /*
     streamerInfo의 state emoticonInfo(필터링되어 아래에 나열되는 이모티콘정보)
@@ -19,6 +20,33 @@ class EmoticonSelector extends React.Component{
         }
 
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    isEmoteName(emote,searchStr){
+        return emote.name.toLowerCase().includes(searchStr);
+    }
+
+    isEmoteAlias(emote, searchStr){
+        var alias_list = emote.alias_list;
+        for(var i = 0 ; i < alias_list ; i ++){
+            let alias = alias_list[i];
+            let aliasTokens = alias.split('');
+            let disassembledLen = aliasTokens.map(token => Hangul.disassemble(token).length);
+            
+            let res = Hangul.search(alias,searchStr);
+
+
+            if(res != -1){
+                while(disassembledLen.length > 0 && res >= 0){
+                    if(res == 0) return true;
+                    var curLen = disassembledLen.shift();
+
+                    res -= curLen;                    
+                }
+            }
+        }
+
+        return false;
     }
 
     handleChange(event){
