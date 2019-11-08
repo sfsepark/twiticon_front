@@ -8,16 +8,18 @@ import '../../scss/streamer_contents.scss';
 import StreamerInfo  from '../../component/streamerInfo.js';
 import '../../scss/body.scss'
 
+import {apiURL} from '../URL'
+
 const axios  = require('axios');
 
 async function getInfoFromServer(name){
     
     var [emoticonInfo, channelInfo] = await Promise.all([
         axios.get(
-            'http://localhost:8080/api/streamer/' + name
+            apiURL + '/api/streamer/' + name
         ),
         axios.get(
-            'http://localhost:8080/api/channel/' + name
+            apiURL + '/api/channel/' + name
         )]
     );
 

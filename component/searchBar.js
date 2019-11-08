@@ -30,7 +30,7 @@ class SearchBar extends React.Component{
                 searchTextarea.addEventListener('keypress', function(e){
 
                     if(e.keyCode == 13){
-                        window.location.href = 'http://localhost:3000/search?query=' + searchTextarea.value;
+                        window.location.href = '/search?query=' + searchTextarea.value;
                     }
                 });
             })(searchTextareas[i]);

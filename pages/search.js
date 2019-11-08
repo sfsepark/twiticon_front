@@ -4,6 +4,8 @@ import StreamerSearchResult from '../component/streamerSearchResult.js';
 import '../scss/body.scss'
 import '../scss/searchResult.scss'
 
+import {apiURL} from '../URL'
+
 import next_cookies from 'next-cookies'
 
 const axios  = require('axios');
@@ -22,7 +24,7 @@ class Search extends React.Component{
 
         if(this.query != ''){
             var result = await axios.get(
-                'http://localhost:8080/api/search?query=' + encodeURIComponent(this.query)
+                apiURL + '/api/search?query=' + encodeURIComponent(this.query)
             );
 
             result = result.data;

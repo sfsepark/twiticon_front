@@ -6,6 +6,8 @@ import SearchBar from '../component/searchBar.js';
 
 import client_id from '../data/client_id'
 
+import {baseURL} from '../URL'
+
 const Header  = function(props){
 
     var userInfo ;
@@ -14,7 +16,7 @@ const Header  = function(props){
         userInfo =  <UserInfo twitchToken = {props.twitchToken} profile = {props.profile}/>
     }
     else{
-        userInfo =  <a href = {"https://id.twitch.tv/oauth2/authorize?client_id=" + client_id +"&redirect_uri=http://localhost:3000&response_type=token&scope=user_subscriptions+user_read"} className = "header-menu header-login">로그인</a>
+        userInfo =  <a href = {"https://id.twitch.tv/oauth2/authorize?client_id=" + client_id +"&redirect_uri="+ baseURL + "&response_type=token&scope=user_subscriptions+user_read"} className = "header-menu header-login">로그인</a>
     }
 
     //
