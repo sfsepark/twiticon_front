@@ -1,4 +1,3 @@
-node_modules
 logs
 *.log
 npm-debug.log*
@@ -70,7 +69,7 @@ typings/
 .cache
 
 # next.js build output
-.next
+.next/
 
 # nuxt.js build output
 .nuxt
