@@ -1,8 +1,10 @@
 import '../scss/chatbox.scss'
+import tmi from 'tmi.js'
 
 export default class ChatBox extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
+        
     }
 
     componentDidMount(){
@@ -22,8 +24,10 @@ export default class ChatBox extends React.Component{
                         width={this.props.width}>
                     </iframe>
                 </div>
-                <div className = 'chatbox-chat-input'>
-                    
+                <div className = 'chatbox-chat-input-container'>
+                    <div className = 'chatbox-chat-input-wrapper'>
+                        <textarea className = 'chatbox-chat-input'/>
+                    </div>
                 </div>
             </div>
         )

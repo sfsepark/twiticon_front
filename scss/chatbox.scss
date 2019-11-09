@@ -6,11 +6,21 @@
     z-index: 1;
 }
 
-.chatbox-chat-input {
+.chatbox-chat-input-container {
     position: absolute;
     background-color: #ffffff;
     height: 140px;
-    width: 100%;
+    padding-left : 10px;
+    padding-right : 10px;
+    width: calc(100% - 20px);
     z-index: 10000;
     bottom : 0px;
+}
+
+.chatbox-chat-input-wrapper{
+    width: 100%;
+    height: 47px;
+    border-radius: 5px;
+    border: solid 2px #6441a5;
+    background-color: #ffffff;
 }
