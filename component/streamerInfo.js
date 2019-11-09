@@ -24,7 +24,7 @@ class StreamerInfo extends React.Component{
             var emoticonInfo = JSON.parse(JSON.stringify(this.props.emoticonInfo));
             var emoticonList = Object.values(emoticonInfo);
             for(let i = 0 ; i < emoticonList.length ; i ++){
-                activeEmoticon = activeEmoticon.concat(emoticonList[i].map(info => info.id).filter(id => id in ids));
+                activeEmoticon = activeEmoticon.concat(emoticonList[i].map(info => info.id).filter(id => ids.includes(id)));
             }
 
             curState.activeEmoticon = activeEmoticon;
@@ -55,8 +55,18 @@ class StreamerInfo extends React.Component{
     }
 
     render(){
-        
-        console.log(this.props.emoticonInfo);
+        /*
+            {
+                id: 1096502,
+                name: 'jadongDia',
+                url: 'https://static-cdn.jtvnw.net/emoticons/v1/1096502/1.0',
+                width: 28,
+                height: 28,
+                emoticon_set: 42197,
+                alias_list: [Array],
+                fixed: true
+            }
+        */
 
         return (
             <div className = 'streamer-info'>
@@ -80,6 +90,7 @@ class StreamerInfo extends React.Component{
 
                         <EmoticonSelector 
                             emoticonInfo = {this.props.emoticonInfo}
+                            activeEmoticon = {this.state.activeEmoticon} 
                             handleSelectEmoticon = {this.handleSelectEmoticon}/>
                     </div>
                 </div>

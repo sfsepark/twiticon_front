@@ -104,7 +104,7 @@
     text-align : left;
 }
 
-.emoticon-wrapper-button{
+.emoticon-wrapper-button-visible{
     margin-left : 3px;
     margin-right : 3px;
     margin-bottom : 6px;
@@ -113,3 +113,6 @@
     overflow: visible;
 }
 
+.emoticon-wrapper-button-invisible{
+    display: none;
+}

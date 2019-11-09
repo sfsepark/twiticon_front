@@ -119,7 +119,7 @@
 }
 
 .emoticon-info-view-aliases{
-    width: 58px;
+    text-align: left;
     display : block;
     height: 39px;
     overflow-x : visible;
@@ -128,12 +128,18 @@
 
 //components/EmoticonAlias.js
 
+.emoticon-info-alias-wrapper{
+    display: inline-block;
+    margin-right : 13px;
+    position: relative;
+}
+
 .emoticon-info-alias{
     background-color: #000000;
-    height: 49px;
+    height: 39px;
     border-radius: 5px;
     display: inline-block;
-    position: relative;
+    margin-left : 10px;
 }
 
 .emoticon-info-alias-text{
@@ -141,7 +147,7 @@
     margin-right : 10px;
     height: 43px;
     font-family: "Noto Sans KR",sans-serif;
-    font-size: 29px;
+    font-size: 23px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -149,16 +155,19 @@
     letter-spacing: normal;
     text-align: left;
     color: #ffffff;
+
+    display : inline-block;
+}
+.emoticon-info-alias-arrow-wrapper{
+        
+    position: absolute;
+    top : 10px;
 }
 
 .emoticon-info-alias-arrow{
     background-color: #000000;
     height: 11px;
     width: 11px;
-    transform: rotate(45deg);;
-
-    position: absolute;
-
-    top : 11px;
-    left : -16px;
+    margin : 5px;
+    transform: rotate(45deg);
 }

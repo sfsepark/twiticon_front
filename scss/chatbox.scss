@@ -1,0 +1,16 @@
+.chatbox-container{
+    position: relative;
+}
+.chatbox-twitch-embed-chat{
+    display : block;
+    z-index: 1;
+}
+
+.chatbox-chat-input {
+    position: absolute;
+    background-color: #ffffff;
+    height: 140px;
+    width: 100%;
+    z-index: 10000;
+    bottom : 0px;
+}

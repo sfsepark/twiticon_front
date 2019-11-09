@@ -1,7 +1,8 @@
 import React from 'react'
 import '../scss/emoticonSelector.scss'
 import Emoticon from './emoticon'
-import Hangul from '../methods/hangul.min'
+
+import checkEmote from '../methods/checkEmote'
 
 /*
     streamerInfo의 state emoticonInfo(필터링되어 아래에 나열되는 이모티콘정보)
@@ -22,36 +23,35 @@ class EmoticonSelector extends React.Component{
         this.handleChange = this.handleChange.bind(this);
     }
 
-    isEmoteName(emote,searchStr){
-        return emote.name.toLowerCase().includes(searchStr);
-    }
-
-    isEmoteAlias(emote, searchStr){
-        var alias_list = emote.alias_list;
-        for(var i = 0 ; i < alias_list ; i ++){
-            let alias = alias_list[i];
-            let aliasTokens = alias.split('');
-            let disassembledLen = aliasTokens.map(token => Hangul.disassemble(token).length);
-            
-            let res = Hangul.search(alias,searchStr);
-
-
-            if(res != -1){
-                while(disassembledLen.length > 0 && res >= 0){
-                    if(res == 0) return true;
-                    var curLen = disassembledLen.shift();
-
-                    res -= curLen;                    
-                }
-            }
-        }
-
-        return false;
-    }
-
     handleChange(event){
+        var value = event.target.value;
         var curState = JSON.parse(JSON.stringify(this.state));
         curState.search = event.target.value;
+
+        var emoticonIds = [];
+
+        if(value != ''){
+            var emoticonLists = Object.values(this.props.emoticonInfo);
+            var filteredEmoticonLists = emoticonLists.map(emoticonList => (
+                    emoticonList.filter(
+                        emoticonInfo =>
+                            checkEmote.queryLikeAlias(emoticonInfo,value) || 
+                            checkEmote.queryLikeName(emoticonInfo,value)
+                    )
+                )
+            );
+    
+            for(var i = 0 ; i < filteredEmoticonLists.length ; i ++){
+                var filteredEmoticonList = filteredEmoticonLists[i];
+                var filteredEmoticonIds = filteredEmoticonList.map(emoticonInfo => emoticonInfo.id);
+                emoticonIds = emoticonIds.concat(filteredEmoticonIds);
+            }    
+        }
+        else{
+            emoticonIds = undefined;
+        }
+
+        this.props.handleSelectEmoticon(emoticonIds);
 
         this.setState(curState)
     }
@@ -59,11 +59,14 @@ class EmoticonSelector extends React.Component{
     render(){
 
         var emoticonSets = Object.values(this.props.emoticonInfo);
+        var activeEmoticon = this.props.activeEmoticon;
+        var handleSelectEmoticon = this.props.handleSelectEmoticon;
 
         var emoticonLists = emoticonSets.map(
             emoticonInfos => emoticonInfos.map(
                 info =>   (
-                    <div className = 'emoticon-wrapper-button'>
+                    <div className = {'emoticon-wrapper-button-' + (activeEmoticon.includes(info.id) ? 'visible' : 'invisible')}
+                        onClick = {() => handleSelectEmoticon([info.id])}>
                         <Emoticon 
                             info = {info}/>
                     </div>
