@@ -4,23 +4,38 @@ import Banner from '../component/banner.js';
 import Head from 'next/head';
 
 import '../scss/body.scss'
-const axios  = require('axios');
-
-import cookie from '../methods/cookies'
+import fetch from 'isomorphic-fetch'
 
 import next_cookies from 'next-cookies'
 import cookies from '../methods/cookies';
+import MainPageContents from '../component/MainPageContents.js'
+
+import client_id from '../data/client_id'
 
  
 class Index extends React.Component{
 
     static async getInitialProps(ctx){
-        return {
+
+        var props = {
             cookie : {
                 twitchToken : next_cookies(ctx).twitchToken,
                 profile : next_cookies(ctx).profile
             }
         }
+
+        var liveStreams = await fetch('https://api.twitch.tv/kraken/streams/?language=ko&limit=30', {
+            headers : {
+                'Client-ID' : client_id,
+                Accept: 'application/vnd.twitchtv.v5+json' 
+            }
+        })
+
+        if(liveStreams.ok){
+            props.liveStreams = await liveStreams.JSON;
+        }
+
+        return props;
     }
 
 
@@ -61,6 +76,10 @@ class Index extends React.Component{
                 </Head>
                 <Header type='main' twitchToken={this.state.twitchToken} profile={this.props.cookie.profile}/>
                 <Banner/>
+                <div style = {{width : '100%'}}>
+                    <MainPageContents 
+                        liveStreams={this.props.liveStreams}/>
+                </div>
             </div>
         )
     }

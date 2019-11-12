@@ -47,7 +47,7 @@ class SearchBar extends React.Component{
         return (
             <div className = {banner_search_bar_class}>
                 <div className = 'search-bar-wrapper'>
-                    <textarea className = "searchbar-textarea"  value={this.state.value} maxLength="77" onChange={this.handleChange}></textarea>
+                    <textarea className = "searchbar-textarea"  value={this.state.value} maxLength="77" onChange={this.handleChange} placeholder="스트리머, 이모티콘 이름"></textarea>
                     <div className = "searchbar-search-button" onClick={this.handleSubmit}>
                         <svg xmlns="http://www.w3.org/2000/svg" width={this.props.type == 'main' ? 40 : 20} height={this.props.type == 'main' ? 48 : 24} viewBox="0 0 42.642 50.473">
                         <g id="icon_search" transform="translate(1.5 1.5)">

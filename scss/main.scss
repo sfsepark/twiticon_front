@@ -1,0 +1,44 @@
+@import url('http://fonts.googleapis.com/earlyaccess/"Noto Sans KR".css');
+
+.flex{
+    display: flex;
+}
+
+.space-between{
+    justify-content: space-between
+}
+
+.main-contents{
+    width : 1060px;
+}
+
+.main-contents-header{
+    margin-top: 26.4px;
+    display: block;
+}
+
+.main-contents-title{
+    height: 46px;
+    font-family: "Noto Sans KR";
+    font-size: 30px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: center;
+    color: #6441a5;
+}
+
+.main-contents-title-streamer{
+    height: 46px;
+    font-family: "Noto Sans KR";
+    font-size: 30px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}

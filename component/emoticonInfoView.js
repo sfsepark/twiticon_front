@@ -190,6 +190,21 @@ class EmoticonInfoView extends React.Component{
             )
         }
 
+        var rightSection = null;
+
+        if(this.state.info.fixed){
+            rightSection = (
+                <div className = 'emoticon-info-view-fixed'>
+                    <div className = 'emoticon-info-view-fixed-log'>
+                        관리자에 의해 별명이 확정된 이모티콘입니다.
+                    </div>
+                    <div className = 'emoticon-info-view-fixed-svg'>
+
+                    </div>
+                </div>
+            )
+        }
+
         return (
             <div className = 'emoticon-info-view-container'>
                 {loader}
@@ -221,7 +236,7 @@ class EmoticonInfoView extends React.Component{
                     </div>
                 </div>
                 <div className = 'emoticon-info-view-right'>
-
+                    {rightSection}
                 </div>
             </div>
         )

@@ -95,8 +95,8 @@ class EmoticonSelector extends React.Component{
                         <div className = 'emoticon-selector-searchmark'>
                             <svg className='emoticon-selector-searchmark-svg' xmlns="http://www.w3.org/2000/svg" width="21.285" height="24.845" viewBox="0 0 21.285 24.845">
                             <g id="icon_search" transform="translate(1.5 1.5)">
-                                <path id="패스_1551" data-name="패스 1551" d="M0,0,4.622,5.424" transform="translate(14.021 16.948)" fill="none" stroke="#b9b9b9" stroke-width="3"/>
-                                <ellipse id="타원_1" data-name="타원 1" cx="8.736" cy="8.987" rx="8.736" ry="8.987" transform="translate(0 0)" fill="none" stroke="#e5e5e5" stroke-miterlimit="10" stroke-width="3"/>
+                                <path id="패스_1551" data-name="패스 1551" d="M0,0,4.622,5.424" transform="translate(14.021 16.948)" fill="none" stroke="#b9b9b9" strokeWidth="3"/>
+                                <ellipse id="타원_1" data-name="타원 1" cx="8.736" cy="8.987" rx="8.736" ry="8.987" transform="translate(0 0)" fill="none" stroke="#e5e5e5" strokeMiterlimit="10" strokeWidth="3"/>
                             </g>
                             </svg>
                         </div>
