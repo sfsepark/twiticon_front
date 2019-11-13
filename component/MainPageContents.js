@@ -7,9 +7,17 @@ import '../scss/main.scss'
 class MainPageContents extends React.Component{
     constructor(props){
         super(props);
+
+        this.state = {
+            focusID : -1
+        }
     }
 
+
+
     render(){
+
+        this.props.liveStreams.filter(liveStream => )
 
         return (
             <div className = "main-contents">
@@ -28,7 +36,9 @@ class MainPageContents extends React.Component{
                     </div>
                 </div>
                 <div className = 'main-contents-body'>
-                    
+                    <div className = 'flex space-between'>
+
+                    </div>
                 </div>
             </div>    
         )

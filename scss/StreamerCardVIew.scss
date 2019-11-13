@@ -1,0 +1,203 @@
+.streamer-cardview-container{
+    width : 160px;
+    overflow-x: visible;
+}
+
+.streamer-cardview{
+    width: 160px;
+    height: 160px;
+    background-image: url("http://twiticon.com/twitchCV_bg.png");
+
+    position: relative;
+}
+
+.streamer-cardview-bg{
+    width: 160px;
+    height: 160px;
+    opacity: 0.5;
+    text-align: center;
+    background-color: #ffffff;
+}
+
+.streamer-cardview-bg-on{
+    width: 160px;
+    height: 160px;
+    opacity: 0.5;
+    text-align: center;
+    background-color: #6441a5;
+}
+
+.streamer-cardview-profile{
+    margin-top : 42px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.streamer-profile-img{
+    width: 100%;
+    height: 100%;
+}
+
+.streamer-cardview-name{
+    height: 18px;
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+
+.streamer-show-detail{
+    width: 63px;
+    height: 18px;
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+    display: none;
+
+    padding-top : 1px;
+    padding-bottom: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+
+    top : 8px;
+    left : 85px;
+
+    position: absolute;
+}
+
+.streamer-show-detail:hover{
+    display: block;
+}
+
+// components/streamerTwitionList.js
+
+.streamer-twiticon-list {
+    margin-top : 13px;
+    width : 1058px;
+
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    left : 0;
+
+    position: absolute;
+    display: none;
+
+    border: solid 1px #d1d1d1;
+}
+
+.streamer-twiticon-list-on {
+    display: block !important;
+}
+
+//트위티콘 리스트 헤드
+
+.streamer-twiticon-list-head{
+    height: 51px;
+    border: solid 1px #d1d1d1;
+    background-color: #faeefc;
+    display: block;
+    
+    border-bottom: solid 1px #d1d1d1;
+}
+
+.streamer-twiticon-list-head-title{
+    display: inline-block;
+}
+
+.streamer-twiticon-list-twitich-logo{
+    margin-top : 10.5px;
+    margin-left : 13px;
+    width : 28.7px;
+    height: 30px;
+    display: inline-block;
+}
+
+.streamer-twiticon-list-header-title-text{
+    height: 30px;
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    margin-top : 11px;
+    margin-left : 9px;
+    display: inline-block;
+}
+
+.streamer-twiticon-list-header-title-name{
+    height: 30px;
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;  
+    color: #6441a5;
+
+    margin-top : 11px;
+    margin-left : 9px;
+    display: inline-block;
+}
+
+.streamer-twiticon-list-profile{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top : 11px;
+    margin-left : 3px;
+}
+
+.streamer-twiticon-list-show-detail{
+    height: 30px;
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+    display:inline-block;
+}
+
+.right-button{
+    width : 12px;
+    height: 20px;
+    margin-top : 13px;
+    margin-left : 5px;
+}
+
+//트위티콘 리스트 바디
+
+.streamer-twiticon-list-body{
+    padding-top : 10px;
+    padding-left : 13px;
+    padding-right: 13px;
+    width : calc(100% - 16px);
+    min-height: 38px;
+
+    background-color: #ffffff;
+
+    display: block;
+}
