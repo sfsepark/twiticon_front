@@ -159,7 +159,7 @@ class EmoticonInfoView extends React.Component{
         var aliasList;
 
         if(this.state.edit == false){
-            aliasList = this.state.info.alias_list.map(alias => <EmoticonAlias alias = {alias}/>)
+            aliasList = this.state.info.alias_list.map(alias => <EmoticonAlias alias = {alias} height = {39}/>)
         }
         else{
             let aliasKey = 0;
@@ -174,6 +174,7 @@ class EmoticonInfoView extends React.Component{
                     id = {aliasKey}
                     handleChange = {handleChange}
                     handleDelete = {handleDelete}
+                    height = {39}
                 />
             })
         }

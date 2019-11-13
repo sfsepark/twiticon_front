@@ -140,13 +140,12 @@
     height: 100%;
     border-radius: 5px;
     display: inline-block;
-    margin-left : 10px;
+    //margin-left : 10px;
 }
 
 .emoticon-info-alias-text{
     margin-left : 10px;
     margin-right : 10px;
-    height: 43px;
     font-family: "Noto Sans KR",sans-serif;
     font-size: 23px;
     font-weight: normal;
@@ -162,13 +161,15 @@
 .emoticon-info-alias-arrow-wrapper{
         
     position: absolute;
-    top : 10px;
+    top : 25.64%;
 }
 
 .emoticon-info-alias-arrow{
     background-color: #000000;
+    /*
     height: 11px;
     width: 11px;
     margin : 5px;
+    */
     transform: rotate(45deg);
 }

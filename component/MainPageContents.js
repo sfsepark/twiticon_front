@@ -17,7 +17,7 @@ class MainPageContents extends React.Component{
 
     render(){
 
-        this.props.liveStreams.filter(liveStream => )
+        //this.props.liveStreams.filter(liveStream => )
 
         return (
             <div className = "main-contents">
