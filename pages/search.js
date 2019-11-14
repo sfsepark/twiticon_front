@@ -17,6 +17,7 @@ class Search extends React.Component{
         var result = undefined;
         
         this.query = '';
+        //console.log(ctx);
 
         if(ctx.query.query != undefined){
             this.query = ctx.query.query;
@@ -90,10 +91,11 @@ class Search extends React.Component{
                 <StreamerSearchResult res={streamerRes}/>
             )
         }
+        console.log(this.props);
 
         return (
             <div className= "main">
-                <Header query={this.query} type = 'sub' twitchToken={this.state.twitchToken} profile={this.props.cookie.profile}/>
+                <Header query={this.props.url.query.query} type = 'sub' twitchToken={this.state.twitchToken} profile={this.props.cookie.profile}/>
                 <div className = "contents-container">
                     <div className = "search-title">{'"' + (this.props.url.query.query ? this.props.url.query.query : '') + '" 검색 결과'}</div>
                     {SearchResults}

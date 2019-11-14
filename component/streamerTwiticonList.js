@@ -5,6 +5,7 @@ import '../scss/StreamerCardView.scss'
 import { apiURL } from '../URL'
 
 import fetch from 'isomorphic-fetch';
+import Link from 'next/link'
 
 export default class StreamerTwiticonList extends React.Component{
 
@@ -51,12 +52,18 @@ export default class StreamerTwiticonList extends React.Component{
         var channelDisplayName = this.props.channelDisplayName;
         var detailURL = '/s/' + this.props.channelName;
 
-        var list = this.state.emoteInfo.map(emoteInfo => null);
+        var list = this.state.emoteInfo.map(emoteInfo => {
+            return (
+                <div className = 'streamer-twiticon-list-emotes'>
+
+                </div>
+            )
+        });
 
         return (
             <div className = {'streamer-twiticon-list ' + (this.props.focus == true ? 'stremaer-twiticon-list-on' : '')} >
                 <div className = 'streamer-twiticon-list-head'>
-                    <div clasName = 'flex space-between'>
+                    <div className = 'flex space-between'>
                         <div className = 'streamer-twiticon-list-head-title'>
                             <img className = 'streamer-twiticon-list-twitich-logo'
                                 src = "http://twiticon.com/twitch_logo.png">

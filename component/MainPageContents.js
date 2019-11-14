@@ -1,4 +1,5 @@
 import '../scss/main.scss'
+import StreamerCardView from './StreamerCardview';
 
 /*
     SSR 해야하는 것 : 최초 
@@ -17,7 +18,13 @@ class MainPageContents extends React.Component{
 
     render(){
 
-        //this.props.liveStreams.filter(liveStream => )
+        var streamList = this.props.liveStreams.filter(
+            liveStream => liveStream.channel.partner
+        ).map(liveStream => 
+            <StreamerCardView key = {liveStream.channel['_id']}
+                id = {liveStream.channel['_id']}
+                channel = {liveStream.channel}/>
+        );
 
         return (
             <div className = "main-contents">
@@ -36,9 +43,7 @@ class MainPageContents extends React.Component{
                     </div>
                 </div>
                 <div className = 'main-contents-body'>
-                    <div className = 'flex space-between'>
-
-                    </div>
+                    {streamList}
                 </div>
             </div>    
         )

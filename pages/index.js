@@ -32,7 +32,7 @@ class Index extends React.Component{
         })
 
         if(liveStreams.ok){
-            props.liveStreams = await liveStreams.JSON;
+            props.liveStreams = await liveStreams.json();
         }
 
         return props;
@@ -68,6 +68,7 @@ class Index extends React.Component{
 
     render(){
 
+        //console.log(this.props.liveStreams.streams);
 
         return (
             <div className="main">
@@ -78,7 +79,7 @@ class Index extends React.Component{
                 <Banner/>
                 <div style = {{width : '100%'}}>
                     <MainPageContents 
-                        liveStreams={this.props.liveStreams}/>
+                        liveStreams={this.props.liveStreams.streams}/>
                 </div>
             </div>
         )

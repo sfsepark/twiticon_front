@@ -1,4 +1,3 @@
-@import url('http://fonts.googleapis.com/earlyaccess/"Noto Sans KR".css');
 
 .emoticon-tier-1-table, .emoticon-tier-2-table , .emoticon-tier-3-table{
     overflow: visible;
@@ -41,7 +40,7 @@
     margin-top : 5px;
     width: calc(100% - 40px - 24px);
     height: 30px;
-    font-family: "Noto Sans KR";
+    font-family: "Noto Sans KR",sans-serif;
     font-size: 20px;
     font-weight: normal;
     font-stretch: normal;
