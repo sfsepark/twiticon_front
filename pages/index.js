@@ -5,6 +5,7 @@ import Head from 'next/head';
 
 import '../scss/body.scss'
 import fetch from 'isomorphic-fetch'
+const axios = require('axios');
 
 import next_cookies from 'next-cookies'
 import cookies from '../methods/cookies';
@@ -24,17 +25,6 @@ class Index extends React.Component{
             }
         }
 
-        var liveStreams = await fetch('https://api.twitch.tv/kraken/streams/?language=ko&limit=30', {
-            headers : {
-                'Client-ID' : client_id,
-                Accept: 'application/vnd.twitchtv.v5+json' 
-            }
-        })
-
-        if(liveStreams.ok){
-            props.liveStreams = await liveStreams.json();
-        }
-
         return props;
     }
 
@@ -50,36 +40,83 @@ class Index extends React.Component{
         }
 
         this.state = {
-            twitchToken : twitchToken
+            twitchToken : twitchToken,
+            liveStreams : [],
+            emoticons : {}
         };
+
+        this.nextOffset = 0;
+
+        this.fetchFollowStreams = this.fetchFollowStreams.bind(this);
+        this.fetchPoppularStreams = this.fetchPoppularStreams.bind(this);
     }
 
     componentDidMount(){
+
         var access_token = new URLSearchParams( window.location.hash.substr(1)).get('access_token') ;
         if(access_token != null){
             var newState = JSON.parse(JSON.stringify(this.state));
             newState.twitchToken = access_token;
-
-            this.setState(newState);
+            
             cookies.setCookie('twitchToken',access_token, 7);
+            this.setState(newState);
+        }
+
+        if(this.nextOffset == 0){
+            if(this.state.twitchToken == null){
+                this.fetchPoppularStreams();
+            }
+            else{
+                this.fetchFollowStreams();
+            }
+
+            this.nextOffset = 1;
+        }
+    }
+
+    fetchPoppularStreams(){
+        var liveStreamsRes = await fetch('https://api.twitch.tv/kraken/streams/?language=ko&limit=30', {
+            headers : {
+                'Client-ID' : client_id,
+                Accept: 'application/vnd.twitchtv.v5+json' 
+            }
+        })
+
+        if(liveStreams.ok){
+            var liveStreams = await liveStreamsRes.json();
+
+            var curState = JSON.parse(JSON.stringify(this.state));
+            curState.liveStreams = liveStreams.streams;
+            this.setState(curState);
+        }   
+    }
+
+    fetchFollowStreams(){
+        var followChannelRes = await fetch('https://api.twitch.tv/kraken/streams/?language=ko&limit=30', {
+            headers : {
+                'Client-ID' : client_id,
+                Accept: 'application/vnd.twitchtv.v5+json' 
+            }
+        })
+
+        if(liveStreams.ok){
+            var liveStreams = await liveStreamsRes.json();
+
+            
         }
     }
 
 
     render(){
-
-        //console.log(this.props.liveStreams.streams);
-
         return (
             <div className="main">
                 <Head>
                     <title>트위티콘 - 트위치 이모티콘에 한글 별명을 달아보세요.</title>
                 </Head>
-                <Header type='main' twitchToken={this.state.twitchToken} profile={this.props.cookie.profile}/>
                 <Banner/>
                 <div style = {{width : '100%'}}>
                     <MainPageContents 
-                        liveStreams={this.props.liveStreams.streams}/>
+                        liveStreams={this.state.liveStreams}/>
                 </div>
             </div>
         )

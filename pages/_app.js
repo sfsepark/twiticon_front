@@ -10,9 +10,8 @@ export default class MyApp extends App{
             pageProps = await Component.getInitialProps(ctx)
         }
 
-        return { pageProps}
+        return { pageProps }
     }
-
     render(){
         const { Component, router, pageProps } = this.props
 
@@ -21,6 +20,7 @@ export default class MyApp extends App{
                 <Head>
                     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet"/>
                 </Head>
+                <Header type='main' twitchToken={this.state.twitchToken} profile={this.props.cookie.profile}/>
                 <Component url = {router} {...pageProps} />
             </Container>
         )

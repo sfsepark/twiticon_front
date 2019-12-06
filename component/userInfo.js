@@ -1,4 +1,4 @@
-const axios = require('axios');
+
 
 import client_id from '../data/client_id';
 import cookies from '../methods/cookies';
@@ -48,7 +48,7 @@ export default class UserInfo extends React.Component{
         return (
             <div className = "userinfo">
                 <div className ="userinfo-profile">
-                    <img className = "userinfo-profile-img" src = {this.state.profile}></img>
+                    <img className = "userinfo-profile-img" src = {this.props.profile}></img>
                 </div>
 
                 <div className = "userinfo-topdown-button">
