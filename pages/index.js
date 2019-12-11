@@ -1,5 +1,3 @@
-
-import Header from '../component/header.js';
 import Banner from '../component/banner.js';
 import Head from 'next/head';
 
@@ -74,7 +72,7 @@ class Index extends React.Component{
         }
     }
 
-    fetchPoppularStreams(){
+    async fetchPoppularStreams(){
         var liveStreamsRes = await fetch('https://api.twitch.tv/kraken/streams/?language=ko&limit=30', {
             headers : {
                 'Client-ID' : client_id,
@@ -82,7 +80,7 @@ class Index extends React.Component{
             }
         })
 
-        if(liveStreams.ok){
+        if(liveStreamsRes.ok){
             var liveStreams = await liveStreamsRes.json();
 
             var curState = JSON.parse(JSON.stringify(this.state));
@@ -91,19 +89,13 @@ class Index extends React.Component{
         }   
     }
 
-    fetchFollowStreams(){
+    async fetchFollowStreams(){
         var followChannelRes = await fetch('https://api.twitch.tv/kraken/streams/?language=ko&limit=30', {
             headers : {
                 'Client-ID' : client_id,
                 Accept: 'application/vnd.twitchtv.v5+json' 
             }
         })
-
-        if(liveStreams.ok){
-            var liveStreams = await liveStreamsRes.json();
-
-            
-        }
     }
 
 

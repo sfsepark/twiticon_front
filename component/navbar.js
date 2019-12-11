@@ -1,22 +1,37 @@
 import '../scss/header.scss';
 import Link from 'next/link';
 
-import UserInfo from '../component/userInfo.js'
-import SearchBar from '../component/searchBar.js';
+import UserInfo from './userInfo.js'
+import SearchBar from './searchBar.js';
+import cookies from '../methods/cookies'
 
-import client_id from '../data/client_id'
+import {useEffect,useState} from 'react'
+
 
 import {baseURL} from '../URL'
+import Router from 'next/router';
 
-const Header  = function(props){
+const Navbar  = function(props){
 
     var userInfo ;
 
-    if(props.twitchToken && typeof(props.twitchToken) == 'string'){
-        userInfo =  <UserInfo twitchToken = {props.twitchToken} profile = {props.profile}/>
+    var [profile, setProfile] = useState(0);
+
+    useEffect(() => {
+        setProfile(cookies.getCookie('profile'));
+    },[])
+
+    function handleClickLogin(){
+        cookies.setCookie('history', window.location.pathname)
+        Router.push("/login");
+    }
+
+
+    if(profile){
+        userInfo =  <UserInfo profile = {profile}/>
     }
     else{
-        userInfo =  <a href = {"https://id.twitch.tv/oauth2/authorize?client_id=" + client_id +"&redirect_uri="+ baseURL + "&response_type=token&scope=user_subscriptions+user_read"} className = "header-menu header-login">로그인</a>
+        userInfo =  <a onClick = {handleClickLogin} className = "header-menu header-login">로그인</a>
     }
 
     //
@@ -33,7 +48,7 @@ const Header  = function(props){
 
     return (
         <div className = {header_box_class}>
-            <div className = "header-logo" onClick = {() => window.location.href = '/'}>
+            <div className = "header-logo" onClick = {() => Router.push('/')}>
                 <div className = "header-logo-twiti">트위티</div>
                 <div className = "header-logo-con">콘</div>
             </div>
@@ -47,5 +62,5 @@ const Header  = function(props){
     )
 }
 
-export default Header;
+export default Navbar;
 

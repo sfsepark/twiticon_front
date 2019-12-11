@@ -1,4 +1,3 @@
-import Header from '../component/header.js';
 import StreamerSearchResult from '../component/streamerSearchResult.js';
 
 import '../scss/body.scss'
@@ -7,6 +6,7 @@ import '../scss/searchResult.scss'
 import {apiURL} from '../URL'
 
 import next_cookies from 'next-cookies'
+import  Router from 'next/router';
 
 const axios  = require('axios');
 
@@ -16,16 +16,15 @@ class Search extends React.Component{
 
         var result = undefined;
         
-        this.query = '';
-        //console.log(ctx);
+        var query = '';
 
         if(ctx.query.query != undefined){
-            this.query = ctx.query.query;
+            query = ctx.query.query;
         }
 
-        if(this.query != ''){
+        if(query != ''){
             var result = await axios.get(
-                apiURL + '/api/search?query=' + encodeURIComponent(this.query)
+                apiURL + '/api/search?query=' + encodeURIComponent(query)
             );
 
             result = result.data;
@@ -57,47 +56,79 @@ class Search extends React.Component{
         };
     }
 
-
-    componentDidMount(){
-        var access_token = new URLSearchParams( window.location.hash.substr(1)).get('access_token') ;
-        if(access_token != null){
-            var newState = JSON.parse(JSON.stringify(this.state));
-            newState.twitchToken = access_token;
-
-            this.setState(newState);
-            cookies.setCookie('twitchToken',access_token, 7);
+    shouldComponentUpdate(nextProps, nextState){
+        
+        if(nextProps.url.query.query != this.props.url.query.query){
+            var curState = JSON.parse(JSON.stringify(this.state));
+            curState.searchResult = 'initial';
+            this.setState(curState);
         }
+        
+        console.log(nextProps, this.props)
+
+        return true;
+    }
+
+
+    componentDidUpdate(prevProps){
+        
+        
+        if(prevProps.url.query.query != this.props.url.query.query){
+            var query = this.props.url.query.query;
+            var curState = JSON.parse(JSON.stringify(this.state));
+            var setState = this.setState.bind(this);
+            if(query != ''){
+                axios.get(
+                    apiURL + '/api/search?query=' + encodeURIComponent(query)
+                ).then(res => {
+                    curState.searchResult = res.data;
+                    setState(curState)
+                });
+            }
+            else{
+                
+            }
+        }
+
+
     }
 
     render(){
-
         var streamerRes = [];
 
-        if(this.state.searchResult != undefined 
-            && this.state.searchResult.hasOwnProperty('streamer')
-            && this.state.searchResult.streamer.hasOwnProperty('channels'))
-        {
-            streamerRes = this.state.searchResult.streamer.channels;
-        }
-
-        var SearchResults ;
-
-        if(streamerRes.length == 0){
-            SearchResults = <div style = {{'margin-left': '28px'}}>이런! 결과를 찾을 수 없습니다!</div>
+        if(this.state.searchResult == 'initial'){
+            SearchResults = null;
         }
         else{
-            //유사도 분석 후 정렬해서 보여줘야 한다.
-            SearchResults = (
-                <StreamerSearchResult res={streamerRes}/>
-            )
+            if(this.state.searchResult != undefined 
+                && this.state.searchResult.hasOwnProperty('streamer')
+                && this.state.searchResult.streamer.hasOwnProperty('channels'))
+            {
+                streamerRes = this.state.searchResult.streamer.channels.filter(channel => channel.broadcaster_type != '');
+            }
+    
+            var SearchResults ;
+    
+            if(streamerRes.length == 0){
+                SearchResults = <div style = {{'margin-left': '28px'}}>이런! 결과를 찾을 수 없습니다!</div>
+            }
+            else{
+                if(streamerRes.length == 1){
+                    //Router.push('/s/[id]','/s/' + streamerRes[0].name)
+                }
+                //유사도 분석 후 정렬해서 보여줘야 한다.
+                SearchResults = (
+                    <StreamerSearchResult res={streamerRes}/>
+                )
+            }
         }
-        console.log(this.props);
+
+
 
         return (
             <div className= "main">
-                <Header query={this.props.url.query.query} type = 'sub' twitchToken={this.state.twitchToken} profile={this.props.cookie.profile}/>
                 <div className = "contents-container">
-                    <div className = "search-title">{'"' + (this.props.url.query.query ? this.props.url.query.query : '') + '" 검색 결과'}</div>
+                    <div className = "search-title">{'"' + (this.props.url.query.query ? this.props.url.query.query : '') + '" ' + (this.state.searchResult == 'initial' ? '검색 중.....' : '검색 결과')}</div>
                     {SearchResults}
                 </div>
 

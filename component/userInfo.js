@@ -9,39 +9,6 @@ export default class UserInfo extends React.Component{
     constructor(props){
         super(props);
 
-        var profile = this.props.profile;
-
-        this.state ={
-            profile : profile
-        }
-    }
-    
-    componentDidMount(){
-        (function(_this){
-
-            axios.get('https://api.twitch.tv/kraken/user', 
-                {
-                    headers: 
-                        {
-                            'Accept': 'application/vnd.twitchtv.v5+json',
-                            'Client-ID' : client_id,
-                            'Authorization' : 'OAuth ' + _this.props.twitchToken
-                        }
-                }
-            ).then((data) => {
-
-                var profile = data.data.logo;
-
-                _this.setState({
-                    profile : profile
-                })
-
-                cookies.setCookie('profile',profile,7);
-            }).catch((err) =>{
-                console.log(err);
-            });
-        })(this)
-
     }
 
     render(){

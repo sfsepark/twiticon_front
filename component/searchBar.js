@@ -1,4 +1,5 @@
 import '../scss/searchBar.scss'
+import Router from 'next/router'
 
 class SearchBar extends React.Component{
 
@@ -17,20 +18,22 @@ class SearchBar extends React.Component{
         this.setState({value: event.target.value});
     }
     handleSubmit(event){
-        window.location.href = 'search?query=' + this.state.value;
-
+        Router.push('/search?query=' + this.state.value,'/search?query=' + this.state.value);
+        this.setState({value: ''});
         event.preventDefault();
     }
 
     componentDidMount(){
         var searchTextareas = document.getElementsByClassName('searchbar-textarea');
+        var handleSubmit = this.handleSubmit;
 
         for(var i = 0 ; i < searchTextareas.length ;i ++){
             (function(searchTextarea){
                 searchTextarea.addEventListener('keypress', function(e){
 
                     if(e.keyCode == 13){
-                        window.location.href = '/search?query=' + searchTextarea.value;
+                        
+                        handleSubmit(e);
                     }
                 });
             })(searchTextareas[i]);

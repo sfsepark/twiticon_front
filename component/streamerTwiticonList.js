@@ -36,7 +36,10 @@ export default class StreamerTwiticonList extends React.Component{
         setState = setState.bind(this);
 
         fetch(
-            apiURL + '/api/streamer/' + this.props.channelName
+            apiURL + '/api/streamer/' + this.props.channelName,
+            {headers :{
+                'Content-Type' : 'application/json'
+            }}
         ).then(res => {
             if(res.ok) return res.json();
             else throw res.statusText;

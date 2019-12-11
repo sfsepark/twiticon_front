@@ -1,5 +1,6 @@
-import App, { Container } from 'next/app'
+import App, { Container, createUrl } from 'next/app'
 import Head from 'next/head'
+import Navbar from '../component/navbar'
 
 export default class MyApp extends App{
     static async getInitialProps({ Component, router, ctx }) {
@@ -20,8 +21,13 @@ export default class MyApp extends App{
                 <Head>
                     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet"/>
                 </Head>
-                <Header type='main' twitchToken={this.state.twitchToken} profile={this.props.cookie.profile}/>
-                <Component url = {router} {...pageProps} />
+                {
+                    router.route == '/login'
+                    ? null
+                    : <Navbar type={router.route == '/' ?'main' : 'sub'}/>
+                }
+
+                <Component url = {createUrl(router)} {...pageProps} />
             </Container>
         )
     }

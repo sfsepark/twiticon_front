@@ -1,5 +1,5 @@
-import Header from '../../component/header.js';
 import { useRouter } from 'next/router';
+
 
 import next_cookies from 'next-cookies'
 
@@ -87,8 +87,8 @@ class Streamer extends React.Component{
         
 
         return (
+            
             <div className = 'streamer'>
-                <Header type = 'sub' twitchToken={this.state.twitchToken} profile={this.props.cookie.profile}/>
                 <div className = 'streamer-contents-container'>
                     {streamer_contents}
                 </div>

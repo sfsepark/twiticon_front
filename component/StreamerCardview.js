@@ -8,8 +8,10 @@ export default class StreamerCardView extends React.Component{
 
     render(){
 
-        var channelDisplayName = '똘똘똘이_'
-        var channelName = 'jungtaejune';
+        var channel = this.props.channel;
+
+        var channelDisplayName = channel.display_name;
+        var channelName = channel.name;
         var detailURL = '/s/' + channelName;
 
         return (

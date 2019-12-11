@@ -1,12 +1,13 @@
 
 
 import '../scss/searchResult.scss';
+import Router from 'next/router'
 //import '../scss/streamerSearchResult.scss';
 
 function SearchSingleResult(props){
 
     return(
-        <div className = 'streamer-single-result-container' onClick = {() => {window.location.href = '/s/' + props.res.name}}>
+        <div className = 'streamer-single-result-container' onClick = {() => {Router.push('/s/[id]','/s/' + props.res.name)}}>
             <div className = 'streamer-single-result-flex'>
                 <img 
                     className = 'streamer-single-result-logo' 
@@ -25,6 +26,7 @@ function SearchSingleResult(props){
 }
 
 function StreamerSearchResult(props){
+
 
     var SearchResult = props.res.map(function(channel){
         if(channel.broadcaster_type != '')
