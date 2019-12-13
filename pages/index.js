@@ -18,8 +18,7 @@ class Index extends React.Component{
 
         var props = {
             cookie : {
-                twitchToken : next_cookies(ctx).twitchToken,
-                profile : next_cookies(ctx).profile
+                twitchToken : next_cookies(ctx).twitchToken
             }
         }
 
@@ -31,49 +30,54 @@ class Index extends React.Component{
 
         super(props);
 
-        var twitchToken = null;
-
-        if(this.props.cookie.twitchToken != undefined){
-            twitchToken = this.props.cookie.twitchToken;
-        }
-
         this.state = {
-            twitchToken : twitchToken,
-            liveStreams : [],
-            emoticons : {}
+            liveStreams : []
         };
 
         this.nextOffset = 0;
 
         this.fetchFollowStreams = this.fetchFollowStreams.bind(this);
         this.fetchPoppularStreams = this.fetchPoppularStreams.bind(this);
+
+        this.scrollMutex = 1;
     }
 
     componentDidMount(){
 
-        var access_token = new URLSearchParams( window.location.hash.substr(1)).get('access_token') ;
-        if(access_token != null){
-            var newState = JSON.parse(JSON.stringify(this.state));
-            newState.twitchToken = access_token;
-            
-            cookies.setCookie('twitchToken',access_token, 7);
-            this.setState(newState);
-        }
-
         if(this.nextOffset == 0){
-            if(this.state.twitchToken == null){
+            if(this.props.cookie.twitchToken == null){
                 this.fetchPoppularStreams();
             }
             else{
                 this.fetchFollowStreams();
             }
+        }
 
-            this.nextOffset = 1;
+        var mainDOM = document.getElementsByClassName('main')[0];
+
+        ((_this) => {
+            mainDOM.addEventListener('scroll',async event => {
+
+                if(mainDOM.children[0].offsetHeight - mainDOM.scrollTop <= (window.innerHeight + 94)){
+                    if(_this.scrollMutex == 0){
+                        _this.scrollMutex = 1;
+                        await _this.fetchPoppularStreams();
+                    }
+                }
+            })
+        })(this);
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.liveStreams.length != this.state.liveStreams.length){
+            this.scrollMutex = 0;
+            this.nextOffset ++;
         }
     }
 
     async fetchPoppularStreams(){
-        var liveStreamsRes = await fetch('https://api.twitch.tv/kraken/streams/?language=ko&limit=30', {
+        console.log('fetch....', this.nextOffset);
+        var liveStreamsRes = await fetch('https://api.twitch.tv/kraken/streams/?language=ko&limit=30&offset=' + this.nextOffset * 30 , {
             headers : {
                 'Client-ID' : client_id,
                 Accept: 'application/vnd.twitchtv.v5+json' 
@@ -83,8 +87,11 @@ class Index extends React.Component{
         if(liveStreamsRes.ok){
             var liveStreams = await liveStreamsRes.json();
 
-            var curState = JSON.parse(JSON.stringify(this.state));
-            curState.liveStreams = liveStreams.streams;
+            var curState = JSON.parse(JSON.stringify(this.state))
+            curState.liveStreams = curState.liveStreams.concat(liveStreams.streams.filter(
+                liveStream => liveStream.channel.partner
+            ));
+            
             this.setState(curState);
         }   
     }
@@ -105,10 +112,11 @@ class Index extends React.Component{
                 <Head>
                     <title>트위티콘 - 트위치 이모티콘에 한글 별명을 달아보세요.</title>
                 </Head>
-                <Banner/>
-                <div style = {{width : '100%'}}>
+                <div className = "main-contents-container">
+                    <Banner/>
                     <MainPageContents 
-                        liveStreams={this.state.liveStreams}/>
+                        liveStreams={this.state.liveStreams}
+                    />
                 </div>
             </div>
         )
