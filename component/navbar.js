@@ -22,6 +22,7 @@ const Navbar  = function(props){
     },[])
 
     function handleClickLogin(){
+        console.log('??')
         cookies.setCookie('history', window.location.pathname)
         Router.push("/login");
     }
@@ -31,7 +32,7 @@ const Navbar  = function(props){
         userInfo =  <UserInfo profile = {profile}/>
     }
     else{
-        userInfo =  <a onClick = {handleClickLogin} className = "header-menu header-login">로그인</a>
+        userInfo =  <div onClick = {() => handleClickLogin()} className = "header-menu header-login">로그인</div>
     }
 
     //
