@@ -19,10 +19,22 @@ html,body{
     margin: 0;
     padding: 0;
     
-    height: 100%;
+    height: calc(100% - 93px);
     width : 100%;
 
     background-color: #faf5f8;
+
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    
+}
+
+.main-contents-container{
+    width: 100%;
+}
+
+.main::-webkit-scrollbar {
+    display: none !important;
 }
 
 *:focus{
