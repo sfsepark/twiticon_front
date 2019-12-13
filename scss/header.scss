@@ -28,6 +28,7 @@ a{
     background-color: #ffffff;  
     padding-left : calc((100% - 1146px ) /2 );
     padding-right : calc((100% - 1146px ) /2 );
+    overflow: visible;
 }
 
 .header-box-sub{
@@ -86,6 +87,8 @@ a{
     letter-spacing: normal;
     text-align: left;
     color: #707070;
+
+    cursor: pointer;
 }
 
 
