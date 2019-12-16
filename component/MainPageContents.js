@@ -10,21 +10,33 @@ class MainPageContents extends React.Component{
         super(props);
 
         this.state = {
-            focusID : -1
+            focusID : '-1'
         }
+
+        this.setFocusId = this.setFocusId.bind(this);
     }
 
-
+    setFocusId(id){
+        var curState = JSON.parse(JSON.stringify(this.state));
+        curState.focusID = id;
+        this.setState(curState)
+    }
 
     render(){
+        var focusID = this.state.focusID
+        var setFocusId = this.setFocusId
 
-        var streamList = this.props.liveStreams.filter(
-            liveStream => liveStream.channel.partner
-        ).map(liveStream => 
-            <StreamerCardView key = {liveStream.channel['_id']}
-                id = {liveStream.channel['_id']}
-                channel = {liveStream.channel}/>
-        );
+        var streamList = this.props.liveStreams.map((liveStream,i) =>{
+
+            var id = 'livestream-' + liveStream.channel['_id']
+
+            return <StreamerCardView key = {id}
+                focus = {(focusID == '-1' && i == 0) || focusID == id}
+                id = {id}
+                channel = {liveStream.channel}
+                setFocusId = {setFocusId}
+            />
+        });
 
         return (
             <div className = "main-contents">

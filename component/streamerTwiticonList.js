@@ -64,7 +64,7 @@ export default class StreamerTwiticonList extends React.Component{
         });
 
         return (
-            <div className = {'streamer-twiticon-list ' + (this.props.focus == true ? 'stremaer-twiticon-list-on' : '')} >
+            <div className = {'streamer-twiticon-list ' + (this.props.focus == true ? 'streamer-twiticon-list-on' : '')} >
                 <div className = 'streamer-twiticon-list-head'>
                     <div className = 'flex space-between'>
                         <div className = 'streamer-twiticon-list-head-title'>
