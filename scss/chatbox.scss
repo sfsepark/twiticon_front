@@ -1,4 +1,10 @@
 .chatbox-container{
+    @media (max-width : 1390px) {
+        display: none;
+    }
+    display: none;
+    margin-top : 10px;
+    margin-left  : 30px;
     position: relative;
 }
 .chatbox-twitch-embed-chat{

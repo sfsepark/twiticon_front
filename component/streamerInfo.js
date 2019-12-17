@@ -8,6 +8,7 @@
 import '../scss/streamerInfo.scss';
 import EmoticonSelector from './EmoticonSelector'
 import EmoticonList from './EmoticonList'
+import Head from 'next/head';
 
 class StreamerInfo extends React.Component{
 
@@ -70,6 +71,9 @@ class StreamerInfo extends React.Component{
 
         return (
             <div className = 'streamer-info'>
+                <Head>
+                    <title>{this.props.channelInfo.display_name+ '- 트위티콘'} </title>
+                </Head>
                 <div className = 'streamer-info-header'>
                     <div className = 'streamer-info-header-flex  streamer-info-container'>
                         <div className = 'streamer-info-title'>

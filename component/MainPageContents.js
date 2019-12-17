@@ -1,5 +1,8 @@
 import '../scss/main.scss'
-import StreamerCardView from './StreamerCardview';
+import MainPageStreamerList from '../component/MainPageStreamerList'
+
+import client_id from '../data/client_id'
+import fetch from 'isomorphic-fetch'
 
 /*
     SSR 해야하는 것 : 최초 
@@ -10,54 +13,89 @@ class MainPageContents extends React.Component{
         super(props);
 
         this.state = {
-            focusID : '-1'
+            liveStreams : []
         }
 
-        this.setFocusId = this.setFocusId.bind(this);
+        this.nextOffset = 0;
+
+        this.fetchFollowStreams = this.fetchFollowStreams.bind(this);
+        this.fetchPoppularStreams = this.fetchPoppularStreams.bind(this);
+
+        this.scrollMutex = 1;
     }
 
-    setFocusId(id){
-        var curState = JSON.parse(JSON.stringify(this.state));
-        curState.focusID = id;
-        this.setState(curState)
+    componentDidMount(){
+        if(this.nextOffset == 0){
+            if(this.props.twitchToken === undefined){
+                this.fetchPoppularStreams();
+            }
+            else{
+                this.fetchFollowStreams();
+            }
+        }
+        
+        var mainDOM = document.getElementsByClassName('main')[0];
+
+        ((_this) => {
+            mainDOM.addEventListener('scroll',async event => {
+
+                if(mainDOM.children[0].offsetHeight - mainDOM.scrollTop <= (window.innerHeight + 94)){
+                    if(_this.scrollMutex == 0){
+                        _this.scrollMutex = 1;
+                        await _this.fetchPoppularStreams();
+                    }
+                }
+            })
+        })(this);
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if(prevState.liveStreams.length != this.state.liveStreams.length){
+            this.scrollMutex = 0;
+            this.nextOffset ++;
+        }
+    }
+
+    async fetchPoppularStreams(){
+        var liveStreamsRes = await fetch('https://api.twitch.tv/kraken/streams/?language=ko&limit=30&offset=' + this.nextOffset * 30 , {
+            headers : {
+                'Client-ID' : client_id,
+                Accept: 'application/vnd.twitchtv.v5+json' 
+            }
+        })
+
+        if(liveStreamsRes.ok){
+
+            var prevStreamerList = this.state.liveStreams.map(liveStream => liveStream.channel.name);
+
+            var liveStreams = await liveStreamsRes.json();
+
+            var curState = JSON.parse(JSON.stringify(this.state))
+            curState.liveStreams = curState.liveStreams.concat(liveStreams.streams.filter(
+                liveStream => 
+                    liveStream.channel.partner 
+                    && ! prevStreamerList.includes(liveStream.channel.name)
+            ));
+            
+            this.setState(curState);
+        }   
+    }
+
+    
+    async fetchFollowStreams(){
+        var followChannelRes = await fetch('https://api.twitch.tv/kraken/streams/?language=ko&limit=30', {
+            headers : {
+                'Client-ID' : client_id,
+                Accept: 'application/vnd.twitchtv.v5+json' 
+            }
+        })
     }
 
     render(){
-        var focusID = this.state.focusID
-        var setFocusId = this.setFocusId
-
-        var streamList = this.props.liveStreams.map((liveStream,i) =>{
-
-            var id = 'livestream-' + liveStream.channel['_id']
-
-            return <StreamerCardView key = {id}
-                focus = {(focusID == '-1' && i == 0) || focusID == id}
-                id = {id}
-                channel = {liveStream.channel}
-                setFocusId = {setFocusId}
-            />
-        });
-
         return (
-            <div className = "main-contents">
-                <div className = 'main-contents-header'>
-                    <div className = 'flex space-between'>
-                        <div className = "main-contents-title">
-                            <div className = 'flex'>
-                                <div className = "main-contents-title-state">
-                                    방송 중
-                                </div>
-                                <div className = "main-contents-title-streamer">
-                                    인 스트리머
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className = 'main-contents-body'>
-                    {streamList}
-                </div>
-            </div>    
+            <MainPageStreamerList
+                liveStreams={this.state.liveStreams}
+            />                  
         )
     }
 }

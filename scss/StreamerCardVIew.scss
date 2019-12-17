@@ -103,24 +103,38 @@
     left : 0;
 
     position: absolute;
-    display: none;
+    display: block;
 
     border: solid 1px #d1d1d1;
 }
 
 .streamer-twiticon-list-on {
-    display: block !important;
+    visibility: visible;
+}
+.streamer-twiticon-list-off {
+    visibility: hidden;
+}
+
+
+.streamer-twiticon-list-loading{
+    height: 113px;
+    overflow: hidden;
+}
+
+.streamer-twiticon-list-loaded{
+    height: auto;
+    overflow: visible;
 }
 
 //트위티콘 리스트 헤드
 
 .streamer-twiticon-list-head{
     height: 51px;
-    border: solid 1px #d1d1d1;
     background-color: #faeefc;
     display: block;
     
     border-bottom: solid 1px #d1d1d1;
+    border-top-right-radius: 10px;
 }
 
 .streamer-twiticon-list-head-title{
@@ -189,6 +203,7 @@
     text-align: left;
     color: #000000;
     display:inline-block;
+    margin-top : 8.5px;
 }
 
 .right-button{
@@ -196,22 +211,65 @@
     height: 20px;
     margin-top : 13px;
     margin-left : 5px;
+    margin-right : 5px;
 }
 
 //트위티콘 리스트 바디
 
+.streamer-twiticon-list-loaded .streamer-twiticon-loading{
+    display: none;
+}
+
+.streamer-twiticon-list-loading .streamer-twiticon-loading{
+    background-color: #ffffff;
+    width: 100%;
+    height: 61px;
+}
+
 .streamer-twiticon-list-body{
     padding-top : 10px;
-    padding-left : 13px;
-    padding-right: 13px;
-    width : calc(100% - 16px);
-    min-height: 38px;
+    padding-left : 20px;
+    padding-right: 20px;
+    padding-bottom : 10px;
+    width : calc(100% - 40px);
+    min-height: 50px;
 
     background-color: #ffffff;
 
     display: block;
+    overflow: visible;
+    border-bottom-right-radius: 10px;
 }
 
 .streamer-twiticon-list-emotes{
     display : inline-block;
+}
+
+.twiticon-img{
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    margin-bottom : 8px;
+    margin-right : 4px;
+}
+
+.twiticon-emote-info{
+    display: inline-block;
+    overflow: visible;
+    margin-right : 17px;
+    margin-bottom : 8px;
+}
+
+.flex{
+    display: flex;
+    overflow: visible;
+}
+
+.twiticon-alias-container{
+    padding-top: 2px;
+    padding-bottom: 2px ;
+}
+
+.twiticon-alias-container .emoticon-info-alias-wrapper{
+    margin-right : 0px;
 }
