@@ -22,7 +22,7 @@ export default class MyApp extends App{
                     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet"/>
                 </Head>
                 {
-                    router.route == '/login'
+                    router.route == '/login' || router.route == '/logout'
                     ? null
                     : <Navbar type={router.route == '/' ?'main' : 'sub'}/>
                 }

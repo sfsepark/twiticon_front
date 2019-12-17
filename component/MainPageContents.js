@@ -24,12 +24,12 @@ class MainPageContents extends React.Component{
     componentDidMount(){
 
         var fetchPoppularStreams = this.getFetchStreams(
-            'https://api.twitch.tv/kraken/streams/?language=ko&limit=30' + this.nextOffset * 30,
+            'https://api.twitch.tv/kraken/streams/?language=ko&limit=30&offset=' ,
             'streams'
         ).bind(this);
 
         var fetchFollowStreams = this.getFetchStreams(
-            'https://api.twitch.tv/kraken/users/' + this.props.userId + '/follows/channels?limit=30&offset='  + this.nextOffset * 30,
+            'https://api.twitch.tv/kraken/users/' + this.props.userId + '/follows/channels?limit=30&direction=asc&offset=' ,
             'follows'
         ).bind(this);
 
@@ -70,7 +70,7 @@ class MainPageContents extends React.Component{
 
     getFetchStreams(url , attribute){
         return async function fetchPoppularStreams(){
-            var liveStreamsRes = await fetch(url , {
+            var liveStreamsRes = await fetch(url + this.nextOffset * 30 , {
                 headers : {
                     'Client-ID' : client_id,
                     Accept: 'application/vnd.twitchtv.v5+json' 

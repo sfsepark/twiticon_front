@@ -22,7 +22,6 @@ const Navbar  = function(props){
     },[])
 
     function handleClickLogin(){
-        console.log('??')
         cookies.setCookie('history', window.location.pathname)
         Router.push("/login");
     }

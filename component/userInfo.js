@@ -1,8 +1,6 @@
-
-
-import client_id from '../data/client_id';
 import cookies from '../methods/cookies';
 import '../scss/userinfo.scss'
+import Router from 'next/router'
 
 export default class UserInfo extends React.Component{
 
@@ -22,6 +20,11 @@ export default class UserInfo extends React.Component{
         })
     }
 
+    handleClickLogout(){
+        cookies.setCookie('history', window.location.pathname)
+        Router.push("/logout");
+    }
+
     render(){
         return (
             <div className = "userinfo">
@@ -39,7 +42,8 @@ export default class UserInfo extends React.Component{
                 </div>
 
                 <div className = {"userinfo-detail userinfo-detail-" + (this.state.toggle ? 'on' : 'off') }>
-                    <div className = "userinfo-login-button button">
+                    <div className = "userinfo-login-button button"
+                        onClick = {() => this.handleClickLogout()}>
                         로그아웃
                     </div>
 
