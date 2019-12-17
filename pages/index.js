@@ -31,17 +31,19 @@ class Index extends React.Component{
         super(props);
 
         this.state = {
-            
+            mainPage : this.props.cookie.twitchToken ? 1 : 0
         };
     }
 
     render(){
 
+        console.log(this.props);
+
         var mainPageContents = [];
 
         mainPageContents.push(<MainPageContents/>)
 
-        if(this.props.cookie.twitchToken){
+        if(this.props.cookie.userId){
             mainPageContents.push(<MainPageContents userId = {this.props.cookie.userId}/>);
         }
 
@@ -55,9 +57,10 @@ class Index extends React.Component{
                 <div className = "main-contents-container">
                     <div className = "main-contents">
                         <MainPageContentsHeader 
-                            isLogin = {this.props.cookie.twitchToken !== undefined}
+                            isLogin = {this.props.cookie.userId !== undefined}
+                            mainPageState = {this.state.mainPage}
                         />
-                        {mainPageContents[0]}
+                        {mainPageContents[this.state.mainPage]}
                     </div>    
                     <ChatBox width = {300} height = {1000}/>
                 </div>

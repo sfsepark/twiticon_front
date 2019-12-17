@@ -18,21 +18,33 @@ class MainPageContents extends React.Component{
 
         this.nextOffset = 0;
 
-        this.fetchFollowStreams = this.fetchFollowStreams.bind(this);
-        this.fetchPoppularStreams = this.fetchPoppularStreams.bind(this);
-
         this.scrollMutex = 1;
     }
 
     componentDidMount(){
+
+        var fetchPoppularStreams = this.getFetchStreams(
+            'https://api.twitch.tv/kraken/streams/?language=ko&limit=30' + this.nextOffset * 30,
+            'streams'
+        ).bind(this);
+
+        var fetchFollowStreams = this.getFetchStreams(
+            'https://api.twitch.tv/kraken/users/' + this.props.userId + '/follows/channels?limit=30&offset='  + this.nextOffset * 30,
+            'follows'
+        ).bind(this);
+
+        var curFetchFunction ;
+
         if(this.nextOffset == 0){
-            if(this.props.twitchToken === undefined){
-                this.fetchPoppularStreams();
+            if(this.props.userId === undefined){
+                curFetchFunction = fetchPoppularStreams;
             }
             else{
-                this.fetchFollowStreams();
+                curFetchFunction = fetchFollowStreams;
             }
         }
+
+        curFetchFunction();
         
         var mainDOM = document.getElementsByClassName('main')[0];
 
@@ -42,7 +54,7 @@ class MainPageContents extends React.Component{
                 if(mainDOM.children[0].offsetHeight - mainDOM.scrollTop <= (window.innerHeight + 94)){
                     if(_this.scrollMutex == 0){
                         _this.scrollMutex = 1;
-                        await _this.fetchPoppularStreams();
+                        await curFetchFunction();
                     }
                 }
             })
@@ -56,39 +68,31 @@ class MainPageContents extends React.Component{
         }
     }
 
-    async fetchPoppularStreams(){
-        var liveStreamsRes = await fetch('https://api.twitch.tv/kraken/streams/?language=ko&limit=30&offset=' + this.nextOffset * 30 , {
-            headers : {
-                'Client-ID' : client_id,
-                Accept: 'application/vnd.twitchtv.v5+json' 
-            }
-        })
-
-        if(liveStreamsRes.ok){
-
-            var prevStreamerList = this.state.liveStreams.map(liveStream => liveStream.channel.name);
-
-            var liveStreams = await liveStreamsRes.json();
-
-            var curState = JSON.parse(JSON.stringify(this.state))
-            curState.liveStreams = curState.liveStreams.concat(liveStreams.streams.filter(
-                liveStream => 
-                    liveStream.channel.partner 
-                    && ! prevStreamerList.includes(liveStream.channel.name)
-            ));
-            
-            this.setState(curState);
-        }   
-    }
-
+    getFetchStreams(url , attribute){
+        return async function fetchPoppularStreams(){
+            var liveStreamsRes = await fetch(url , {
+                headers : {
+                    'Client-ID' : client_id,
+                    Accept: 'application/vnd.twitchtv.v5+json' 
+                }
+            })
     
-    async fetchFollowStreams(){
-        var followChannelRes = await fetch('https://api.twitch.tv/kraken/streams/?language=ko&limit=30', {
-            headers : {
-                'Client-ID' : client_id,
-                Accept: 'application/vnd.twitchtv.v5+json' 
-            }
-        })
+            if(liveStreamsRes.ok){
+    
+                var prevStreamerList = this.state.liveStreams.map(liveStream => liveStream.channel.name);
+    
+                var liveStreams = await liveStreamsRes.json();
+    
+                var curState = JSON.parse(JSON.stringify(this.state))
+                curState.liveStreams = curState.liveStreams.concat(liveStreams[attribute].filter(
+                    liveStream => 
+                        liveStream.channel.partner 
+                        && ! prevStreamerList.includes(liveStream.channel.name)
+                ));
+                
+                this.setState(curState);
+            }   
+        }
     }
 
     render(){
