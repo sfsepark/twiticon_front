@@ -48,6 +48,11 @@ class MainPageContents extends React.Component{
             }
         }).then(value => {
             var curState = JSON.parse(JSON.stringify(_this.state));
+
+            for(var i = 0 ; i < newStreamerList.length ; i ++){
+                curState.emotesInfo[newStreamerList[i]] = [];
+            }
+
             Object.keys(value).forEach(name => {
                 curState.emotesInfo[name] = value[name];
             });

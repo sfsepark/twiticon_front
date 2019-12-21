@@ -7,9 +7,10 @@ import cookies from '../methods/cookies'
 
 import {useEffect,useState} from 'react'
 
-
-import {baseURL} from '../URL'
+import nextCookies from 'next-cookies';
 import Router from 'next/router';
+
+import NavbarMenu from './NavbarMenu';
 
 const Navbar  = function(props){
 
@@ -52,14 +53,20 @@ const Navbar  = function(props){
                 <div className = "header-logo-twiti">트위티</div>
                 <div className = "header-logo-con">콘</div>
             </div>
-            <Link href ='' ><a className = "header-menu header-basic-emote">기본 이모티콘</a></Link>
-            <Link href =''><a className = "header-menu header-usage">사용법</a></Link>
-            <Link href =''><a className = "header-menu header-twiticon-portal">트위티콘 차원문</a></Link>
-            <Link href =''><a className = "header-menu header-notice">공지사항</a></Link>
-            {searchBar}
-            {userInfo}
+            <div className = "header-layout">
+                <Link href ='' ><a className = "header-menu header-basic-emote">탐색</a></Link>
+                <Link href =''><a className = "header-menu header-usage">사용법</a></Link>
+                <Link href =''><a className = "header-menu header-twiticon-portal">트위티콘 차원문</a></Link>
+                <Link href =''><a className = "header-menu header-notice">공지사항</a></Link>
+                {searchBar}
+                {userInfo}
+            </div>
         </div>
     )
+}
+
+Navbar.getInitialProps = async function(ctx){
+
 }
 
 export default Navbar;

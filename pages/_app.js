@@ -24,7 +24,9 @@ export default class MyApp extends App{
                 {
                     router.route == '/login' || router.route == '/logout'
                     ? null
-                    : <Navbar type={router.route == '/' ?'main' : 'sub'}/>
+                    : <Navbar 
+                        type={router.route == '/' ?'main' : 'sub'}
+                        route={router.route}/>
                 }
 
                 <Component url = {createUrl(router)} {...pageProps} />

@@ -11,8 +11,9 @@ import EmoticonAlias from '../component/EmoticonAlias'
 
 export default class StreamerTwiticonList extends React.Component{
 
+
     componentDidUpdate(prevProps){
-        if(prevProps.emotesInfo != this.props.emotesInfo && prevProps.emotesInfo == 'loading'){
+        if(this.props.emotesInfo != 'loading' && this.props.lazy == false && this.props.loading == true){
             this.props.loadComplete();
         }
     }
@@ -92,10 +93,10 @@ export default class StreamerTwiticonList extends React.Component{
                     </div>
                 </div>
                 <div className = 'streamer-twiticon-loading'>
-                    
+                    <div className="loader"></div>
                 </div>
                 <div className = 'streamer-twiticon-list-body'>
-                    {list}
+                    {this.props.lazy ? null : list}
                 </div>
             </div>
         )

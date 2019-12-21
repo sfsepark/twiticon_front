@@ -5,10 +5,42 @@
     margin-bottom : 20px;
 }
 
-.streamer-cardview-container:nth-child(6n +1){
-
-    margin-left : 0px;
+@media (min-width : 1071px){
+    .streamer-cardview-container:nth-child(6n +1){
+        margin-left : 0px;
+    }
 }
+
+
+@media (min-width : 881px) and (max-width : 1070px){
+
+    .streamer-cardview-container:nth-child(5n +1){
+
+        margin-left : 0px;
+    }
+}
+
+@media (max-width : 880px){
+
+    .streamer-cardview-container:nth-child(4n +1){
+
+        margin-left : 0px;
+    }
+}
+
+@media (min-width : 881px) and (max-width : 1070px){
+    .main-contents{
+        width : 881px;
+    }
+}
+
+
+@media (max-width : 880px){
+    .main-contents{
+        width : 700px;
+    }
+}
+
 
 .streamer-cardview{
     width: 160px;
@@ -96,6 +128,13 @@
 .streamer-twiticon-list {
     margin-top : 13px;
     width : 1058px;
+
+    @media (min-width : 881px) and (max-width : 1070px){
+        width: 879px;
+    }
+    @media (max-width : 880px){
+        width: 698px;
+    }
 
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -224,6 +263,8 @@
     background-color: #ffffff;
     width: 100%;
     height: 61px;
+    
+    text-align: center;
 }
 
 .streamer-twiticon-list-body{
@@ -273,3 +314,18 @@
 .twiticon-alias-container .emoticon-info-alias-wrapper{
     margin-right : 0px;
 }
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #555;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    margin-top : 13px;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

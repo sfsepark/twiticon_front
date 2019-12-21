@@ -86,6 +86,7 @@ class MainPageContents extends React.Component{
                 var curState = JSON.parse(JSON.stringify(this.state))
                 curState.liveStreams = curState.liveStreams.concat(liveStreams[attribute].filter(
                     liveStream => 
+                        
                         liveStream.channel.partner 
                         && ! prevStreamerList.includes(liveStream.channel.name)
                 ));

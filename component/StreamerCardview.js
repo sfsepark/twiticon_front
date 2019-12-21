@@ -7,7 +7,8 @@ import StreamerTwiticonList from '../component/streamerTwiticonList'
 export default class StreamerCardView extends React.Component{
 
     /*
-        this.props.emotesInfo 받음
+        focus 됨                                               |     this.props.emotesInfo 받음
+        lazy 를 false 로 변경
         streamerTwiticonList 의 componentDidUpdate 에서 loadComplete 실행
         loading = false
         streamerTwiticonList 에서 this.state.loading false에 의해 변화
@@ -17,7 +18,8 @@ export default class StreamerCardView extends React.Component{
         super(props);
         this.state = {
             offsetHeight : 142,
-            loading : true
+            loading : true,
+            lazy : true
         }
     }
 
@@ -26,12 +28,60 @@ export default class StreamerCardView extends React.Component{
         var curTwiticonListBody = curTwiticonList.getElementsByClassName('streamer-twiticon-list-body')[0];
         var offsetHeight = 142 + (curTwiticonListBody.offsetHeight-50) ;
         
+        var curState = JSON.parse(JSON.stringify(this.state));
+        curState.offsetHeight = offsetHeight;
+        curState.loading = false;
 
-        this.setState({
-            offsetHeight : offsetHeight,
-            loading : false
-        })
+        this.setState(curState);
 
+    }
+
+    componentDidMount(){
+        if( this.props.focus == true && this.state.lazy == true){
+    
+            var curState = JSON.parse(JSON.stringify(this.state));
+            curState.lazy = false;
+    
+            this.setState(curState);
+        }
+    }
+
+    shouldComponentUpdate(nextProps, nextState){
+        if(this.state.offsetHeight !== nextState.offsetHeight 
+            || this.state.loading !== nextState.loading 
+            || this.state.lazy !== nextState.lazy){
+            return true;
+        }
+        else if(
+            (this.props.emotesInfo !== nextProps.emotesInfo && this.props.emotesInfo == 'loading') 
+            || (this.props.focus !== nextProps.focus)
+        ){
+            return true;
+        }
+        else{
+
+            if(this.props.channel.display_name == '자동'){
+                
+            console.log('test');
+                Object.keys(this.props).forEach(k => {
+                    console.log(k, this.props[k] == nextProps[k]);
+                });
+            }
+
+            return false;
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        
+        if(prevProps.focus == false && this.props.focus == true && this.state.lazy == true){
+    
+            var curState = JSON.parse(JSON.stringify(this.state));
+            curState.lazy = false;
+    
+            this.setState(curState);
+        }
+        
     }
 
 
@@ -46,7 +96,7 @@ export default class StreamerCardView extends React.Component{
         var detailURL = '/s/' + channelName;
 
         var setFocusId = this.props.setFocusId;
-        var id = this.props.id;
+        var id = this.props.id        
 
         return (
             <div id = {this.props.id} className = 'streamer-cardview-container'                        
@@ -78,6 +128,7 @@ export default class StreamerCardView extends React.Component{
                     channelLogo = {logo}
                     emotesInfo = {this.props.emotesInfo}
                     loading = {this.state.loading}
+                    lazy = {this.state.lazy}
                     loadComplete = {this.loadComplete.bind(this)}/>
 
             </div>

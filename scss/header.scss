@@ -29,6 +29,12 @@ a{
     padding-left : calc((100% - 1146px ) /2 );
     padding-right : calc((100% - 1146px ) /2 );
     overflow: visible;
+    white-space : nowrap; 
+
+    @media (max-width : 1111px){
+        padding-left : 0px;
+        padding-right : 0px;
+    }
 }
 
 .header-box-sub{
@@ -74,21 +80,34 @@ a{
     color: #010101;
 }
 
-.header-menu{
-    margin-top: 35px;
+.header-menu-sub .header-menu{
+    height: 25px;
+    font-size: 14px;
+}
 
+.header-menu-active{
+    border-bottom : 1px solid #b465b4;
+}
+
+.header-menu-active .header-menu{
+    color : #b465b4;
+}
+
+.header-menu-passive{
+    border-bottom : 1px;
+}
+
+.header-menu{
     height: 29px;
     font-family: "Noto Sans KR",sans-serif;
     font-size: 20px;
     font-weight: bold;
-    font-style: normal;
     font-stretch: normal;
+    font-style: normal;
     line-height: 1.45;
     letter-spacing: normal;
     text-align: left;
     color: #707070;
-
-    cursor: pointer;
 }
 
 
@@ -96,11 +115,20 @@ a{
     width: 119px;
 }
 
-.header-box-main .header-basic-emote{
-    margin-left: 374px;
+.header-layout{
+    display: inline-block;
+    overflow: visible;
 }
 
-.header-box-sub .header-basic-emote{
+.header-box-main .header-layout{
+    margin-left: 374px;
+
+    @media (max-width : 1111px){
+        margin-left : calc(100% - 720px);
+    }
+}
+
+.header-box-sub .header-layout{
     margin-left: 61px;
 }
 
@@ -128,7 +156,7 @@ a{
 }
 
 .header-login {
-    margin-left:41px;
+    margin-left:26px;
     width: 77px;
 
 }
