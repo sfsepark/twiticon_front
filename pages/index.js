@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 import '../scss/body.scss'
 
-import next_cookies from 'next-cookies'
+
 import MainPageContentsHeader from '../component/MainPageContentsHeader'
 import MainPageContents from '../component/MainPageContents'
 
@@ -12,19 +12,6 @@ import ChatBox from '../component/chatBox.js';
 
  
 class Index extends React.Component{
-
-    static async getInitialProps(ctx){
-
-        var props = {
-            cookie : {
-                twitchToken : next_cookies(ctx).twitchToken,
-                userId : next_cookies(ctx).userId
-            }
-        }
-
-        return props;
-    }
-
 
     constructor(props){
 

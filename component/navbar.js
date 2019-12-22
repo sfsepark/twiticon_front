@@ -16,7 +16,7 @@ const Navbar  = function(props){
 
     var userInfo ;
 
-    var profile = props.profile;
+    var profile = props.cookie.profile;
 
     function handleClickLogin(){
         cookies.setCookie('history', window.location.pathname)
@@ -25,25 +25,26 @@ const Navbar  = function(props){
 
     var active = '';
 
-    if(props.url.route == '/' || props.url.route == '/index'){
+    
+    if(props.url.pathname == '/' || props.url.pathname == '/index'){
         if(profile)
             active = 'follow'
         else
             active = 'explore'
     }
-    else if(props.url.route == '/explore'){
+    else if(props.url.pathname == '/explore'){
         active = 'explore'
     }
-    else if(props.url.route == '/follow'){
+    else if(props.url.pathname == '/follow'){
         active = 'follow'
     }
-    else if(props.url.route == '/portal'){
+    else if(props.url.pathname == '/portal'){
         active = 'portal'
     }
-    else if(props.url.route == '/notice'){
+    else if(props.url.pathname == '/notice'){
         active = 'notice'
     }
-    else if(props.url.route == '/basic'){
+    else if(props.url.pathname == '/basic'){
         active = 'basic'
     }
 
@@ -68,28 +69,27 @@ const Navbar  = function(props){
 
     return (
         <div className = {header_box_class}>
-            <div className = "header-logo" onClick = {() => Router.push('/')}>
-                <div className = "header-logo-twiti">트위티</div>
-                <div className = "header-logo-con">콘</div>
-            </div>
-            <div className = "header-layout">
-                <NavbarMenu url = '/explore' menu = '탐색' active = {active == 'explore'}/>
-                {profile ? <NavbarMenu url = '/follow' menu = '팔로잉' active = {active == 'follow'}/> : null}
-                <NavbarMenu url = '/basic' menu = {profile ? '내 이모티콘' : '기본 이모티콘'} active = {active == 'basic'}/>
-                <NavbarMenu url = '/notice' menu = '공지사항' active = {active == 'notice'}/>
-                <NavbarMenu url = '/portal' menu = '크롬익스텐션' active = {active == 'portal'}/>
-                {searchBar}
-                {userInfo}
+            <div className = "header-contents">
+                <div className = 'header-left'>
+                    <div className = "header-logo" onClick = {() => Router.push('/')}>
+                        <div className = "header-logo-twiti">트위티</div>
+                        <div className = "header-logo-con">콘</div>
+                    </div>
+                    {searchBar}
+                </div>
+                <div className = "header-layout">
+                    <NavbarMenu url = '/explore' menu = '탐색' active = {active == 'explore'}/>
+                    {profile ? <NavbarMenu url = '/follow' menu = '팔로잉' active = {active == 'follow'}/> : null}
+                    <NavbarMenu url = '/basic' menu = {profile ? '내 이모티콘' : '기본 이모티콘'} active = {active == 'basic'}/>
+                    <NavbarMenu url = '/notice' menu = '공지사항' active = {active == 'notice'}/>
+                    <NavbarMenu url = '/portal' menu = '크롬익스텐션' active = {active == 'portal'}/>
+                    {userInfo}
+                </div>
             </div>
         </div>
     )
 }
 
-Navbar.getInitialProps = async function(ctx){
-    var profile = nextCookies(ctx)['profile']
-
-    return {profile}
-}
 
 export default Navbar;
 

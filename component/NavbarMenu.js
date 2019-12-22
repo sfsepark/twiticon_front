@@ -6,7 +6,7 @@ export default (props) => {
     
     return <Link href ={url} as = {as} >
         <a >
-            <div className = {( props.active ? 'header-menu-active' :'header-menu-passive')}>
+            <div className = {'header-menu ' + ( props.active ? 'header-menu-active' :'header-menu-passive')}>
                 <div className = 'header-menu-txt'>
                     {props.menu ? props.menu : ''}
                 </div>

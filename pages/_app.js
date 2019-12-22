@@ -1,11 +1,18 @@
 import App, { Container, createUrl } from 'next/app'
 import Head from 'next/head'
 import Navbar from '../component/navbar'
+import next_cookies from 'next-cookies'
 
 export default class MyApp extends App{
     static async getInitialProps({ Component, router, ctx }) {
     
-        let pageProps = {}
+        let pageProps = {
+            cookie : {
+                twitchToken : next_cookies(ctx).twitchToken,
+                userId : next_cookies(ctx).userId,
+                profile : next_cookies(ctx).profile
+            }
+        }
     
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx)
@@ -26,7 +33,8 @@ export default class MyApp extends App{
                     ? null
                     : <Navbar 
                         type={router.route == '/' ?'main' : 'sub'}
-                        route={createUrl(router)}/>
+                        url={createUrl(router)}
+                        {...pageProps}/>
                 }
 
                 <Component url = {createUrl(router)} {...pageProps} />

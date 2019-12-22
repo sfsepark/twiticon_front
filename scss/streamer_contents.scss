@@ -5,6 +5,12 @@
     background-color: #faf5f8;
 
     overflow-y:scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.streamer::-webkit-scrollbar {
+    display: none !important;
 }
 
 .streamer-contents-container{
