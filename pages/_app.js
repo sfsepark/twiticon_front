@@ -26,7 +26,7 @@ export default class MyApp extends App{
                     ? null
                     : <Navbar 
                         type={router.route == '/' ?'main' : 'sub'}
-                        route={router.route}/>
+                        route={createUrl(router)}/>
                 }
 
                 <Component url = {createUrl(router)} {...pageProps} />

@@ -16,17 +16,36 @@ const Navbar  = function(props){
 
     var userInfo ;
 
-    var [profile, setProfile] = useState(0);
-
-    useEffect(() => {
-        setProfile(cookies.getCookie('profile'));
-    },[])
+    var profile = props.profile;
 
     function handleClickLogin(){
         cookies.setCookie('history', window.location.pathname)
         Router.push("/login");
     }
 
+    var active = '';
+
+    if(props.url.route == '/' || props.url.route == '/index'){
+        if(profile)
+            active = 'follow'
+        else
+            active = 'explore'
+    }
+    else if(props.url.route == '/explore'){
+        active = 'explore'
+    }
+    else if(props.url.route == '/follow'){
+        active = 'follow'
+    }
+    else if(props.url.route == '/portal'){
+        active = 'portal'
+    }
+    else if(props.url.route == '/notice'){
+        active = 'notice'
+    }
+    else if(props.url.route == '/basic'){
+        active = 'basic'
+    }
 
     if(profile){
         userInfo =  <UserInfo profile = {profile}/>
@@ -54,10 +73,11 @@ const Navbar  = function(props){
                 <div className = "header-logo-con">콘</div>
             </div>
             <div className = "header-layout">
-                <Link href ='' ><a className = "header-menu header-basic-emote">탐색</a></Link>
-                <Link href =''><a className = "header-menu header-usage">사용법</a></Link>
-                <Link href =''><a className = "header-menu header-twiticon-portal">트위티콘 차원문</a></Link>
-                <Link href =''><a className = "header-menu header-notice">공지사항</a></Link>
+                <NavbarMenu url = '/explore' menu = '탐색' active = {active == 'explore'}/>
+                {profile ? <NavbarMenu url = '/follow' menu = '팔로잉' active = {active == 'follow'}/> : null}
+                <NavbarMenu url = '/basic' menu = {profile ? '내 이모티콘' : '기본 이모티콘'} active = {active == 'basic'}/>
+                <NavbarMenu url = '/notice' menu = '공지사항' active = {active == 'notice'}/>
+                <NavbarMenu url = '/portal' menu = '크롬익스텐션' active = {active == 'portal'}/>
                 {searchBar}
                 {userInfo}
             </div>
@@ -66,7 +86,9 @@ const Navbar  = function(props){
 }
 
 Navbar.getInitialProps = async function(ctx){
+    var profile = nextCookies(ctx)['profile']
 
+    return {profile}
 }
 
 export default Navbar;
