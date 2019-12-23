@@ -70,7 +70,7 @@ const Navbar  = function(props){
     return (
         <div className = {header_box_class}>
             <div className = "header-contents">
-                <div className = 'header-left'>
+                <div className = 'header-layout'>
                     <div className = "header-logo" onClick = {() => Router.push('/')}>
                         <div className = "header-logo-twiti">트위티</div>
                         <div className = "header-logo-con">콘</div>

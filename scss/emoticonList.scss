@@ -60,6 +60,8 @@
     padding-bottom : 16px;
     padding-left : 21px;
     padding-right : 21px;
+
+    overflow: visible;
 }
 
 .emoticon-info-view-x4{
@@ -170,4 +172,31 @@
     margin : 5px;
     */
     transform: rotate(45deg);
+}
+
+.emoticon-info-view-right{
+    overflow: visible;
+}
+
+.emoticon-info-view-fixed{
+    overflow: visible;
+}
+
+.emoticon-info-view-fixed-log{
+    width: 287px;
+    height: 22px;
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.47;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.emoticon-info-view-fixed-svg{
+    margin-top: -23px;
+    margin-left: 8px;
 }

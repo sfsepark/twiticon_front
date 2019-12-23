@@ -16,13 +16,8 @@
 
 .searchbar-header{
     width : 321px;
-    height: 38px;
-    
-    border-radius: 15px;
-
+    height: 36px;
     margin-left: 9px;
-    margin-top:27px;
-
 }
 
 .searchbar-banner{
@@ -81,6 +76,10 @@
 .searchbar-textarea:focus{
     outline: 0px;
     
+}
+
+.searchbar-header .searchbar-search-button{
+    border-radius: 0px;
 }
 
 .searchbar-search-button{

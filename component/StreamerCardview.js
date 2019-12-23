@@ -60,14 +60,6 @@ export default class StreamerCardView extends React.Component{
         }
         else{
 
-            if(this.props.channel.display_name == '자동'){
-                
-            console.log('test');
-                Object.keys(this.props).forEach(k => {
-                    console.log(k, this.props[k] == nextProps[k]);
-                });
-            }
-
             return false;
         }
     }

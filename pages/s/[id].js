@@ -86,14 +86,7 @@ class Streamer extends React.Component{
         }
         
 
-        return (
-            
-            <div className = 'streamer'>
-                <div className = 'streamer-contents-container'>
-                    {streamer_contents}
-                </div>
-            </div>
-        )
+        return streamer_contents
     }
 
 }

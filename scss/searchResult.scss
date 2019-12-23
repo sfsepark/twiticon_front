@@ -2,10 +2,11 @@
     width: 1097px;
     height: 100%;
     margin-top : -1px;
-    margin-left : calc((100% - 1097px) /2 );
 
     border: solid 1px #d9d9de;
     background-color: #fafafa;
+    text-align: left;
+    min-height: 85vh;
 }
 
 @media (max-width : 1097px){

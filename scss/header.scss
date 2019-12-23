@@ -39,11 +39,11 @@ a{
 }
 
 .header-box-sub{
-    border: solid 1px #d9d9de;
+    height: 76px !important;
+    border-bottom: solid 1px #d9d9de;
 }
 
 .header-logo{
-    margin-top: 24px;
     cursor: pointer;
 }
 
@@ -82,16 +82,16 @@ a{
 }
 
 .header-box-main .header-menu{
-    margin-top : 7px;
+    margin-top : 6px;
 }
 
 .header-box-sub .header-menu{
-    margin-top : 12px;
+    margin-top: 7px;
 }
 
 .header-box-sub .header-menu-txt{
-    height: 25px;
-    font-size: 14px;
+    height: 27px;
+    font-size: 18px;
 }
 
 .header-menu{
@@ -137,14 +137,14 @@ a{
     justify-content: space-between;
 }
 
-.header-left{
-    display: inline-block;
-}
-
 .header-layout{
     margin-top: 24px;
     display: inline-block;
     overflow: visible;
+}
+
+.header-box-sub .header-layout{
+    margin-top : 16px;
 }
 
 .header-usage{

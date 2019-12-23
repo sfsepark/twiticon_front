@@ -33,6 +33,7 @@ html,body{
 .main-contents-container{
     width: 100%;
     text-align: center;
+    overflow: unset;
 }
 
 .main::-webkit-scrollbar {

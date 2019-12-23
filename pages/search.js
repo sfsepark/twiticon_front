@@ -126,12 +126,9 @@ class Search extends React.Component{
 
 
         return (
-            <div className= "main">
-                <div className = "contents-container">
-                    <div className = "search-title">{'"' + (this.props.url.query.query ? this.props.url.query.query : '') + '" ' + (this.state.searchResult == 'initial' ? '검색 중.....' : '검색 결과')}</div>
-                    {SearchResults}
-                </div>
-
+            <div className = "contents-container">
+                <div className = "search-title">{'"' + (this.props.url.query.query ? this.props.url.query.query : '') + '" ' + (this.state.searchResult == 'initial' ? '검색 중.....' : '검색 결과')}</div>
+                {SearchResults}
             </div>
             
         )
