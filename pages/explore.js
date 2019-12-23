@@ -7,26 +7,21 @@ import '../scss/body.scss'
 import MainPageContentsHeader from '../component/MainPageContentsHeader'
 import MainPageContents from '../component/MainPageContents'
 
+
+import ChatBox from '../component/chatBox.js';
+
  
 class Index extends React.Component{
 
     constructor(props){
 
         super(props);
-
-        this.state = {
-            mainPage : this.props.cookie.twitchToken ? 1 : 0
-        };
     }
 
     render(){
         var mainPageContents = [];
 
         mainPageContents.push(<MainPageContents/>)
-
-        if(this.props.cookie.userId){
-            mainPageContents.push(<MainPageContents userId = {this.props.cookie.userId}/>);
-        }
 
         return (
             <div className = "main-contents">
@@ -35,10 +30,10 @@ class Index extends React.Component{
                 </Head>
                 <MainPageContentsHeader 
                     isLogin = {this.props.cookie.userId !== undefined}
-                    mainPageState = {this.state.mainPage}
+                    mainPageState = {0}
                 />
-                {mainPageContents[this.state.mainPage]}
-            </div>                
+                {mainPageContents[0]}
+            </div>    
         )
     }
 
