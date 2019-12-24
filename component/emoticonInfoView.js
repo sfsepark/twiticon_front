@@ -290,7 +290,14 @@ class EmoticonInfoView extends React.Component{
                                 {aliasList}
                                 {this.state.edit  && this.state.info.alias_list.length < 5
                                 ? <div className = 'emoticon-info-view-add-button'
-                                    onClick = {e => this.handleAdd()}/>
+                                    onClick = {e => this.handleAdd()}>
+                                    <svg className = 'emoticon-info-view-add-button-svg' xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+                                    <g id="그룹_141" data-name="그룹 141" transform="translate(-601.5 -920.5)">
+                                        <line id="선_7" data-name="선 7" x2="20" transform="translate(601.5 930.5)" fill="none" stroke="#fff" strokeWidth="5"/>
+                                        <line id="선_8" data-name="선 8" y1="20" transform="translate(611.5 920.5)" fill="none" stroke="#fff" strokeWidth="5"/>
+                                    </g>
+                                    </svg>
+                                    </div>
                                 : null}
                             </div>
                         </div>
