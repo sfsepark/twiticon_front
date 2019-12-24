@@ -33,11 +33,18 @@ class EmoticonInfoView extends React.Component{
     }
 
     handleChange(event , id){
-        if(this.state.dispatch == 0){
-            var curState = JSON.parse(JSON.stringify(this.state));
-            curState.info.alias_list[id] = event.target.value;
-            this.setState(curState);
+        if(event.target.value.length > 6){
+            alert('별칭은 최대 6글자까지만 가능합니다.');
+            event.preventDefault();
         }
+        else{
+            if(this.state.dispatch == 0){
+                var curState = JSON.parse(JSON.stringify(this.state));
+                curState.info.alias_list[id] = event.target.value;
+                this.setState(curState);
+            }
+        }
+ 
     }
     
     handleAdd(){
@@ -63,6 +70,7 @@ class EmoticonInfoView extends React.Component{
         if(this.state.dispatch == 0){
             var curState = JSON.parse(JSON.stringify(this.state));
             curState.edit = !curState.edit;
+            curState.info.alias_list = JSON.parse(JSON.stringify(this.old_alias));
             this.setState(curState);
         }
     }
@@ -71,6 +79,8 @@ class EmoticonInfoView extends React.Component{
 
     handleSubmit(){
 
+        var switchDispatchState = this.switchDispatchState;
+
         var failSubmit = function(){
             switchDispatchState(0);
         }.bind(this);
@@ -78,6 +88,7 @@ class EmoticonInfoView extends React.Component{
         var terminateSubmit =  function(){
             switchDispatchState(0);
             this.old_alias = this.state.info.alias_list;
+            this.handleClickEditState();
         }.bind(this);
         
         function checkAliasIntegrity(new_alias, old_alias){
@@ -85,23 +96,28 @@ class EmoticonInfoView extends React.Component{
                 throw ERROR.wrong_parameter;
             }
 
+            if(new_alias.length > 5){
+                throw ERROR.alias_number_over;
+            }
+        
             for(let i = 0 ; i < new_alias.length ; i ++){
                 if(! (typeof(new_alias[i]) === 'string'))
                     throw ERROR.wrong_parameter;
-                if(new_alias[i].length > 5)
+                if(new_alias[i].length > 6)
                     throw ERROR.alias_length_over;
+                if(new_alias[i].length <= 0)
+                    throw ERROR.alias_empty;
                 if(new_alias[i].match(/\s+/g) != null)
                     throw ERROR.wrong_parameter;
             }
-
+        
             for(let i = 0 ; i < old_alias.length ; i ++){
                 if(! (typeof(old_alias[i]) === 'string'))
                     throw ERROR.wrong_parameter;
-                if(old_alias[i].length > 5)
-                    throw ERROR.alias_length_over;
                 if(old_alias[i].match(/\s+/g) != null)
                     throw ERROR.wrong_parameter;
             }
+        
 
         }
 
@@ -117,39 +133,40 @@ class EmoticonInfoView extends React.Component{
             catch(e){
                 alert(e);
             }
-
-            var emote_id = this.state.info.id;
-            var twitch_token = this.props.twitchToken;
-
-            fetch( apiURL + '/api/update-alias', {
-                method : 'POST',
-                body : JSON.stringify({
-                    emote_id : emote_id,
-                    old_alias : old_alias,
-                    new_alias : new_alias
-                }),
-                headers : {
-                    'twitch-auth' : twitch_token,
-                    'Content-Type': 'application/json'
+            finally{
+                var emote_id = this.state.info.id;
+                var twitch_token = this.props.twitchToken;
+    
+                fetch( apiURL + '/api/update-alias', {
+                    method : 'POST',
+                    body : JSON.stringify({
+                        emote_id : emote_id,
+                        old_alias : old_alias,
+                        new_alias : new_alias
+                    }),
+                    headers : {
+                        'twitch-auth' : twitch_token,
+                        'Content-Type': 'application/json'
+                    }
                 }
-            }
-            ).then(response => response.json()
-            ).then(response => {
-
-                if(response.hasOwnProperty('error')){
-                    alert(response.msg);
+                ).then(response => response.json()
+                ).then(response => {
+    
+                    if(response.hasOwnProperty('error')){
+                        alert(response.msg);
+                        failSubmit();
+                    }
+                    else{
+                        terminateSubmit();
+                    }
+    
+                }).catch(err => {
+    
+                    alert('통신에 장애가 있습니다. 네트워크 상황을 확인해주세요.');
+    
                     failSubmit();
-                }
-                else{
-                    terminateSubmit();
-                }
-
-            }).catch(err => {
-
-                alert('통신에 장애가 있습니다. 네트워크 상황을 확인해주세요.');
-
-                failSubmit();
-            });
+                });
+            }
 
         }
     }
@@ -162,16 +179,16 @@ class EmoticonInfoView extends React.Component{
             aliasList = this.state.info.alias_list.map(alias => <EmoticonAlias alias = {alias} height = {39}/>)
         }
         else{
-            let aliasKey = 0;
 
-            aliasList = this.state.info.alias_list.map(alias => 
+            var handleChange = this.handleChange;
+            var handleDelete = this.handleDelete;
+
+            aliasList = this.state.info.alias_list.map((alias,i) => 
             {
-                aliasKey ++;
-
                 return <EmoticonAliasTextArea 
                     alias = {alias}
-                    key = {aliasKey}
-                    id = {aliasKey}
+                    key = {this.props.info.name + '-' + i}
+                    index = {i}
                     handleChange = {handleChange}
                     handleDelete = {handleDelete}
                     height = {39}
@@ -183,7 +200,7 @@ class EmoticonInfoView extends React.Component{
 
         if(this.state.dispatch == 1){
             loader = (
-                <div className = 'emotcion-info-view-lodaer-container'>
+                <div className = 'emotcion-info-view-loader-container'>
                     <div className = 'emoticon-info-view-loader-wrapper'>
                         <div className = 'emoticon-info-view-loader'/>
                     </div>
@@ -208,6 +225,41 @@ class EmoticonInfoView extends React.Component{
                     </div>
                 </div>
             )
+        }
+        else{
+            if(this.state.edit == false){
+                rightSection = (
+                    <div className = 'emoticon-info-edit-button edit-button'
+                        onClick = {() => this.handleClickEditState()}>
+                        <div className = 'emoticon-info-edit-txt'>
+                            별명 이름 짓기
+                        </div>
+                    </div>
+                )
+            }
+            else{
+                rightSection = (
+                    <div className = 'emoticon-info-editing'>
+                        <div className = 'emoticon-info-edit-log'>
+                            <div className = 'emoticon-info-edit-txt'>
+                                이 이모티콘을 변경 중입니다.
+                            </div>
+                        </div>
+                        <div className = 'emoticon-submit-button edit-button'>
+                            <div className = 'emoticon-info-edit-txt'
+                                onClick = {() => this.handleSubmit()}>
+                                변경
+                            </div>
+                        </div>
+                        <div className = 'emoticon-cancle-button edit-button'
+                            onClick = {() => this.handleClickEditState()}>
+                            <div className = 'emoticon-info-edit-txt'>
+                                취소
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
         }
 
         return (
@@ -236,6 +288,10 @@ class EmoticonInfoView extends React.Component{
                             </div>
                             <div className = 'emoticon-info-view-aliases'>
                                 {aliasList}
+                                {this.state.edit  && this.state.info.alias_list.length < 5
+                                ? <div className = 'emoticon-info-view-add-button'
+                                    onClick = {e => this.handleAdd()}/>
+                                : null}
                             </div>
                         </div>
                     </div>
