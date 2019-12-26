@@ -79,7 +79,11 @@ export default class MyApp extends App{
                     
                     <div className = "main-contents-container">
                         <Component url = {createUrl(router)} {...pageProps} />
-                        <ChatBox width = {300} height = {612}/>
+                        <ChatBox width = {300} height = {
+                            router.route == '/' || router.route == '/index' || router.route == '/follow' || router.route == '/explore'
+                            ? 460
+                            : 612
+                        }/>
                     </div>
                 </div>
             </Container>
