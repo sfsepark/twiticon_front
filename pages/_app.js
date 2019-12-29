@@ -94,6 +94,9 @@ export default class MyApp extends App{
             <Container>
                 <Head>
                     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet"/>
+                    <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon"/>
+                    <link rel="shortcut icon" href="http://twiticon.com/favicon.ico?v=2" type="image/x-icon"/>
+
                 </Head>
 
                 <Navbar 

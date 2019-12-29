@@ -26,13 +26,14 @@
 .chatbox-chat-input-container {
     position: absolute;
     background-color: #ffffff;
-    height: 97px;
+    height: 102px;
     padding-left : 10px;
     padding-right : 10px;
     width: calc(100% - 20px);
     z-index: 10000;
     bottom : 0px;
     left : 0px;
+    overflow: visible;
 }
 
 .chatbox-chat-input-wrapper{
@@ -43,6 +44,11 @@
     padding-bottom : 7px;
     padding-left : 10px;
     padding-right: 10px;
+    border: solid 2px #f2f2f2;
+    background-color: #F2F2F2;
+}
+
+.chatbox-chat-input-wrapper:focus-within{
     border: solid 2px #6441a5;
     background-color: #ffffff;
 }
@@ -56,6 +62,7 @@
     font-size: 13px;
     width: 100%;
     height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0);;
 }
 
 .chatbox-header-container{
@@ -73,6 +80,28 @@
     padding-top : 8px;
     padding-right : 6px;
 }
+.chatbox-header-nav-button{
+    width : 180px;
+    cursor: pointer;
+    margin-left : calc(100% - 180px);
+}
+.chatbox-header-nav-button img{
+    width: 16px;
+    height: 16px;
+    margin-top : 2px;
+    margin-right : 5px;
+}
+.chatbox-header-nav-txt{
+    font-family: "Noto Sans KR",sans-serif;
+    font-weight: 300;;
+    font-size: 13px;
+    margin-right: 5px;;
+    color: #000000;
+}
+.chatbox-header-nav-button:hover .chatbox-header-nav-txt{
+    color: #8e72c2;
+}
+
 .chatbox-header-try{
     text-align: center;
     width: 100%;
@@ -93,4 +122,78 @@
     text-align: center;
     color: #000000;
     margin-top : 6px;
+}
+
+.chatbox-chat-log{
+    background-color: #EFEFF1;
+    width: calc(100% - 22px);
+    min-height: 35px;
+    height: auto;
+    position: absolute;
+    bottom : 97px;
+    z-index: -1;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border : 1px solid #D7D7D8;
+    text-align: left;
+}
+
+.chatbox-chat-log-txt{
+    font-family: "Noto Sans KR",sans-serif;
+    color: #000;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top : 5px;
+    margin-left : 10px;
+    margin-right : 10px;
+    margin-bottom : 9px;
+    width : calc(100% - 50px);
+    text-align: left;
+}
+
+.chatbox-chat-log.chatbox-chat-log-off{
+    display: none;
+}
+
+.chatbox-chat-log-cancle-button{
+    width: 24px;
+    height: 24px;
+
+    position: relative;
+    margin-top : 2px;
+}
+
+.chatbox-chat-log-cancle-button:hover{
+    background-color: #E5E5E5;
+}
+
+.chatbox-chat-log-cancle-button-svg{
+    position: absolute;
+    top : 6px;
+    left : 6px;
+}
+
+.chatbox-chat-input-wrapper.chatbox-chat-input-alert{
+    border: solid 2px #FFCA61 !important;
+    background-color: #ffffff;
+}
+
+.chatbox-send-button{
+    background-color: #6441a5;
+    border-radius: 3px;
+    width : 44px;
+    height: 27px;
+    margin-left : calc(100% - 44px);
+    margin-top : 7px;
+    color: #ffffff;
+    padding-top : 3px;
+
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+.chatbox-send-button:hover{
+    background-color: #8e72c2;
 }

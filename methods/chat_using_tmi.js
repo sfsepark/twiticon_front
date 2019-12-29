@@ -2,7 +2,9 @@ import tmi from 'tmi.js'
 
 export default function(user_info) {
     var msg_KR_dict = {
-        msg_banned : "이 방에서 영구히 정지당하였습니다."
+        msg_banned : "이 방에서 영구히 정지당하였습니다.",
+        msg_duplicate : "30초 이내에 보낸 메시지와 내용이 같은 메시지입니다.",
+        msg_ratelimit : '메시지를 너무 빨리 보냈습니다.'
     }
 
     var join_cache = (function(){
@@ -44,14 +46,15 @@ export default function(user_info) {
 
     var connectPromise = null;
     var chatClient = null;
+    var logFunction = null;
 
-    var addChatLog = function(logDiv, message){
-
+    var addChatLog = function(message){
+        if(logFunction){
+            logFunction(message);
+        }
     }
 
     var connectPromise = new Promise(function(resolve, reject){
-
-        console.log(user_info);
 
         function connect(){
             var authToken = user_info.authToken;
@@ -74,21 +77,19 @@ export default function(user_info) {
             chatClient = new tmi.client(chatClientOptions);            
             var chatClientPromise = chatClient.connect();
             chatClientPromise.then(() => resolve(true));
-
+            
             chatClientPromise.then(function(result){
+                
                 chatClient.on("notice", function(channel, msgid, message){
-                    /*
-                    if(chatTarget.frame != null){
-                        console.log('notice : ',channel,msgid, message);
-                        var parentFrame = chatTarget.frame.parentElement;
-                        var chatLine = parentFrame.getElementsByClassName('chat-list__lines')[0];
-                        var logLine = chatLine.getElementsByClassName('tw-flex-grow-1 tw-full-height tw-pd-b-1')[0];
-
-                        if(logLine.getAttribute('role') == 'log'){
-                            addChatLog(logLine,message);                            
-                        }
-                    }*/
+                    console.log(msgid);
+                    if(msg_KR_dict[msgid]){
+                        addChatLog(msg_KR_dict[msgid])
+                    }
+                    else{
+                        addChatLog(message);
+                    }
                 });
+                
             });
             
         }
@@ -116,8 +117,6 @@ export default function(user_info) {
     
     });
 
-
-    var chatClient = null;
     var chatClientConnected = false;
     var chatClientChannel = '';
 
@@ -143,7 +142,6 @@ export default function(user_info) {
                                 chatClientConnected = true;
                                 resolve();
                             }).catch(function(err){
-                                console.log(err);
                                 reject();
                             })
                         });
@@ -165,7 +163,9 @@ export default function(user_info) {
                 chatClientConnected = false;
                 chatClientChannel = '';
             },
-        connectPromise : connectPromise
-            
+        connectPromise : connectPromise,
+        registerLogFunction(func){
+            logFunction = func;
+        }
     }
 }

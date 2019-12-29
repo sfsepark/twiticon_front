@@ -14,7 +14,7 @@ class login extends React.Component{
 
         if(access_token == null){
             
-            window.location.href = "https://id.twitch.tv/oauth2/authorize?client_id=" + client_id +"&redirect_uri="+ baseURL + '/login' + "&response_type=token&scope=user_subscriptions+user_read";
+            window.location.href = "https://id.twitch.tv/oauth2/authorize?client_id=" + client_id +"&redirect_uri="+ baseURL + '/login' + "&response_type=token&scope=user_subscriptions+user_read+chat:read+chat:edit";
         }
         else{            
             cookies.setCookie('twitchToken',access_token, 7);

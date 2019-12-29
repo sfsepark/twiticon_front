@@ -3,20 +3,61 @@ import '../scss/chatbox.scss'
 import RightTriangle from './rightTriangle';
 
 import chatUsingTmi from '../methods/chat_using_tmi'
+import ChatBoxAlert from './chatBoxAlert';
+import Link from 'next/link';
 
 export default class ChatBox extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            height : this.props.height
+            chat : '',
+            height : this.props.height,
+            logMsg : '',
+            logToggle : false
         }
 
         this.heightChange = this.heightChange.bind(this);
+        this.registerLog = this.registerLog.bind(this);
+        this.turnOffLog = this.turnOffLog.bind(this);
         this.offsetHeight = 0;
     }
 
+    chatChangeHandler(msg){
+        const curState = JSON.parse(JSON.stringify(this.state));
+        curState.chat = msg;
+        this.setState(curState);
+    }
+
     heightChange(height){
-        this.setState({height : height});
+        const curState = JSON.parse(JSON.stringify(this.state));
+        curState.height = height;
+        this.setState(curState);
+    }
+
+    registerEventListener(listener){
+        const chatInput = document.getElementsByClassName('chatbox-chat-input')[0];
+        chatInput.addEventListener('keypress', (e) => {
+            if(e.keyCode == 13){
+                listener(e);
+                e.preventDefault();
+            }
+        })
+        const sendButton = document.getElementsByClassName('chatbox-send-button')[0];
+        sendButton.addEventListener('click', (e) => listener(e));
+    }
+
+    registerLog(logMsg){
+        const curState = JSON.parse(JSON.stringify(this.state));
+        curState.logToggle = true;
+        curState.logMsg = logMsg;
+        this.setState(curState);
+
+    }
+
+    turnOffLog(){
+        const curState = JSON.parse(JSON.stringify(this.state));
+        curState.logToggle = false;
+        this.setState(curState);
     }
 
     componentDidMount(){
@@ -50,15 +91,32 @@ export default class ChatBox extends React.Component{
         }
         )(this)
 
-        console.log(this.props);
+        var registerEventListener = this.registerEventListener.bind(this);
 
         if(this.props.cookie.name && this.props.cookie.twitchToken){
+            
             var chat = chatUsingTmi({
                 authToken : this.props.cookie.twitchToken,
                 name : this.props.cookie.name
-            })
+            });
 
-            chat.connectPromise.then(() => console.log('succecss'));
+
+            ((_this) => {
+                chat.connectPromise.then(() => {
+                    chat.readyChat('twiticon').then(() => {
+                        
+                        chat.registerLogFunction(_this.registerLog);
+    
+                        registerEventListener((e) => {
+                            chat.sendChat(_this.state.chat)
+                            _this.chatChangeHandler('');
+                        })
+                    })
+                })
+            })(this)
+        }
+        else{
+            registerEventListener((e) => this.registerLog('로그인 후 이용해주세요'))
         }
     }
 
@@ -84,7 +142,17 @@ export default class ChatBox extends React.Component{
                 style = {{width : this.props.width, height : this.state.height}}>
                 <div className = 'chatbox-header-container'>
                     <div className = 'chatbox-header-nav'>
-                        <RightTriangle/>
+                        <Link href = '/notice'>
+                            <a>
+                            <div className = 'flex chatbox-header-nav-button'>
+                                <img src = "http://twiticon.com/favicon.ico?v=2"/>
+                                <div className = 'chatbox-header-nav-txt'>
+                                    트위티콘 차원문 알아보기
+                                </div>
+                                <RightTriangle/>
+                            </div>
+                            </a>
+                        </Link>
                     </div>
                     <div className = 'chatbox-header-try'>
                         <div className = 'chatbox-header-try-txt'>
@@ -98,13 +166,23 @@ export default class ChatBox extends React.Component{
                         scrolling="no"
                         id="chat_embed"
                         src="https://www.twitch.tv/embed/twiticon/chat"
-                        height={this.state.height - 22}
+                        height={this.state.height - 27}
                         width={this.props.width}>
                     </iframe>
                 </div>
                 <div className = 'chatbox-chat-input-container'>
-                    <div className = 'chatbox-chat-input-wrapper'>
-                        <textarea className = 'chatbox-chat-input'/>
+                    <ChatBoxAlert 
+                        logMsg = {this.state.logMsg}
+                        logToggle = {this.state.logToggle}
+                        turnOff = {this.turnOffLog}
+                    />
+                    <div className = {'chatbox-chat-input-wrapper '+ (this.state.logToggle ? 'chatbox-chat-input-alert' : '')}>
+                        <textarea className = 'chatbox-chat-input ' 
+                            value = {this.state.chat}
+                            onChange = {(e) => this.chatChangeHandler(e.target.value)}/>
+                    </div>
+                    <div className = 'chatbox-send-button'>
+                        채팅
                     </div>
                 </div>
             </div>

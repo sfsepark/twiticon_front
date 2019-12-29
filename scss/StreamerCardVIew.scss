@@ -118,6 +118,10 @@
     position: absolute;
 }
 
+.streamer-show-detail:hover{
+    background-color : #8e72c2;
+}
+
 .streamer-cardview:hover .streamer-show-detail{
     display: block;
 }
@@ -243,6 +247,10 @@
     color: #000000;
     display:inline-block;
     margin-top : 8.5px;
+}
+
+.streamer-twiticon-list-show-detail:hover{
+    color:#8e72c2;
 }
 
 .right-button{
