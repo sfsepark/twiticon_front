@@ -1,5 +1,5 @@
 import '../scss/chatbox.scss'
-import tmi from 'tmi.js'
+
 import RightTriangle from './rightTriangle';
 
 import chatUsingTmi from '../methods/chat_using_tmi'
@@ -10,25 +10,46 @@ export default class ChatBox extends React.Component{
         this.state = {
             height : this.props.height
         }
+
+        this.heightChange = this.heightChange.bind(this);
+        this.offsetHeight = 0;
+    }
+
+    heightChange(height){
+        this.setState({height : height});
     }
 
     componentDidMount(){
-        const heightChange = ((height) => this.setState({height : height})).bind(this)
+        
         const mainDom = document.getElementsByClassName('main')[0];
 
-        //937 - 460
-        var offset = document.body.offsetHeight - (937 - this.props.height);
-        heightChange(offset);
+        if(this.props.type == 'main'){
+            //937 - 460
+            this.offsetHeight = document.body.offsetHeight - (937 - this.props.height);
+            this.heightChange(this.offsetHeight);
+        }
+        else{
+            this.heightChange(mainDom.offsetHeight);
+        }
 
-        ((_this) => 
-        mainDom.addEventListener('scroll',(e) => {
-            if(mainDom.scrollTop >= 355){
-                heightChange(mainDom.offsetHeight);
-            }
-            else{
-                heightChange(offset + mainDom.scrollTop)
-            }
-        }))(this)
+
+        ((_this) => {
+            
+            const mainDom = document.getElementsByClassName('main')[0];
+
+            mainDom.addEventListener('scroll',(e) => {
+                if(_this.props.type == 'main'){
+                    if(mainDom.scrollTop >= 355){
+                        _this.heightChange(mainDom.offsetHeight);
+                    }
+                    else{
+                        _this.heightChange(_this.offsetHeight + mainDom.scrollTop)
+                    }
+                }
+            })
+        }
+        )(this)
+
         console.log(this.props);
 
         if(this.props.cookie.name && this.props.cookie.twitchToken){
@@ -41,13 +62,25 @@ export default class ChatBox extends React.Component{
         }
     }
 
-    componentDidUpdate(){
+    componentDidUpdate(prevProps){
+        if(prevProps.type != this.props.type){
 
+            const mainDom = document.getElementsByClassName('main')[0];
+                
+            if(this.props.type == 'main'){
+                //937 - 460
+                this.offsetHeight = document.body.offsetHeight - (937 - this.props.height);
+                this.heightChange(this.offsetHeight);
+            }
+            else{
+                this.heightChange(mainDom.offsetHeight);
+            }
+        }
     }
 
     render(){
         return (
-            <div className = 'chatbox-container'
+            <div className = {'chatbox-container ' + (this.props.type == 'other' ? 'chatbox-other' : null )}
                 style = {{width : this.props.width, height : this.state.height}}>
                 <div className = 'chatbox-header-container'>
                     <div className = 'chatbox-header-nav'>

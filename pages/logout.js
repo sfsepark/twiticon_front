@@ -10,6 +10,7 @@ class logout extends React.Component{
         cookies.deleteCookie('twitchToken');
         cookies.deleteCookie('userId');
         cookies.deleteCookie('profile');
+        cookies.deleteCookie('name');
 
         var history = cookies.getCookie('history')
 

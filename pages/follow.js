@@ -35,6 +35,11 @@ class Index extends React.Component{
         return {};
     }
 
+    componentDidMount(){
+        var mainDOM = document.getElementsByClassName('main')[0];
+        mainDOM.scrollTop = 0;
+    }
+
     constructor(props){
 
         super(props);

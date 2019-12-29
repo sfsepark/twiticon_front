@@ -7,15 +7,16 @@ import '../scss/body.scss'
 import MainPageContentsHeader from '../component/MainPageContentsHeader'
 import MainPageContents from '../component/MainPageContents'
 
-
-import ChatBox from '../component/chatBox.js';
-
- 
 class Index extends React.Component{
 
     constructor(props){
 
         super(props);
+    }
+
+    componentDidMount(){
+        var mainDOM = document.getElementsByClassName('main')[0];
+        mainDOM.scrollTop = 0;
     }
 
     render(){

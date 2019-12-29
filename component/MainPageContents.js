@@ -19,6 +19,19 @@ class MainPageContents extends React.Component{
         this.nextOffset = 0;
 
         this.scrollMutex = 1;
+        this.mainPageScorllEvent = this.mainPageScorllEvent.bind(this);
+    }
+
+    async mainPageScorllEvent(event){
+
+        var mainDOM = event.target;
+
+        if(mainDOM.children[0].offsetHeight - mainDOM.scrollTop <= (window.innerHeight + 94)){
+            if(this.scrollMutex == 0){
+                this.scrollMutex = 1;
+                await this.curFetchFunction();
+            }
+        }
     }
 
     componentDidMount(){
@@ -33,32 +46,21 @@ class MainPageContents extends React.Component{
             'follows'
         ).bind(this);
 
-        var curFetchFunction ;
 
         if(this.nextOffset == 0){
             if(this.props.userId === undefined){
-                curFetchFunction = fetchPoppularStreams;
+                this.curFetchFunction = fetchPoppularStreams;
             }
             else{
-                curFetchFunction = fetchFollowStreams;
+                this.curFetchFunction = fetchFollowStreams;
             }
         }
 
-        curFetchFunction();
+        this.curFetchFunction();
         
         var mainDOM = document.getElementsByClassName('main')[0];
+        mainDOM.addEventListener('scroll',this.mainPageScorllEvent)
 
-        ((_this) => {
-            mainDOM.addEventListener('scroll',async event => {
-
-                if(mainDOM.children[0].offsetHeight - mainDOM.scrollTop <= (window.innerHeight + 94)){
-                    if(_this.scrollMutex == 0){
-                        _this.scrollMutex = 1;
-                        await curFetchFunction();
-                    }
-                }
-            })
-        })(this);
     }
 
     componentDidUpdate(prevProps, prevState){
@@ -66,6 +68,11 @@ class MainPageContents extends React.Component{
             this.scrollMutex = 0;
             this.nextOffset ++;
         }
+    }
+
+    componentWillUnmount(){
+        var mainDOM = document.getElementsByClassName('main')[0];
+        mainDOM.removeEventListener('scroll',this.mainPageScorllEvent)
     }
 
     getFetchStreams(url , attribute){

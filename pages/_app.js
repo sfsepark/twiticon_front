@@ -6,6 +6,8 @@ import next_cookies from 'next-cookies'
 import Banner from '../component/banner.js';
 import ChatBox from '../component/chatBox.js';
 
+const mainPageRoutes = ['/','/index','/follow','/explore']
+
 export default class MyApp extends App{
     static async getInitialProps({ Component, router, ctx }) {
 
@@ -18,39 +20,50 @@ export default class MyApp extends App{
         pageProps.cookie =   {
             twitchToken : next_cookies(ctx).twitchToken,
             userId : next_cookies(ctx).userId,
-            profile : next_cookies(ctx).profile
+            profile : next_cookies(ctx).profile,
+            name : next_cookies(ctx).name,
         }
 
         return { pageProps }
     }
 
-    componentDidMount(){
-        var mainDOM = document.getElementsByClassName('main')[0];
+    constructor(props){
+        super(props);
 
-        ((_this) => {
-            mainDOM.addEventListener('scroll',async event => {
-
-                if(mainDOM.scrollTop > 318){
-                    if(_this.state.type  == 'main'){
-                        _this.setState({type : 'sub'})
-                    }
-                }
-                else {
-                    if(_this.state.type  == 'sub'){
-                        _this.setState({type : 'main'})
-                    }
-                }
-            })
-        })(this);
+        this.mainPageScrollEvent = this.mainPageScrollEvent.bind(this);
     }
+
+    async mainPageScrollEvent(event) {
+    
+        if(event.target.scrollTop > 318){
+            if(this.state.type  == 'main'){
+                this.setState({type : 'sub'})
+            }
+        }
+        else {
+            if(this.state.type  == 'sub'){
+                this.setState({type : 'main'})
+            }
+        }
+    }
+
+    componentDidMount(){
+
+        if(mainPageRoutes.includes(this.props.router.route)){
+            var mainDOM = document.getElementsByClassName('main')[0];
+            if(mainDOM != undefined){
+                mainDOM.addEventListener('scroll',this.mainPageScrollEvent);
+            }
+        }
+    }
+
 
     state = {
         type : 'main'
     }
 
     render(){
-        const { Component, router, pageProps } = this.props
-        const mainPageRoutes = ['/','/index','/follow','/explore']
+        const { Component, router, pageProps } = this.props;
 
         if(router.route == '/login' || router.route == '/logout'){
             return <Component url = {createUrl(router)} {...pageProps} />
@@ -83,7 +96,11 @@ export default class MyApp extends App{
                             router.route == '/' || router.route == '/index' || router.route == '/follow' || router.route == '/explore'
                             ? 460
                             : 612
-                        }/>
+                        } type = {
+                            router.route == '/' || router.route == '/index' || router.route == '/follow' || router.route == '/explore'
+                            ? 'main'
+                            : 'other'
+                        } {...pageProps}/>
                     </div>
                 </div>
             </Container>

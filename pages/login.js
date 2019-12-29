@@ -32,8 +32,10 @@ class login extends React.Component{
 
                 var profile = data.data.logo;
                 var userId = data.data._id;
+                var name = data.data.name;
                 cookies.setCookie('profile',profile,7);
                 cookies.setCookie('userId',userId, 7);
+                cookies.setCookie('name',name, 7);
             }).catch((err) =>{
                 console.log(err);
             }).finally(() => {
