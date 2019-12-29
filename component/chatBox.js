@@ -5,6 +5,7 @@ import RightTriangle from './rightTriangle';
 import chatUsingTmi from '../methods/chat_using_tmi'
 import ChatBoxAlert from './chatBoxAlert';
 import Link from 'next/link';
+import twiticonPortal from '../methods/twiticon_portal/twiticon_portal'
 
 export default class ChatBox extends React.Component{
     constructor(props){
@@ -62,6 +63,7 @@ export default class ChatBox extends React.Component{
 
     componentDidMount(){
         
+        //채팅창 사이즈 초기화
         const mainDom = document.getElementsByClassName('main')[0];
 
         if(this.props.type == 'main'){
@@ -73,7 +75,7 @@ export default class ChatBox extends React.Component{
             this.heightChange(mainDom.offsetHeight);
         }
 
-
+        //채팅창 사이즈 scroll 에 따라서 가변적으로 변화
         ((_this) => {
             
             const mainDom = document.getElementsByClassName('main')[0];
@@ -90,6 +92,8 @@ export default class ChatBox extends React.Component{
             })
         }
         )(this)
+
+        //채팅창 send event 등록
 
         var registerEventListener = this.registerEventListener.bind(this);
 
@@ -118,6 +122,33 @@ export default class ChatBox extends React.Component{
         else{
             registerEventListener((e) => this.registerLog('로그인 후 이용해주세요'))
         }
+
+        //트위티콘 차원문 작동 시작
+        if(this.props.cookie.userId && this.props.cookie.twitchToken){
+            twiticonPortal.init({
+                authToken : this.props.cookie.twitchToken,
+                id : this.props.cookie.userId
+            })
+        }
+        else{
+            twiticonPortal.init(null);
+        }
+
+        twiticonPortal.refresh((data) => {
+            var EmoteInfoList = null;
+            var EmoteAliasList = null;
+            var EmoteRegexList = null;
+            var EmoteAutoCompleteTable = null ;
+
+            function aliasLoad(emoteData){
+                EmoteInfoList = emoteData['info'];
+                EmoteAliasList = emoteData['alias'];
+                EmoteRegexList = emoteData['regex'];
+                EmoteAutoCompleteTable = emoteData['autocomplete'];
+            }
+
+        })
+
     }
 
     componentDidUpdate(prevProps){
