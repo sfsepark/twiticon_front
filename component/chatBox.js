@@ -2,6 +2,8 @@ import '../scss/chatbox.scss'
 import tmi from 'tmi.js'
 import RightTriangle from './rightTriangle';
 
+import chatUsingTmi from '../methods/chat_using_tmi'
+
 export default class ChatBox extends React.Component{
     constructor(props){
         super(props);
@@ -27,6 +29,16 @@ export default class ChatBox extends React.Component{
                 heightChange(offset + mainDom.scrollTop)
             }
         }))(this)
+        console.log(this.props);
+
+        if(this.props.cookie.name && this.props.cookie.twitchToken){
+            var chat = chatUsingTmi({
+                authToken : this.props.cookie.twitchToken,
+                name : this.props.cookie.name
+            })
+
+            chat.connectPromise.then(() => console.log('succecss'));
+        }
     }
 
     componentDidUpdate(){
