@@ -57,6 +57,27 @@ export default class MyApp extends App{
         }
     }
 
+    componentDidUpdate(prevProps,prevState){
+
+        if(prevState.type == this.state.type){
+
+            var mainDOM = document.getElementsByClassName('main')[0];
+
+            if(mainDOM != undefined){
+                mainDOM.removeEventListener('scroll',this.mainPageScrollEvent);
+            }
+
+            if(mainPageRoutes.includes(this.props.router.route)){
+                
+                if(mainDOM != undefined){
+                    mainDOM.addEventListener('scroll',this.mainPageScrollEvent);
+                }
+            }
+        }
+    
+    }
+
+
 
     state = {
         type : 'main'
