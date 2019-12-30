@@ -1,17 +1,21 @@
 import '../scss/chatbox.scss'
+import '../scss/twiticon/style.css'
 
 import RightTriangle from './rightTriangle';
 
 import chatUsingTmi from '../methods/chat_using_tmi'
 import ChatBoxAlert from './chatBoxAlert';
 import Link from 'next/link';
-import twiticonPortal from '../methods/twiticon_portal/twiticon_portal'
+import twiticonPortal from '../methods/twiticon_portal/backend/twiticon_portal'
+import tcf from '../methods/twiticon_portal/frontend/tcf_for_twiticon';
+import emoteData from '../methods/twiticon_portal/frontend/emote_data'
+import autoComplete from '../methods/twiticon_portal/frontend/auto_complete'
 
 export default class ChatBox extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            chat : '',
+            chat : '블러드트ㄹ',
             height : this.props.height,
             logMsg : '',
             logToggle : false
@@ -20,6 +24,7 @@ export default class ChatBox extends React.Component{
         this.heightChange = this.heightChange.bind(this);
         this.registerLog = this.registerLog.bind(this);
         this.turnOffLog = this.turnOffLog.bind(this);
+        this.chatChangeHandler = this.chatChangeHandler.bind(this);
         this.offsetHeight = 0;
     }
 
@@ -35,7 +40,7 @@ export default class ChatBox extends React.Component{
         this.setState(curState);
     }
 
-    registerEventListener(listener){
+    registerSendEventListener(listener){
         const chatInput = document.getElementsByClassName('chatbox-chat-input')[0];
         chatInput.addEventListener('keypress', (e) => {
             if(e.keyCode == 13){
@@ -95,7 +100,7 @@ export default class ChatBox extends React.Component{
 
         //채팅창 send event 등록
 
-        var registerEventListener = this.registerEventListener.bind(this);
+        var registerSendEventListener = this.registerSendEventListener.bind(this);
 
         if(this.props.cookie.name && this.props.cookie.twitchToken){
             
@@ -111,7 +116,7 @@ export default class ChatBox extends React.Component{
                         
                         chat.registerLogFunction(_this.registerLog);
     
-                        registerEventListener((e) => {
+                        registerSendEventListener((e) => {
                             chat.sendChat(_this.state.chat)
                             _this.chatChangeHandler('');
                         })
@@ -120,7 +125,7 @@ export default class ChatBox extends React.Component{
             })(this)
         }
         else{
-            registerEventListener((e) => this.registerLog('로그인 후 이용해주세요'))
+            registerSendEventListener((e) => this.registerLog('로그인 후 이용해주세요'))
         }
 
         //트위티콘 차원문 작동 시작
@@ -134,20 +139,31 @@ export default class ChatBox extends React.Component{
             twiticonPortal.init(null);
         }
 
-        twiticonPortal.refresh((data) => {
-            var EmoteInfoList = null;
-            var EmoteAliasList = null;
-            var EmoteRegexList = null;
-            var EmoteAutoCompleteTable = null ;
+        ((_this) => {
+            twiticonPortal.refresh((response) => {
 
-            function aliasLoad(emoteData){
-                EmoteInfoList = emoteData['info'];
-                EmoteAliasList = emoteData['alias'];
-                EmoteRegexList = emoteData['regex'];
-                EmoteAutoCompleteTable = emoteData['autocomplete'];
-            }
+                emoteData.aliasLoad(response);
 
-        })
+                if(tcf.register('chatbox-chat-input',_this.chatChangeHandler)){
+                    tcf.chatTarget.chat_input.addEventListener('click',autoComplete.onClick);
+                    //newChat.chat_input.addEventListener('focusout',autoComplete.onFocusout);
+                    tcf.chatTarget.chat_input.addEventListener('keydown', autoComplete.emotePickerChoiceEventListener);
+                    tcf.chatTarget.chat_input.addEventListener('input', autoComplete.autoCompleteEventListener ); 
+                    tcf.chatTarget.chat_input.addEventListener('keydown',autoComplete.keyDownListener);
+                    tcf.chatTarget.chat_input.addEventListener('keyup',autoComplete.keyUpListener);
+                    tcf.chatTarget.chat_input.addEventListener('input',autoComplete.emptyCheck);
+
+                    registerSendEventListener((e) => autoComplete.clearChat());
+
+                    tcf.chatTarget.chat_input.selectionStart  = _this.state.chat.length
+                    tcf.chatTarget.chat_input.selectionEnd = _this.state.chat.length
+                    tcf.chatTarget.chat_input.click();
+                }
+                else{
+                }
+
+            })
+        })(this)
 
     }
 
@@ -169,7 +185,7 @@ export default class ChatBox extends React.Component{
 
     render(){
         return (
-            <div className = {'chatbox-container ' + (this.props.type == 'other' ? 'chatbox-other' : null )}
+            <div className = {'chatbox-container nc-light ' + (this.props.type == 'other' ? 'chatbox-other' : null )}
                 style = {{width : this.props.width, height : this.state.height}}>
                 <div className = 'chatbox-header-container'>
                     <div className = 'chatbox-header-nav'>

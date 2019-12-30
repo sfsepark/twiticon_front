@@ -1,6 +1,6 @@
 import emoteInfo from './emote_info'
 import userInfo from './user_info'
-import Hangul from '../hangul.min.js'
+import Hangul from '../../hangul.min.js'
 export default (function(){
 
     /* response of [emote_server_url]/getemote.php
