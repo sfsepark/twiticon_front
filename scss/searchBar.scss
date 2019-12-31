@@ -68,9 +68,10 @@
     margin-top : 10px;
 
     height : 60px;
-    width : 818px;
 
     font-size: 40px;
+    width: calc(100% - 50px);
+
 }
 
 .searchbar-textarea:focus{
@@ -111,4 +112,38 @@
     padding-top : 5px;
 
     margin-left : 17px;
+}
+
+@media (min-width : 881px) and (max-width : 1070px){
+    .searchbar.searchbar-banner{
+        width : 881px;
+        margin-left: calc((100% - 881px)/2);
+
+    }
+}
+
+@media (min-width : 881px) and (max-width : 1070px){
+    .searchbar.searchbar-header{
+        width : 210px;
+    }
+    .searchbar-header .searchbar-textarea{
+        width: 170px;
+    } 
+}
+
+@media (min-width : 701px) and (max-width : 880px){
+    .searchbar.searchbar-banner{
+        width : 700px;
+        margin-left: calc((100% - 700px)/2);
+
+    }
+}
+
+
+@media (max-width : 700px){
+    .searchbar.searchbar-banner{
+        width :520px;
+        margin-left: calc((100% - 520px)/2);
+
+    }
 }

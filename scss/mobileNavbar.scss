@@ -1,0 +1,30 @@
+.mobile-nav-bar{
+    width : 100%;
+    display: none;
+    height: 76px;
+    background-color: #ffffff;
+    border-bottom: solid 1px #d9d9de;
+}
+
+.mobile-nav-bar-search-button{
+    margin-top: 24.1px;
+    margin-left: 15px;
+
+    margin-right: calc(50% - (137px / 2) - 37.4px);
+}
+
+.mobile-nav-bar .header-logo{
+    margin-top : 16px;
+}
+
+.mobile-nav-bar-menu-button{
+    
+    margin-left: calc(50% - (137px / 2) - 45.5px);
+    margin-top:30.5px;
+}
+
+@media (max-width : 880px){
+    .mobile-nav-bar{
+        display: block;
+    }
+}

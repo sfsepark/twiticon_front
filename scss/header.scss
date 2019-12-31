@@ -36,6 +36,10 @@ a{
         padding-right : 0px;
         width: 100%;
     }
+
+    @media (max-width : 880px){
+        display: none;
+    }
 }
 
 .header-box-sub{
@@ -43,43 +47,6 @@ a{
     border-bottom: solid 1px #d9d9de;
 }
 
-.header-logo{
-    cursor: pointer;
-}
-
-.header-logo-twiti{
-    width: 103px;
-    height: 38px;
-    font-family: "Godo";
-    font-size: 35px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.14;
-    letter-spacing: normal;
-    text-align: left;
-    color: #b465b4;
-}
-
-
-
-.header-logo-con{
-
-    margin-left: -6px;
-    
-
-    width: 40px;
-    height: 45px;
-    font-family: "Godo";
-    font-size: 40px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.13;
-    letter-spacing: normal;
-    text-align: left;
-    color: #010101;
-}
 
 .header-box-main .header-menu{
     margin-top : 6px;
@@ -195,3 +162,4 @@ a{
 .header-contents{
     width : 100%;
 }
+
