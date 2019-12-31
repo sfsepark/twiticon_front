@@ -264,6 +264,7 @@ class EmoticonInfoView extends React.Component{
                 }}>
                 {buttonPannel}
                 {emoticonTitle}
+                <img src = "http://twiticon.com/logo.png" className = 'emoticon-info-view-logo'/>
                 <div className = 'emoticon-info-view-flex'>
                     <img 
                         src = {'https://static-cdn.jtvnw.net/emoticons/v1/' + this.state.info.id +  '/4.0'} 
