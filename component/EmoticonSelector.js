@@ -17,10 +17,12 @@ class EmoticonSelector extends React.Component{
         super(props);
 
         this.state = {
-            search : ''
+            search : '',
+            dropdown : 0 // 0 : init , 1 : open , 2 : close
         }
 
         this.handleChange = this.handleChange.bind(this);
+        this.handleClickDropdown = this.handleClickDropdown.bind(this);
     }
 
     handleChange(event){
@@ -53,6 +55,20 @@ class EmoticonSelector extends React.Component{
 
         this.props.handleSelectEmoticon(emoticonIds);
 
+        this.setState(curState)
+    }
+
+    handleClickDropdown(){
+        var curState = JSON.parse(JSON.stringify(this.state));
+        if(curState.dropdown == 0){
+            curState.dropdown = 1;
+        }
+        else if(curState.dropdown == 1){
+            curState.dropdown = 2;
+        }
+        else{
+            curState.dropdown = 1;
+        }
         this.setState(curState)
     }
 
@@ -95,7 +111,13 @@ class EmoticonSelector extends React.Component{
         
 
         return (
-            <div className = 'emoticon-selector-container'>
+            <div className = {'emoticon-selector-container ' +(
+                this.state.dropdown != 1 
+                ? (this.state.dropdown == 0 
+                ? 'emoticon-selector-container-init'
+                : 'emoticon-selector-container-open')
+                : 'emoticon-selector-container-close'
+            ) }>
                 <div className = 'emoticon-selector-search'>
                     <div className = 'emoticon-selector-flex'>
                         <div className = 'emoticon-selector-searchmark'>
@@ -109,6 +131,15 @@ class EmoticonSelector extends React.Component{
                         <textarea placeholder='이모티콘 검색' className = 'emoticon-selector-searchbar' value = {this.state.search} onChange={this.handleChange}>
                             
                         </textarea>
+                        <div className = {'emoticon-selector-mobile-dropdown ' 
+                            + (
+                                this.state.dropdown != 1 
+                                ? (this.state.dropdown == 0 
+                                ? 'emoticon-selector-mobile-dropdown-close'
+                                : 'emoticon-selector-mobile-dropdown-open')
+                                : 'emoticon-selector-mobile-dropdown-close'
+                            )}
+                            onClick = {() => this.handleClickDropdown()}/>
                     </div>
                 </div>
                 <div className = 'emoticon-selector-list'>

@@ -12,6 +12,14 @@
     height: 152px;
     border: solid 2px #d1d1d1;
     background-color: #ffffff;
+
+    @media (max-width : 880px){
+        display: block;
+        width : calc(100% - 4px);
+        margin-top : 14px;
+    }
+
+    transition: height 0s;
 }
 
 .emoticon-selector-search{
@@ -58,6 +66,24 @@
     overflow: hidden;
 
     white-space: nowrap;
+
+    @media (max-width : 880px){
+        width: calc(100% - 40px - 24px - 40px);
+    }
+}
+
+.emoticon-selector-mobile-dropdown{
+    width: 20px;
+    height: 20px;
+    margin-top : 10px;
+    margin-left : 10px;
+    background-color: #d1d1d1;
+    display: none;
+    @media (max-width : 880px){
+        display: inline-block;
+
+    }
+    cursor: pointer;
 }
 
 .emoticon-table{
@@ -114,4 +140,34 @@
 
 .emoticon-wrapper-button-invisible{
     display: none;
+}
+
+.emoticon-selector-container-init{
+    @media (max-width : 880px){
+        height: 40px;
+    }
+}
+
+.emoticon-selector-container-close{
+    @media (max-width : 880px){
+        height: 40px;
+        transition: height 1s;
+    }
+}
+
+.emoticon-selector-container-open{
+    @media (max-width : 880px){
+        height: 152px;
+        transition: height 1s;
+    }
+}
+
+.emoticon-selector-mobile-dropdown-close{
+    transition: transform 1s;
+    transform : rotate(0deg);
+}
+
+.emoticon-selector-mobile-dropdown-open{
+    transition: transform 1s;
+    transform : rotate(180deg);
 }
