@@ -1,5 +1,5 @@
-import cookies from '../methods/cookies';
-import '../scss/userinfo.scss'
+import cookies from '../../methods/cookies';
+import '../../scss/userinfo.scss'
 import Router from 'next/router'
 
 export default class UserInfo extends React.Component{

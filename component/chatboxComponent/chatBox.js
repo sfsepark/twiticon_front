@@ -1,15 +1,15 @@
-import '../scss/chatbox.scss'
-import '../scss/twiticon/style.css'
+import '../../scss/chatbox.scss'
+import '../../scss/twiticon/style.css'
 
-import RightTriangle from './rightTriangle';
+import RightTriangle from '../rightTriangle';
 
-import chatUsingTmi from '../methods/chat_using_tmi'
+import chatUsingTmi from '../../methods/chat_using_tmi'
 import ChatBoxAlert from './chatBoxAlert';
 import Link from 'next/link';
-import twiticonPortal from '../methods/twiticon_portal/backend/twiticon_portal'
-import tcf from '../methods/twiticon_portal/frontend/tcf_for_twiticon';
-import emoteData from '../methods/twiticon_portal/frontend/emote_data'
-import autoComplete from '../methods/twiticon_portal/frontend/auto_complete'
+import twiticonPortal from '../../methods/twiticon_portal/backend/twiticon_portal'
+import tcf from '../../methods/twiticon_portal/frontend/tcf_for_twiticon';
+import emoteData from '../../methods/twiticon_portal/frontend/emote_data'
+import autoComplete from '../../methods/twiticon_portal/frontend/auto_complete'
 
 export default class ChatBox extends React.Component{
     constructor(props){

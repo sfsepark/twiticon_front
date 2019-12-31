@@ -1,8 +1,8 @@
 
-import '../scss/StreamerCardview.scss'
+import '../../scss/StreamerCardview.scss'
 import Link from 'next/link';
 
-import StreamerTwiticonList from '../component/streamerTwiticonList'
+import StreamerTwiticonList from './streamerTwiticonList'
 
 export default class StreamerCardView extends React.Component{
 

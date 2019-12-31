@@ -1,6 +1,6 @@
-import EmoticonInfoView from './emoticonInfoView.js'
+import EmoticonInfoView from './emoticonInfoView'
 
-import '../scss/emoticonList.scss';
+import '../../scss/emoticonList.scss';
 
 class EmoticonList extends React.Component{
     constructor(props){

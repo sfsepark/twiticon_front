@@ -1,7 +1,7 @@
-import '../scss/main.scss'
-import MainPageStreamerList from '../component/MainPageStreamerList'
+import '../../scss/main.scss'
+import MainPageStreamerList from './MainPageStreamerList'
 
-import client_id from '../data/client_id'
+import client_id from '../../data/client_id'
 import fetch from 'isomorphic-fetch'
 
 /*

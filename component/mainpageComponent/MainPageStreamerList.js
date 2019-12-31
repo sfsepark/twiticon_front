@@ -1,6 +1,6 @@
-import '../scss/main.scss'
+import '../../scss/main.scss'
 import StreamerCardView from './StreamerCardview';
-import {apiURL} from '../URL'
+import {apiURL} from '../../URL'
 
 /*
     SSR 해야하는 것 : 최초 

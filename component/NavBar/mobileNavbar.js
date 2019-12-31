@@ -1,5 +1,5 @@
-import '../scss/mobileNavbar.scss'
-import Logo from './logo'
+import '../../scss/mobileNavbar.scss'
+import Logo from '../logo'
 
 import { useState } from 'react'
 

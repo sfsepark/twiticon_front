@@ -1,8 +1,8 @@
 import React from 'react'
-import '../scss/emoticonSelector.scss'
-import Emoticon from './emoticon'
+import '../../scss/emoticonSelector.scss'
+import Emoticon from '../emoticon'
 
-import checkEmote from '../methods/checkEmote'
+import checkEmote from '../../methods/checkEmote'
 
 /*
     streamerInfo의 state emoticonInfo(필터링되어 아래에 나열되는 이모티콘정보)

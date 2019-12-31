@@ -1,13 +1,11 @@
-import RightTriangle from './rightTriangle';
+import RightTriangle from '../rightTriangle';
 
-import '../scss/main.scss';
-import '../scss/StreamerCardView.scss'
-import { apiURL } from '../URL'
+import '../../scss/main.scss';
+import '../../scss/StreamerCardView.scss'
 
-import fetch from 'isomorphic-fetch';
 import Link from 'next/link'
-import Emoticon from '../component/emoticon'
-import EmoticonAlias from '../component/EmoticonAlias'
+import Emoticon from '../emoticon'
+import EmoticonAlias from '../EmoticonAlias'
 
 export default class StreamerTwiticonList extends React.Component{
 

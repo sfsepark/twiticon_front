@@ -1,10 +1,10 @@
-import '../scss/header.scss';
+import '../../scss/header.scss';
 import Link from 'next/link';
 
 import UserInfo from './userInfo.js'
-import SearchBar from './searchBar.js';
-import cookies from '../methods/cookies'
-import Logo from './logo'
+import SearchBar from '../searchBar.js';
+import cookies from '../../methods/cookies'
+import Logo from '../logo'
 
 import {useEffect,useState} from 'react'
 

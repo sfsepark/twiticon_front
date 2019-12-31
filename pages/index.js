@@ -4,8 +4,8 @@ import Head from 'next/head';
 import '../scss/body.scss'
 
 
-import MainPageContentsHeader from '../component/MainPageContentsHeader'
-import MainPageContents from '../component/MainPageContents'
+import MainPageContentsHeader from '../component/mainpageComponent/MainPageContentsHeader'
+import MainPageContents from '../component/mainpageComponent/MainPageContents'
 
  
 class Index extends React.Component{

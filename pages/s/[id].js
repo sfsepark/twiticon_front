@@ -5,7 +5,7 @@ import next_cookies from 'next-cookies'
 
 import '../../scss/streamer_contents.scss';
 
-import StreamerInfo  from '../../component/streamerInfo.js';
+import StreamerInfo  from '../../component/sPageComponent/streamerInfo';
 import '../../scss/body.scss'
 
 import {apiURL} from '../../URL'

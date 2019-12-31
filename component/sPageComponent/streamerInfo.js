@@ -5,7 +5,7 @@
     이 className에 display:none; style이 포함되어있는 class를 state의 속성에 따라서 넣었다 뺄수있는 것을 만들면된다.
 */
 
-import '../scss/streamerInfo.scss';
+import '../../scss/streamerInfo.scss';
 import EmoticonSelector from './EmoticonSelector'
 import EmoticonList from './EmoticonList'
 import Head from 'next/head';
