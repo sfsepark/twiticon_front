@@ -13,7 +13,7 @@ export default class Banner extends React.Component{
     render(){
         return (
             <div className = "banner-background">
-                <div className = "banner-title">여러분들이 직접 이모티콘의 별명을 지어주세요</div>
+                <div className = "banner-title">여러분들이 직접 이모티콘의 <br className = 'mobile-banner-br'/>별명을 지어주세요</div>
                 <SearchBar type='main'/>
             </div>
         )
