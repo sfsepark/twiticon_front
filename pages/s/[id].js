@@ -36,6 +36,17 @@ class Streamer extends React.Component{
     static async getInitialProps(ctx){
     
         var info = await getInfoFromServer(ctx.query.id);
+
+        if(info.channelInfo.users.length == 0){
+            if (ctx.res) {
+                ctx.res.writeHead(302, {
+                    Location: '/'
+                })
+                ctx.res.end();
+            } else {
+                Router.push('/');
+            }
+        }
     
         return {
             cookie : {
