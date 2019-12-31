@@ -66,7 +66,13 @@ class EmoticonSelector extends React.Component{
             emoticonInfos => emoticonInfos.map(
                 info =>   (
                     <div className = {'emoticon-wrapper-button-' + (activeEmoticon.includes(info.id) ? 'visible' : 'invisible')}
-                        onClick = {() => handleSelectEmoticon([info.id])}>
+                        onClick = {() => {
+                            if(activeEmoticon.length == 1 && activeEmoticon[0] == info.id)
+                                handleSelectEmoticon(undefined)
+                            else
+                                handleSelectEmoticon([info.id])
+                            }
+                        }>
                         <Emoticon 
                             info = {info}/>
                     </div>
