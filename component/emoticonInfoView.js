@@ -300,9 +300,12 @@ class EmoticonInfoView extends React.Component{
                                 </div>
                             </div>
                             <div className = 'emoticon-info-view-contents-label'>
-                                {this.state.info.alias_list.length > 0 ? 
+                                {   this.state.edit 
+                                    ? '트위티콘 수정 중 ...'
+                                    : (this.state.info.alias_list.length > 0 ? 
                                     '이 트위티콘의 별명은..' : 
-                                    '이 트위티콘의 별명이 아직 생성되지 않았습니다.'}
+                                    '이 트위티콘의 별명이 아직 생성되지 않았습니다.')
+                                }
                             </div>
                             <div className = 'emoticon-info-view-aliases'>
                                 {aliasList}
