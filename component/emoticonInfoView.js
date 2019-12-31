@@ -6,11 +6,14 @@ import '../scss/emoticonList.scss'
 
 import {apiURL} from '../URL'
 
+import ColorThief from '../methods/color-thief'
+
 class EmoticonInfoView extends React.Component{
     constructor(props){
         super(props);
 
         this.state = {
+            color : null,
             info : JSON.parse(JSON.stringify(this.props.info)),
             edit : false,
             dispatch : 0
@@ -171,6 +174,19 @@ class EmoticonInfoView extends React.Component{
         }
     }
 
+    componentDidMount(){
+        
+        var color = ColorThief.getColor(this.state.info.url);
+        ((_this) => {
+            color.then((data) => {
+                var curState = JSON.parse(JSON.stringify(_this.state));
+                curState.color = 'rgb(' + data[0] + ',' + data[1] + ',' + data[2] + ')'
+                _this.setState(curState)
+            }).catch();
+        })(this)
+        
+    }
+
     render(){
 
         var aliasList;
@@ -263,8 +279,15 @@ class EmoticonInfoView extends React.Component{
         }
 
         return (
-            <div className = 'emoticon-info-view-container'>
+            <div className = 'emoticon-info-view-container' 
+                style = {{
+
+                        'borderLeft' : '15px solid ' + this.state.color
+                    
+                }}>
                 {loader}
+                <img src = "http://twiticon.com/logo.png" className = 'emoticon-info-view-logo'/>
+                
                 <div className = 'emoticon-info-view-left'>
                     <div className = 'emoticon-info-view-flex'>
                         <img 

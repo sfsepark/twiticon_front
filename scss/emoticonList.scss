@@ -4,6 +4,7 @@
 
 .emoticon-info-view-visible{
     display:block;
+    overflow: visible;
 }
 
 .emoticon-info-view-invisible{
@@ -74,6 +75,29 @@
     padding-right : 21px;
 
     overflow: visible;
+
+    width: calc(100% - 59px);
+
+    border-radius: 10px;
+    box-shadow: 0 3px 6px 0 #d1d1d1;
+    overflow: visible;
+    z-index: 1;
+
+    border-left :15px solid #000
+}
+
+.emoticon-info-view-logo{
+    position: absolute;
+
+    z-index: 1;
+
+    width : 29px;
+    height: 29px;
+
+    opacity: 0.5;
+
+    bottom : 12px;
+    right : 12px;
 }
 
 .emoticon-info-view-x4{
