@@ -6,6 +6,8 @@ import next_cookies from 'next-cookies'
 import Banner from '../component/banner.js';
 import ChatBox from '../component/chatBox.js';
 
+import mobileCheck from '../methods/mobileCheck'
+
 const mainPageRoutes = ['/','/index','/follow','/explore']
 
 export default class MyApp extends App{
@@ -22,6 +24,16 @@ export default class MyApp extends App{
             userId : next_cookies(ctx).userId,
             profile : next_cookies(ctx).profile,
             name : next_cookies(ctx).name,
+        }
+
+        const userAgent = ctx.req
+        ? ctx.req.headers["user-agent"]
+        : navigator.userAgent;
+  
+        if (mobileCheck(userAgent)) {
+            pageProps.isMobile = true;
+        } else {
+            pageProps.isMobile = false;
         }
 
         return { pageProps }
@@ -116,15 +128,17 @@ export default class MyApp extends App{
                     
                     <div className = "main-contents-container">
                         <Component url = {createUrl(router)} {...pageProps} />
-                        <ChatBox width = {300} height = {
-                            router.route == '/' || router.route == '/index' || router.route == '/follow' || router.route == '/explore'
-                            ? 460
-                            : 612
-                        } type = {
-                            router.route == '/' || router.route == '/index' || router.route == '/follow' || router.route == '/explore'
-                            ? 'main'
-                            : 'other'
-                        } {...pageProps}/>
+                        {   pageProps.isMobile ? null :
+                            <ChatBox width = {300} height = {
+                                router.route == '/' || router.route == '/index' || router.route == '/follow' || router.route == '/explore'
+                                ? 460
+                                : 612
+                            } type = {
+                                router.route == '/' || router.route == '/index' || router.route == '/follow' || router.route == '/explore'
+                                ? 'main'
+                                : 'other'
+                            } {...pageProps}/>
+                        }
                     </div>
                 </div>
             </Container>

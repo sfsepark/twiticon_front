@@ -13,6 +13,8 @@
     margin-right : 40px;
 
     width : calc(100% - 80px);
+
+    padding-bottom: 10px;
 }
 
 .streamer-info-header-flex{
@@ -34,10 +36,15 @@
     padding-bottom: 30px;
     border-bottom: solid 1px #d9d9de;
     margin-bottom: 10px;
+
+    @media (max-width : 1097px){
+        width : 100%;
+    }
 }
 
 .streamer-info-title{
     display: inline-block;
+    width : 58.4%;
 }
 
 .streamer-info-title-logo{
@@ -51,6 +58,7 @@
     display: inline-block;
 
     margin-left : 12px;
+    width : calc(100% - 160px);
 }
 
 .streamer-info-title-displayname{
@@ -66,6 +74,8 @@
     letter-spacing: normal;
     text-align: left;
     color: #000000;
+    width: calc(100%);
+    text-overflow: ellipsis;
 }
 
 .streamer-info-title-name{
@@ -81,6 +91,8 @@
     letter-spacing: normal;
     text-align: left;
     color: #000000;
+    width: calc(100%);
+    text-overflow: ellipsis;
 }
 
 .streamer-info-title-flex{

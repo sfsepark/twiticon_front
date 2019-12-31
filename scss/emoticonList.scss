@@ -15,6 +15,7 @@
 
 .emoticon-info-view-left{
     overflow: visible;
+    z-index: 5;
 }
 
 .emoticon-info-view-flex{
@@ -83,7 +84,7 @@
     overflow: visible;
     z-index: 1;
 
-    border-left :15px solid #000
+    border-left :15px solid #d1d1d1
 }
 
 .emoticon-info-view-logo{
@@ -111,7 +112,7 @@
     margin-left : 19px;
     display: inline-block;
     overflow: visible;
-    width: 450px;
+    width: 327px;
 }
 
 .emoticon-info-view-title{
@@ -154,6 +155,8 @@
 
     display: block;
     margin-top : 8px;
+    overflow: visible;
+    white-space: nowrap;
 }
 
 .emoticon-info-view-aliases{
@@ -224,7 +227,7 @@
 }
 
 .emoticon-info-view-fixed-log{
-    width: 287px;
+    width: 240px;
     height: 22px;
     font-family: "Noto Sans KR",sans-serif;
     font-size: 15px;

@@ -175,8 +175,8 @@ class EmoticonInfoView extends React.Component{
     }
 
     componentDidMount(){
-        
-        var color = ColorThief.getColor(this.state.info.url);
+        var url  = 'https://static-cdn.jtvnw.net/emoticons/v1/' + this.state.info.id +  '/4.0';
+        var color = ColorThief.getColor(url);
         ((_this) => {
             color.then((data) => {
                 var curState = JSON.parse(JSON.stringify(_this.state));
@@ -230,7 +230,7 @@ class EmoticonInfoView extends React.Component{
             rightSection = (
                 <div className = 'emoticon-info-view-fixed'>
                     <div className = 'emoticon-info-view-fixed-log'>
-                        관리자에 의해 별명이 확정된 이모티콘입니다.
+                        관리자에 의해 별명이 확정되었습니다.
                     </div>
                     <div className = 'emoticon-info-view-fixed-svg'>
                         <svg xmlns="http://www.w3.org/2000/svg" width="34.78" height="45.587" viewBox="0 0 34.78 45.587">
@@ -256,11 +256,6 @@ class EmoticonInfoView extends React.Component{
             else{
                 rightSection = (
                     <div className = 'emoticon-info-editing'>
-                        <div className = 'emoticon-info-edit-log'>
-                            <div className = 'emoticon-info-edit-txt'>
-                                이 이모티콘을 변경 중입니다.
-                            </div>
-                        </div>
                         <div className = 'emoticon-submit-button edit-button'>
                             <div className = 'emoticon-info-edit-txt'
                                 onClick = {() => this.handleSubmit()}>
