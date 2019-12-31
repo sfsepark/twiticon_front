@@ -24,20 +24,23 @@
 }
 
 .emotcion-info-view-loader-container{
-    width : calc(100% + 42px);
-    height: calc(100% + 32px);
+    width: calc(100% + 15px);
+    height: calc(100%);
 
     position: absolute;
     background-color: rgba(0,0,0,0.35);
     text-align: center;
 
     top : 0;
-    left : 0;
+    left : -15px;
 
     z-index: 10000;
+    border-radius: 5px;
+
+
 }
 .emoticon-info-view-loader-wrapper{
-    top : calc(50% + 16px - 12.5px);
+    top : calc(50% - 12.5px);
     position: relative;
 }
 
@@ -59,7 +62,6 @@
 }
 
 .emoticon-info-view-container{
-    width : calc(100% - 44px);
     height: 119px;
     border: solid 1px #d1d1d1;
     background-color: #ffffff;
@@ -75,16 +77,17 @@
     padding-left : 21px;
     padding-right : 21px;
 
-    overflow: visible;
-
     width: calc(100% - 59px);
 
     border-radius: 10px;
     box-shadow: 0 3px 6px 0 #d1d1d1;
     overflow: visible;
     z-index: 1;
+    border-left: solid 15px #d1d1d1;
 
-    border-left :15px solid #d1d1d1
+    @media (max-width : 880px) {
+        display: none;
+    }
 }
 
 .emoticon-info-view-logo{
@@ -121,14 +124,14 @@
 
 .emoticon-info-view-icon{
     width: 28px;
-    height: 28px;
+    height: 26px;
     object-fit: cover;
     display: inline-block;
 }
 
 .emoticon-info-view-name{
     margin-left : 11px;
-    height: 28px;
+    height: 26px;
     font-family: "Noto Sans KR",sans-serif;
     font-size: 20px;
     font-weight: normal;
@@ -162,9 +165,9 @@
 .emoticon-info-view-aliases{
     text-align: left;
     display : block;
-    height: 39px;
+    height: 33px;
     overflow-x : visible;
-    margin-top : 7px;
+    margin-top : 9px;
     overflow: visible;
     white-space: nowrap;
 }
@@ -237,7 +240,7 @@
     line-height: 1.47;
     letter-spacing: normal;
     text-align: left;
-    color: #000000;
+    color: #8a8a8a;
 }
 
 .emoticon-info-view-fixed-svg{
@@ -247,7 +250,7 @@
 
 .edit-button{
     text-align: center;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+    box-shadow: 0 3px 6px 0 #d1d1d1;
     cursor: pointer;
 }
 
@@ -256,7 +259,7 @@
 }
 .emoticon-info-edit-button{
     width: 96px;
-    height: 30px;
+    height: 26px;
     border-radius: 6px;
     
     border: solid 1px #6441a5;
@@ -267,7 +270,7 @@
 .emoticon-info-edit-txt{
     height: 23px;
     font-family: "Noto Sans KR",sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -276,7 +279,7 @@
     text-align: center;
     color: #ffffff;
 
-    margin-top : 6px;
+    margin-top : 3px;
 
     cursor: pointer;
 }
@@ -290,7 +293,7 @@
 
 .emoticon-submit-button{
     width: 48px;
-    height: 30px;
+    height: 26px;
     border-radius: 6px;
     border: solid 1px #008000;
     background-color: #008000;
@@ -300,9 +303,8 @@
 
 .emoticon-cancle-button{
     width: 48px;
-    height: 30px;
+    height: 26px;
     border-radius: 6px;
-    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
     border: solid 1px #ff0000;
     background-color: #ff0000;
     margin-left : 13px;
@@ -310,7 +312,7 @@
 
 .emoticon-info-view-add-button{
     width: 28px;
-    height: 28px;
+    height: 26px;
     border-radius: 9px;
     border: solid 1px #6441a5;
     background-color: #6441a5;
@@ -396,4 +398,12 @@
 
 .flex{
     display: flex;
+}
+
+.emoticon-info-button-pannel{
+    overflow: visible;
+}
+
+.emoticon-info-editing{
+    overflow: visible;
 }
