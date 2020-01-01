@@ -108,7 +108,7 @@ export default class MyApp extends App{
                     <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap" rel="stylesheet"/>
                     <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon"/>
                     <link rel="shortcut icon" href="http://twiticon.com/favicon.ico?v=2" type="image/x-icon"/>
-                    <meta name="viewport" content="width=device-width, initial-scale=0.65"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
                 </Head>
 
                 <Navbar 

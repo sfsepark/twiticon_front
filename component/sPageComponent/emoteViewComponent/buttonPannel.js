@@ -8,6 +8,9 @@ export default (props) => {
                 <div className = 'emoticon-info-view-fixed-log'>
                     관리자에 의해 별명이 확정되었습니다.
                 </div>
+                <div className = 'emoticon-info-view-fixed-log emoticon-info-view-fixed-log-mobile'>
+                    별명이 고정되었습니다.
+                </div>
                 <div className = 'emoticon-info-view-fixed-svg'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="34.78" height="45.587" viewBox="0 0 34.78 45.587">
                     <g id="lock-padlock-symbol-for-protect_icon-icons.com_56926" transform="matrix(1, -0.017, 0.017, 1, -60.133, 2.143)">

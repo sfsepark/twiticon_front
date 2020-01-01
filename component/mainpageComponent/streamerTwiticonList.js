@@ -60,7 +60,7 @@ export default class StreamerTwiticonList extends React.Component{
                                 <img className = 'streamer-twiticon-list-twitich-logo'
                                     src = "http://twiticon.com/twitch_logo.png">
                                 </img>
-                                <div className = 'streamer-twiticon-list-header-title-text'>
+                                <div className = 'streamer-twiticon-list-header-title-streamer streamer-twiticon-list-header-title-text'>
                                     스트리머
                                 </div>
                                 <div className = 'streamer-twiticon-list-header-title-name'>
@@ -80,7 +80,7 @@ export default class StreamerTwiticonList extends React.Component{
                             <a>
                                 <div className = 'flex'>
                                     <div className = 'streamer-twiticon-list-show-detail'>
-                                        자세히 보기
+                                        자세히
                                     </div>
                                     <div className = 'right-button'>
                                         <RightTriangle/>

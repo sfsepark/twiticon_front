@@ -262,15 +262,49 @@ class EmoticonInfoView extends React.Component{
                 style = {{
                         'borderLeft' : '15px solid ' + this.state.color
                 }}>
-                {buttonPannel}
-                {emoticonTitle}
+                {loader}
                 <img src = "http://twiticon.com/logo.png" className = 'emoticon-info-view-logo'/>
-                <div className = 'emoticon-info-view-flex'>
-                    <img 
-                        src = {'https://static-cdn.jtvnw.net/emoticons/v1/' + this.state.info.id +  '/4.0'} 
-                        className = 'emoticon-info-view-x4'/>
-                </div>
+                {
+                    this.state.info.alias_list.length == 0 && ! this.state.edit  && !this.state.info.fixed 
+                    ? <div className = 'mobile-emoticon-info-view-empty'>
+                        <div className = 'mobile-emoticon-info-view-empty-left'>
+                            <img 
+                                src = {'https://static-cdn.jtvnw.net/emoticons/v1/' + this.state.info.id +  '/4.0'} 
+                                className = 'emoticon-info-view-x4'/>
+                            {emoticonTitle}
+                        </div>
+                        <div className = 'mobile-emoticon-info-view-empty-right'>
+                            <div className = 'mobile-emoticon-info-view-empty-txt'>
+                                이 트위티콘의 <br className = 'mobile-emoticon-info-view-empty-br'/>별명이 없습니다.
+                            </div>
+                            {buttonPannel}
+                        </div> 
+                    </div>
+                    : (
+                        <React.Fragment>
+                            {buttonPannel}
+                            {emoticonTitle}
+                            <div className = 'emoticon-info-view-flex'>
+                                <img 
+                                    src = {'https://static-cdn.jtvnw.net/emoticons/v1/' + this.state.info.id +  '/4.0'} 
+                                    className = 'emoticon-info-view-x4'/>
+                                <div className = 'mobile-emoticon-info-view-info-section'>
+                                    <div className = 'mobile-emoticon-info-view-label'>
+                                        {   
 
+                                            this.state.edit 
+                                            ? '트위티콘 수정 중 ...'
+                                            : (this.state.info.alias_list.length > 0 ? 
+                                            '이 트위티콘은..' : 
+                                            '')
+                                        }
+                                    </div>
+                                    {aliasContainer}
+                                </div>
+                            </div>
+                        </React.Fragment>
+                    )
+                }
             </div>
             
         </React.Fragment>

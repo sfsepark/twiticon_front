@@ -28,6 +28,7 @@
 .mobile-emoticon-info-view-container .emoticon-info-view-name{
     height : 28px;
     font-size: 17px;
+    margin-left: 7px;
 }
 
 .mobile-emoticon-info-view-container .emoticon-info-button-pannel{
@@ -42,8 +43,20 @@
 }
 
 .mobile-emoticon-info-view-container .emoticon-info-view-fixed-log{
-    @media (min-width : 550px) and (max-width : 880px) {
+    @media (max-width : 880px) {
         display: none;
+    }
+}
+.emoticon-info-view-fixed-log-mobile{
+    display: none;
+}
+
+.mobile-emoticon-info-view-container .emoticon-info-view-fixed-log-mobile{
+    display: none;
+    width: 150px;
+    @media (max-width : 880px) {
+        display: inline-block;
+        margin-right : -5px;
     }
 }
 
@@ -56,5 +69,129 @@
 }
 
 .mobile-emoticon-info-view-container .emoticon-info-view-x4{
+    margin-right: 15px;
     @media (max-width : 549px) {display: none;}
+}
+.mobile-emoticon-info-view-container .mobile-emoticon-info-view-empty-left .emoticon-info-view-x4{
+    margin: 0;
+}
+.mobile-emoticon-info-view-container .mobile-emoticon-info-view-empty .emoticon-info-view-x4{
+    @media (max-width : 549px) {display: block; }
+}
+
+.mobile-emoticon-info-view-empty .emoticon-info-view-title{
+    margin-bottom: 0px;;
+    margin-top : 10px;
+}
+
+.mobile-emoticon-info-view-empty{
+    width : 100%;
+
+}
+
+.mobile-emoticon-info-view-empty-left{
+    display: inline-block;
+    overflow: visible;
+}
+
+.mobile-emoticon-info-view-empty-right{
+    display: inline-block;
+    width : calc(100% - 115px);
+    text-align: center;
+    overflow: visible;
+}
+
+.mobile-emoticon-info-view-empty-br{
+    @media (min-width : 550px) and (max-width : 880px) {
+        display: none;
+    }
+    @media (max-width : 549px) {display: block;}
+}
+
+.mobile-emoticon-info-view-empty-txt{
+    margin-top : 15px;
+    @media (min-width : 550px) and (max-width : 880px) {
+        margin-top : 27px;
+        margin-bottom: 12px;
+    }
+
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+
+    display: block;
+}
+
+.mobile-emoticon-info-view-empty .emoticon-info-button-pannel{
+    position: relative;
+    top : 0;    right :0;
+    text-align: center;
+    margin-top : 12px;
+
+}
+
+.mobile-emoticon-info-view-info-section{
+    display: inline-block;
+}
+
+.mobile-emoticon-info-view-label{
+    display: block;
+    @media (max-width : 549px) {display: none;}
+}
+
+.mobile-emoticon-info-view-label{
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 19px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.45;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.mobile-emoticon-info-view-container .emoticon-info-view-aliases{
+    white-space: unset;
+    margin-top : 0px;
+    
+    height: auto;
+}
+
+
+.mobile-emoticon-info-view-container .emoticon-info-alias-wrapper{
+    margin-top: 8px;
+}
+
+.mobile-emoticon-info-view-container .emoticon-info-view-edit-textarea-container{
+    margin-top: 8px;
+}
+
+.emoticon-info-view-add-button{
+    margin-top: 10px;
+    margin-bottom: 7px;
+}
+
+.mobile-emoticon-info-view-empty-left{
+    width: 112px;
+    overflow: visible;
+}
+
+.mobile-emoticon-info-view-container .mobile-emoticon-info-view-empty-left .emoticon-info-view-title{
+    width : 112px;
+    overflow: visible;
+    white-space: nowrap;
+}
+
+.mobile-emoticon-info-view-empty-left .emoticon-info-view-name{
+    overflow: visible;
+}
+.mobile-emoticon-info-view-container{
+    @media (max-width : 549px) {padding-right: 10px; padding-left: 10px; width: calc(100% - 39px);;}
 }
