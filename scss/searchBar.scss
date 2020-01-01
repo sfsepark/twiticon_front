@@ -140,10 +140,35 @@
 }
 
 
-@media (max-width : 700px){
+@media (min-width : 551px) and (max-width : 700px){
     .searchbar.searchbar-banner{
         width :520px;
         margin-left: calc((100% - 520px)/2);
 
     }
 }
+
+@media (max-width : 550px){
+    .searchbar.searchbar-banner{
+        width :calc(100% - 28px);
+        margin-left: 10px;
+        height: 60px;
+        margin-top: 20px;
+    }
+    .searchbar-banner .searchbar-textarea {
+        margin-left: 15px;
+        margin-top: 10px;
+        height: 40px;
+        font-size: 30px;
+        width: calc(100% - 90px);
+    }
+
+    .searchbar-banner .searchbar-search-button {
+        width: 60px;
+        height: 53px;
+        padding-top: 7px;
+        margin-left: 13px;
+        border-radius: 0;
+    }
+}
+

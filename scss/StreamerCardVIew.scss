@@ -29,9 +29,16 @@
 }
 
 
-@media (max-width : 700px){
+@media (min-width : 551px) and (max-width : 700px){
 
     .streamer-cardview-container:nth-child(3n +1){
+
+        margin-left : 0px;
+    }
+}
+
+@media (max-width : 550px){
+    .streamer-cardview-container:nth-child(2n +1){
 
         margin-left : 0px;
     }
@@ -51,10 +58,16 @@
 }
 
 
-@media (max-width : 700px){
+@media (min-width : 551px) and  (max-width : 700px){
 
     .main-contents{
         width : 520px;
+    }
+}
+
+@media (max-width : 550px){
+    .main-contents{
+        width : 340px;
     }
 }
 
@@ -157,9 +170,13 @@
         width: 698px;
     }
     
-    @media (max-width : 700px){
+    @media (min-width : 551px) and (max-width : 700px){
     
         width : 518px;
+    }
+    @media (max-width : 550px){
+    
+        width :338px;
     }
 
     border-top-right-radius: 10px;
@@ -270,10 +287,6 @@
     display:inline-block;
     margin-top : 8.5px;
 
-    @media (max-width : 700px){
-    
-        display: none;
-    }
 }
 
 .streamer-twiticon-list-show-detail:hover{
@@ -286,6 +299,21 @@
     margin-top : 13px;
     margin-left : 5px;
     margin-right : 5px;
+}
+
+@media (max-width : 550px){
+    .streamer-twiticon-list-twitich-logo{
+        display: none;
+    }
+    .streamer-twiticon-list-header-title-streamer{
+        display: none;
+    }
+    .streamer-twiticon-list-header-title-name{
+        display: none;
+    }
+    .streamer-twiticon-list-profile{
+        margin-left : 10px;
+    }
 }
 
 //트위티콘 리스트 바디
