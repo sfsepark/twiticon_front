@@ -119,7 +119,9 @@ export default class MyApp extends App{
                     url={createUrl(router)}
                     {...pageProps}/>
                 
-                <div className="main">
+                <div className={"main "  + (mainPageRoutes.includes(router.route) 
+                        ? ('main-' + this.state.type)
+                        : 'main-sub')}>
                     {
                         router.route == '/' || router.route == '/index' || router.route == '/follow' || router.route == '/explore'
                         ? <Banner/>

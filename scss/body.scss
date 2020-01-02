@@ -30,6 +30,10 @@ html,body{
     
 }
 
+.main.main-sub{
+    height: calc(100% - 76px);
+}
+
 .main-contents-container{
     width: 100%;
     text-align: center;
