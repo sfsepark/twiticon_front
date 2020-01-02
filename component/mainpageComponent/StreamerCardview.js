@@ -21,6 +21,19 @@ export default class StreamerCardView extends React.Component{
             loading : true,
             lazy : true
         }
+
+        this.windowResizeListener = this.windowResizeListener.bind(this);
+    }
+
+    windowResizeListener(){
+        var curTwiticonList = document.getElementById(this.props.id).getElementsByClassName('streamer-twiticon-list')[0];
+        var curTwiticonListBody = curTwiticonList.getElementsByClassName('streamer-twiticon-list-body')[0];
+        var offsetHeight = 142 + (curTwiticonListBody.offsetHeight-50) ;
+
+        var curState = JSON.parse(JSON.stringify(this.state));
+        curState.offsetHeight = offsetHeight;
+
+        this.setState(curState);
     }
 
     loadComplete(){        
@@ -33,6 +46,13 @@ export default class StreamerCardView extends React.Component{
         curState.loading = false;
 
         this.setState(curState);
+
+        window.addEventListener('resize', this.windowResizeListener)
+
+    }
+
+    componentWillUnmount(){
+        window.removeEventListener('resize', this.windowResizeListener)
 
     }
 
