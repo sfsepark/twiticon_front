@@ -16,6 +16,15 @@
     display: block;
 }
 
+@media (max-width : 550px){
+    .main-contents-header{
+        margin-top: 10px;
+    }
+    .main-contents-body{
+        margin-top : 15px;
+    }
+}
+
 .main-contents-title{
     height: 46px;
     font-family: "Noto Sans KR",sans-serif;
