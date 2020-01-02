@@ -1,5 +1,5 @@
 .searchbar{
-    border: solid 4px #6441a5;
+    border: solid 4px #ffffff;
     background-color: #ffffff;
 
     text-align:center; 
@@ -7,6 +7,9 @@
     display:inline-block;
 
     z-index: 1;
+}
+.searchbar:focus-within{
+    border: solid 4px #6441a5;
 }
 .search-bar-wrapper{
     width: 100%;
@@ -27,7 +30,7 @@
 
     margin-top:34px;
 
-    margin-left : calc((100% - 928px)/2);
+    margin-left : calc((100% - 936px)/2);
 
     vertical-align: top;
 }
@@ -99,10 +102,18 @@
 }
 
 .searchbar-banner .searchbar-search-button{
-    width: 80px;
-    height: 65px;
-    padding-top : 15px;
+    width: 60px;
+    height: 55px;
+    padding-top: 5px;
     margin-left: 13px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.5);
+}
+
+.searchbar-banner .searchbar-search-button:hover{
+    box-shadow: unset;
 }
 
 .searchbar-header .searchbar-search-button{
@@ -133,7 +144,7 @@
 
 @media (min-width : 701px) and (max-width : 880px){
     .searchbar.searchbar-banner{
-        width : 700px;
+        width : 692px;
         margin-left: calc((100% - 700px)/2);
 
     }
@@ -142,7 +153,7 @@
 
 @media (min-width : 551px) and (max-width : 700px){
     .searchbar.searchbar-banner{
-        width :520px;
+        width :516px;
         margin-left: calc((100% - 520px)/2);
 
     }
@@ -153,22 +164,28 @@
         width :calc(100% - 28px);
         margin-left: 10px;
         height: 60px;
-        margin-top: 20px;
+        margin-top: 0;
+        margin-bottom: 3vw;
     }
     .searchbar-banner .searchbar-textarea {
         margin-left: 15px;
         margin-top: 10px;
         height: 40px;
         font-size: 30px;
-        width: calc(100% - 90px);
+        width: calc(100% - 70px);
     }
 
     .searchbar-banner .searchbar-search-button {
-        width: 60px;
-        height: 53px;
-        padding-top: 7px;
-        margin-left: 13px;
-        border-radius: 0;
+        width: 40px;
+        height: 30px;
+        padding-top: 10px;
+        margin-top: 10px;
+        margin-right: 5px;
+    }
+
+    .searchbar-banner .searchbar-search-button svg{
+        width : 20px;
+        height: 20px;
     }
 }
 
