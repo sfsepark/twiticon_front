@@ -7,12 +7,12 @@
         height: 369px;
     }
     @media (max-width : 550px){
-        height: 210px;
+        height: auto;
     }
 }
 .mobile-banner-br{
     display: none;
-    @media (max-width : 700px){
+    @media (max-width : 880px){
         display: block;
     }
 }
@@ -33,15 +33,21 @@
     margin-left : calc((100% - 928px)/2);
     margin-top : 43.5px;
 
+    @media (min-width : 701px) and (max-width : 880px){
+        height: 132px;
+        margin-top: 25px;
+    }
+
     @media (min-width : 551px) and (max-width : 700px){
         height: 132px;
         font-size: 40px;
     }
     @media (max-width : 550px){
     
-        height: 82px;
-        font-size: 30px;
-        margin-top: 20px;
+        height: auto;
+        font-size: 7vw;
+        margin-top: 3vw;
+        margin-bottom: 2vw;
         
     }
 }

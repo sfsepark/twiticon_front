@@ -52,7 +52,7 @@ class SearchBar extends React.Component{
                 <div className = 'search-bar-wrapper'>
                     <textarea className = "searchbar-textarea"  value={this.state.value} maxLength="77" onChange={this.handleChange} placeholder={this.props.type == 'main' ? "스트리머 이름" : '검색'}></textarea>
                     <div className = "searchbar-search-button" onClick={this.handleSubmit}>
-                        <svg xmlns="http://www.w3.org/2000/svg" width={this.props.type == 'main' ? 40 : 20} height={this.props.type == 'main' ? 48 : 24} viewBox="0 0 42.642 50.473">
+                        <svg xmlns="http://www.w3.org/2000/svg" width={this.props.type == 'main' ? 30 : 20} height={this.props.type == 'main' ? 48 : 24} viewBox="0 0 42.642 50.473">
                         <g id="icon_search" transform="translate(1.5 1.5)">
                             <path id="패스_1551" data-name="패스 1551" d="M0,0,9.917,11.637" transform="translate(30.083 36.363)" fill="none" stroke="#b9b9b9" strokeWidth="3"/>
                             <ellipse id="타원_1" data-name="타원 1" cx="18.743" cy="19.281" rx="18.743" ry="19.281" transform="translate(0 0)" fill="none" stroke="#e5e5e5" strokeMiterlimit="10" strokeWidth="3"/>
