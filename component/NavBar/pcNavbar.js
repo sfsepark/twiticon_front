@@ -24,31 +24,6 @@ const Navbar  = function(props){
         Router.push("/login");
     }
 
-    var active = '';
-
-    
-    if(props.url.pathname == '/' || props.url.pathname == '/index'){
-        if(profile)
-            active = 'follow'
-        else
-            active = 'explore'
-    }
-    else if(props.url.pathname == '/explore'){
-        active = 'explore'
-    }
-    else if(props.url.pathname == '/follow'){
-        active = 'follow'
-    }
-    else if(props.url.pathname == '/portal'){
-        active = 'portal'
-    }
-    else if(props.url.pathname == '/notice'){
-        active = 'notice'
-    }
-    else if(props.url.pathname == '/basic'){
-        active = 'basic'
-    }
-
     if(profile){
         userInfo =  <UserInfo profile = {profile}/>
     }
@@ -76,11 +51,11 @@ const Navbar  = function(props){
                     {searchBar}
                 </div>
                 <div className = "header-layout">
-                    <NavbarMenu url = '/explore' menu = '탐색' active = {active == 'explore'}/>
-                    {profile ? <NavbarMenu url = '/follow' menu = '팔로잉' active = {active == 'follow'}/> : null}
-                    <NavbarMenu url = '/basic' menu = {profile ? '내 이모티콘' : '기본 이모티콘'} active = {active == 'basic'}/>
-                    <NavbarMenu url = '/notice' menu = '공지사항' active = {active == 'notice'}/>
-                    <NavbarMenu url = '/portal' menu = '크롬익스텐션' active = {active == 'portal'}/>
+                    <NavbarMenu url = '/explore' menu = '탐색' active = {props.active == 'explore'}/>
+                    {profile ? <NavbarMenu url = '/follow' menu = '팔로잉' active = {props.active == 'follow'}/> : null}
+                    <NavbarMenu url = '/basic' menu = {profile ? '내 이모티콘' : '기본 이모티콘'} active = {props.active == 'basic'}/>
+                    <NavbarMenu url = '/notice' menu = '공지사항' active = {props.active == 'notice'}/>
+                    <NavbarMenu url = '/portal' menu = '크롬익스텐션' active = {props.active == 'portal'}/>
                     {userInfo}
                 </div>
             </div>
