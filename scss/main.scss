@@ -14,6 +14,7 @@
 .main-contents-header{
     margin-top: 26.4px;
     display: block;
+    overflow: visible;
 }
 
 @media (max-width : 550px){
@@ -23,6 +24,13 @@
     .main-contents-body{
         margin-top : 15px;
     }
+}
+
+.main-contents-title-state{
+    overflow: visible;
+}
+.main-contents-title-state .dropdown{
+    margin-right : 5px;
 }
 
 .main-contents-title{
@@ -36,6 +44,7 @@
     letter-spacing: normal;
     text-align: center;
     color: #6441a5;
+    overflow: visible;
 }
 
 .main-contents-title-streamer{

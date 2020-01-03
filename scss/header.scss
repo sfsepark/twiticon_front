@@ -31,10 +31,10 @@ a{
     overflow: visible;
     white-space : nowrap; 
 
-    @media (max-width : 1111px){
-        padding-left : 0px;
-        padding-right : 0px;
-        width: 100%;
+    @media (max-width : 1176px){
+        padding-left : 30px;
+        padding-right : 30px;
+        width: calc(100% - 60px);
     }
 
     @media (max-width : 880px){

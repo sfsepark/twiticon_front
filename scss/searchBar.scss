@@ -8,6 +8,11 @@
 
     z-index: 1;
 }
+.searchbar.searchbar-header{
+    border: solid 4px #F2F2F2;
+    background-color: #F2F2F2;
+    border-radius: 7px;
+}
 .searchbar:focus-within{
     border: solid 4px #6441a5;
 }
@@ -15,6 +20,9 @@
     width: 100%;
     height: 100%;
     display:flex;
+}
+.searchbar-textarea{
+    background-color: transparent;
 }
 
 .searchbar-header{
@@ -112,17 +120,28 @@
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.5);
 }
 
+.searchbar-header .searchbar-search-button{
+    margin-top: 2px;
+    margin-right: 0px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.5);
+}
+
+.searchbar-search-button:hover{
+    box-shadow: unset;
+}
+
 .searchbar-banner .searchbar-search-button:hover{
     box-shadow: unset;
 }
 
 .searchbar-header .searchbar-search-button{
-    width: 38px;
-    height: 33px;
+    width: 30px;
+    height: 27px;
 
-    padding-top : 5px;
+    padding-top : 3px;
 
-    margin-left : 17px;
+    margin-left : 23px;
 }
 
 @media (min-width : 881px) and (max-width : 1070px){
