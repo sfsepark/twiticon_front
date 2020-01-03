@@ -1,5 +1,5 @@
 
-import '../../scss/StreamerCardview.scss'
+import '../../scss/StreamerCardView.scss'
 import Link from 'next/link';
 
 import StreamerTwiticonList from './streamerTwiticonList'
