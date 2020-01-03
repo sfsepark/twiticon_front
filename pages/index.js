@@ -15,7 +15,7 @@ class Index extends React.Component{
         super(props);
 
         this.state = {
-            mainPage : this.props.cookie.twitchToken ? 1 : 0
+            mainPage : this.props.cookie.twitchToken && this.props.cookie['last-visited'] == 'follow' ? 1 : 0
         };
     }
 
@@ -29,7 +29,7 @@ class Index extends React.Component{
 
         mainPageContents.push(<MainPageContents/>)
 
-        if(this.props.cookie.userId){
+        if(this.props.cookie.userId ){
             mainPageContents.push(<MainPageContents userId = {this.props.cookie.userId}/>);
         }
 

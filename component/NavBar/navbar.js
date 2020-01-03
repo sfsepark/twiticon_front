@@ -10,7 +10,7 @@ export default (props) => {
 
     
     if(props.url.pathname == '/' || props.url.pathname == '/index'){
-        if(profile)
+        if(profile && props.cookie['last-visited'] == 'follow')
             active = 'follow'
         else
             active = 'explore'

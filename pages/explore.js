@@ -7,6 +7,8 @@ import '../scss/body.scss'
 import MainPageContentsHeader from '../component/mainpageComponent/MainPageContentsHeader'
 import MainPageContents from '../component/mainpageComponent/MainPageContents'
 
+import cookies from '../methods/cookies'
+
 class Index extends React.Component{
 
     constructor(props){
@@ -17,6 +19,8 @@ class Index extends React.Component{
     componentDidMount(){
         var mainDOM = document.getElementsByClassName('main')[0];
         mainDOM.scrollTop = 0;
+
+        cookies.setCookie('last-visited', 'follow', 7);
     }
 
     render(){

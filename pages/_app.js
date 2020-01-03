@@ -24,6 +24,7 @@ export default class MyApp extends App{
             userId : next_cookies(ctx).userId,
             profile : next_cookies(ctx).profile,
             name : next_cookies(ctx).name,
+            'last-visited' : next_cookies(ctx)['last-visited']
         }
 
         const userAgent = ctx.req
