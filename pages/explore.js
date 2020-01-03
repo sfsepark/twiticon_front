@@ -20,7 +20,7 @@ class Index extends React.Component{
         var mainDOM = document.getElementsByClassName('main')[0];
         mainDOM.scrollTop = 0;
 
-        cookies.setCookie('last-visited', 'follow', 7);
+        cookies.setCookie('last-visited', 'explore', 7);
     }
 
     render(){
