@@ -5,7 +5,7 @@ export default (props) => {
     var aliasList;
 
     if(props.edit == false){
-        aliasList = props.alias_list.map(alias => <EmoticonAlias alias = {alias} height = {33}/>)
+        aliasList = props.alias_list.map((alias,i) => <EmoticonAlias key = {props.name + '-' + i} alias = {alias} height = {33}/>)
     }
     else{
 
