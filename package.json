@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "next",
     "build": "cross-env ANALYZE=true next build",
-    "start": "cross-env NODE_ENV=production PORT=3000 pm2 start server.js"
+    "start": "cross-env NODE_ENV=production PORT=3000 pm2 start server.js --name twiticon_front",
+    "stop" : "pm2 stop twiticon_front",
+    "reload" : "pm2 reload twiticon_front"
   },
   "keywords": [],
   "author": "",
