@@ -12,6 +12,29 @@ import Head from 'next/head';
 
 class StreamerInfo extends React.Component{
 
+    constructor(props){
+        super(props);
+
+        var emoticonInfo = JSON.parse(JSON.stringify(this.props.emoticonInfo));
+
+        this.emoticonKeys = [];
+        this.emoticonDict = {};
+        var emoticonList = Object.values(emoticonInfo);
+        for(let i = 0 ; i < emoticonList.length ; i ++){
+            this.emoticonKeys = this.emoticonKeys.concat(emoticonList[i].map(info => info.id));
+            for(let j = 0 ; j < emoticonList[i].length ; j ++){
+                this.emoticonDict[emoticonList[i][j].id] = emoticonList[i][j];
+            }
+        }
+
+        this.state = {
+            activeEmoticon : JSON.parse(JSON.stringify(this.emoticonKeys))
+        }
+
+        this.handleSelectEmoticon = this.handleSelectEmoticon.bind(this);
+        
+    }
+
     handleSelectEmoticon(ids){
 
         var curState = JSON.parse(JSON.stringify(this.state));
@@ -32,26 +55,6 @@ class StreamerInfo extends React.Component{
         }
 
         this.setState(curState);
-        
-    }
-
-    constructor(props){
-        super(props);
-
-        var emoticonInfo = JSON.parse(JSON.stringify(this.props.emoticonInfo));
-
-        this.emoticonKeys = [];
-        var emoticonList = Object.values(emoticonInfo);
-        for(let i = 0 ; i < emoticonList.length ; i ++){
-            this.emoticonKeys = this.emoticonKeys.concat(emoticonList[i].map(info => info.id));
-        }
-
-        this.state = {
-            activeEmoticon : JSON.parse(JSON.stringify(this.emoticonKeys))
-        }
-
-        this.handleSelectEmoticon = this.handleSelectEmoticon.bind(this);
-
         
     }
 

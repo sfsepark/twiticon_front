@@ -27,6 +27,70 @@
 
     width : calc(100% - 30px);
     }
+
+    overflow: visible;
+}
+
+.streamer-info-container-header{
+    display: flex;
+    justify-content: space-between;
+    overflow: visible;
+}
+
+.streamer-info-container-header-title{
+    display: flex;
+    margin-top : 15px;
+
+    @media (max-width : 550px){
+        width : 0;
+        height : 0;
+    }
+}
+
+.streamer-info-cotinaer-header-img{
+    width : 40px;
+    height: 40px;
+}
+
+.streamer-info-container-header-sort{
+    margin-top : 15px;
+    overflow: visible;
+}
+
+.streamer-info-container-header-sort-txt{
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.15;
+    letter-spacing: normal;
+
+    margin-right : 10px;
+    margin-top : 5px;
+}
+
+.streamer-info-container-header-sort .dropdown-toggle{
+
+    width: 150px;
+}
+
+.streamer-info-container-header-sort .dropdown-menu{
+    left : unset !important;
+    right: -5px;
+    width: 150px;
+}
+
+.streamer-info-container-header-title-txt{
+    font-family: "Noto Sans KR",sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.15;
+    letter-spacing: normal;
+
+    margin-left : 10px;
 }
 
 .streamer-info-header-flex{
