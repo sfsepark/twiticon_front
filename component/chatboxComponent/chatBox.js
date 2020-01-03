@@ -209,7 +209,7 @@ export default class ChatBox extends React.Component{
 
                 </div>
                 <div className = 'chatbox-twitch-embed-chat'>
-                    <iframe frameborder="0"
+                    <iframe frameBorder="0"
                         scrolling="no"
                         id="chat_embed"
                         src="https://www.twitch.tv/embed/twiticon/chat"
