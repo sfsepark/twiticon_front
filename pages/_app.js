@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Navbar from '../component/NavBar/Navbar'
 import next_cookies from 'next-cookies'
 
-import Banner from '../component/banner.js';
+import Banner from '../component/Banner.js';
 import ChatBox from '../component/chatboxComponent/ChatBox';
 
 import mobileCheck from '../methods/mobileCheck'

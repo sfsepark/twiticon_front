@@ -1,7 +1,7 @@
 import '../../scss/chatbox.scss'
 import '../../scss/twiticon/style.css'
 
-import RightTriangle from '../rightTriangle';
+import RightTriangle from '../RightTriangle';
 
 import chatUsingTmi from '../../methods/chat_using_tmi'
 import ChatBoxAlert from './ChatBoxAlert';

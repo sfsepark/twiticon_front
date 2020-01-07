@@ -1,11 +1,12 @@
-import RightTriangle from '../rightTriangle';
-
 import '../../scss/main.scss';
 import '../../scss/StreamerCardView.scss'
 
 import Link from 'next/link'
-import Emoticon from '../emoticon'
+
+import Emoticon from '../Emoticon'
 import EmoticonAlias from '../EmoticonAlias'
+
+import RightTriangle from '../RightTriangle';
 
 export default class StreamerTwiticonList extends React.Component{
 

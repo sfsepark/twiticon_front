@@ -1,4 +1,4 @@
-import StreamerSearchResult from '../component/streamerSearchResult.js';
+import StreamerSearchResult from '../component/StreamerSearchResult.js';
 
 import '../scss/body.scss'
 import '../scss/searchResult.scss'

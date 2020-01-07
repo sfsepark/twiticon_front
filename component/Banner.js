@@ -2,7 +2,7 @@ import '../scss/banner.scss'
 
 import React from 'react'
 
-import SearchBar from './searchBar.js';
+import SearchBar from './SearchBar.js';
 
 export default class Banner extends React.Component{
 

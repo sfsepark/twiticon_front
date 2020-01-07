@@ -1,4 +1,4 @@
-import EmoticonInfoView from './emoticonInfoView'
+import EmoticonInfoView from './EmoticonInfoView'
 import {Dropdown} from 'react-bootstrap'
 import '../../scss/dropdown.scss'
 

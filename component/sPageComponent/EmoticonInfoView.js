@@ -6,7 +6,7 @@ import '../../scss/mobileEmoticonList.scss'
 import {apiURL} from '../../URL'
 
 import ColorThief from '../../methods/color-thief'
-import ButtonPannel from './emoteViewComponent/buttonPannel'
+import ButtonPannel from './emoteViewComponent/ButtonPannel'
 import AliasContainer from './emoteViewComponent/AliasContainer';
 import EmoteTitle from './emoteViewComponent/EmoteTitle';
 

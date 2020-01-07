@@ -4,7 +4,7 @@ import React from 'react'
 import Hamburger from './Hamburger'
 
 import { useState } from 'react'
-import SearchBar from '../searchBar'
+import SearchBar from '../SearchBar'
 
 export default (props) => {
 

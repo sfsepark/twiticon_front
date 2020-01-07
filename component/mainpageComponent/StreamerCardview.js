@@ -2,7 +2,7 @@
 import '../../scss/StreamerCardView.scss'
 import Link from 'next/link';
 
-import StreamerTwiticonList from './streamerTwiticonList'
+import StreamerTwiticonList from './StreamerTwiticonList'
 
 export default class StreamerCardView extends React.Component{
 
