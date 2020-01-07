@@ -192,7 +192,7 @@ export default class ChatBox extends React.Component{
                         <Link href = '/notice'>
                             <a>
                             <div className = 'flex chatbox-header-nav-button'>
-                                <img src = "http://twiticon.com/favicon.ico?v=2"/>
+                                <img src = "https://twiticon.com/images/favicon.ico?v=2"/>
                                 <div className = 'chatbox-header-nav-txt'>
                                     트위티콘 차원문 알아보기
                                 </div>

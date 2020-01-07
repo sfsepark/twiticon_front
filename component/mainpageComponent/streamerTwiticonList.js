@@ -58,7 +58,7 @@ export default class StreamerTwiticonList extends React.Component{
                         <div className = 'streamer-twiticon-list-head-title'>
                             <div className = 'flex'>
                                 <img className = 'streamer-twiticon-list-twitich-logo'
-                                    src = "http://twiticon.com/twitch_logo.png">
+                                    src = "https://twiticon.com/images/twitch_logo.png">
                                 </img>
                                 <div className = 'streamer-twiticon-list-header-title-streamer streamer-twiticon-list-header-title-text'>
                                     스트리머

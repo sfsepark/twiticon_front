@@ -75,7 +75,7 @@ export default (function(){
     var lastEmoteAvailableList = null;
 //-------------------------------------------------------------------------------
 
-    var emote_server_url = 'http://twiticon.com/extension';
+    var emote_server_url = 'https://twiticon.com/extension';
     var EmoteInfoList = null;
     var EmoteAliasList = null;
     var EmoteRegexList = null;

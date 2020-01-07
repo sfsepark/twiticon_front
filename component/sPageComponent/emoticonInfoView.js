@@ -231,7 +231,7 @@ class EmoticonInfoView extends React.Component{
                         'borderLeft' : '15px solid ' + this.state.color
                 }}>
                 {loader}
-                <img src = "http://twiticon.com/logo.png" className = 'emoticon-info-view-logo'/>
+                <img src = "https://twiticon.com/images/logo.png" className = 'emoticon-info-view-logo'/>
                 
                 <div className = 'emoticon-info-view-left'>
                     <div className = 'emoticon-info-view-flex'>
@@ -263,7 +263,7 @@ class EmoticonInfoView extends React.Component{
                         'borderLeft' : '15px solid ' + this.state.color
                 }}>
                 {loader}
-                <img src = "http://twiticon.com/logo.png" className = 'emoticon-info-view-logo'/>
+                <img src = "https://twiticon.com/images/logo.png" className = 'emoticon-info-view-logo'/>
                 {
                     this.state.info.alias_list.length == 0 && ! this.state.edit  && !this.state.info.fixed 
                     ? <div className = 'mobile-emoticon-info-view-empty'>
