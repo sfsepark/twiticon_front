@@ -52,7 +52,7 @@ class EmoticonList extends React.Component{
             <div className = 'streamer-info-container'>
                 <div className = 'streamer-info-container-header'>
                     <div className = 'streamer-info-container-header-title'>
-                        <img className = 'streamer-info-cotinaer-header-img' src = 'https://twiticon.com/logo.png'/>
+                        <img className = 'streamer-info-cotinaer-header-img' src = 'https://twiticon.com/images/logo.png'/>
                         <div className = 'streamer-info-container-header-title-txt'>
                             트위티콘 리스트
                         </div>
