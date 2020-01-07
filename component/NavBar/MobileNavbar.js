@@ -1,5 +1,5 @@
 import '../../scss/mobileNavbar.scss'
-import Logo from '../logo'
+import Logo from '../Logo'
 import React from 'react'
 import Hamburger from './Hamburger'
 

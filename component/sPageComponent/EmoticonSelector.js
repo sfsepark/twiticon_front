@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../scss/emoticonSelector.scss'
-import Emoticon from '../emoticon'
+import Emoticon from '../Emoticon'
 
 import checkEmote from '../../methods/checkEmote'
 

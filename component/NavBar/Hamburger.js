@@ -1,8 +1,8 @@
 import '../../scss/hamburger.scss'
-import UserInfo from './userInfo';
+import UserInfo from './UserInfo';
 import cookies from '../../methods/cookies';
 import Router from 'next/router';
-import Logo from '../logo';
+import Logo from '../Logo';
 import NavbarMenu from './NavbarMenu';
 
 function NavbarHamburgerMenu(props){

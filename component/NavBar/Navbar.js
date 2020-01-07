@@ -1,6 +1,6 @@
-import PcNavbar from './pcNavbar'
+import PcNavbar from './PcNavbar'
 import React from 'react'
-import MobileNavbar from './mobileNavbar'
+import MobileNavbar from './MobileNavbar'
 
 export default (props) => {
 

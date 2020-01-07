@@ -1,10 +1,10 @@
 import App, { Container, createUrl } from 'next/app'
 import Head from 'next/head'
-import Navbar from '../component/NavBar/navbar'
+import Navbar from '../component/NavBar/Navbar'
 import next_cookies from 'next-cookies'
 
 import Banner from '../component/banner.js';
-import ChatBox from '../component/chatboxComponent/chatBox';
+import ChatBox from '../component/chatboxComponent/ChatBox';
 
 import mobileCheck from '../methods/mobileCheck'
 
