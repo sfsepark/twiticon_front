@@ -77,7 +77,7 @@ export default class StreamerTwiticonList extends React.Component{
                                 </div>
                             </div>
                         </div>
-                        <Link href = {detailURL}>
+                        <Link href = '/s/[id]' as = {detailURL}>
                             <a>
                                 <div className = 'flex'>
                                     <div className = 'streamer-twiticon-list-show-detail'>
