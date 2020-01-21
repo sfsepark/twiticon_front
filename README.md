@@ -2,6 +2,8 @@
 
 트위티콘 차원문의 한글 별칭을 유저들에게 보기 쉽게 편집할수 있도록 편집한 프로젝트입니다.
 
+https://twiticon.com
+
 # 혼자서 기획 개발 디자인 전부다 함
 
 zeplin과 xd를 이용하여 디자인부터 시작 : https://scene.zeplin.io/project/5d946e78b311286125338b96
