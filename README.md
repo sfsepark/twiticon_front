@@ -36,3 +36,11 @@ centos 에서 아파치를 이용하여 배포중입니다. proxy 설정을 이�
 # 반응형
 
 각각의 페이지는 반응형을 이용하여 5가지의 width에 대응하도록 설계하였다.
+
+# 트위티콘 차원문 ( 크롬익스텐션  ) 의 기능을 미리 해보기 용으로 포팅함
+
+https://chrome.google.com/webstore/detail/%ED%8A%B8%EC%9C%84%ED%8B%B0%EC%BD%98-%EC%B0%A8%EC%9B%90%EB%AC%B8/hiiacklliopliehdgadldnhhpghlahla?hl=ko
+
+크롬익스텐션에서 트위치 채팅창을 감지하여 원하는 기능을 임베드할 수 있는 트위치 챗 프레임워크위에서 돌아가던기존
+
+기존 트위티콘 차원문의 로직을 트위티콘 사이트의 PC버전에서 사용할 수 있도록 이식하였습니다.
