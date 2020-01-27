@@ -9,6 +9,7 @@ import ChatBox from '../component/chatboxComponent/ChatBox';
 import mobileCheck from '../methods/mobileCheck'
 
 const mainPageRoutes = ['/','/index','/follow','/explore']
+const chatBoxHideRoutes = ['/portal']
 
 export default class MyApp extends App{
     static async getInitialProps({ Component, router, ctx }) {
@@ -129,7 +130,12 @@ export default class MyApp extends App{
                         : null
                     }
                     
-                    <div className = "main-contents-container">
+                    <div className = {
+                        "main-contents-container " 
+                        + (chatBoxHideRoutes.includes(router.route) 
+                        ? 'main-contents-container-chatbox-hide'
+                        : '')
+                        }>
                         <Component url = {createUrl(router)} {...pageProps} />
                         {   pageProps.isMobile ? null :
                             <ChatBox width = {300} height = {
