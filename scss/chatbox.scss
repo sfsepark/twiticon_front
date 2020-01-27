@@ -5,6 +5,10 @@
     top : 0;
 }
 
+.main-contents-container-chatbox-hide .chatbox-container{
+    display: none;
+}
+
 .chatbox-container{
     @media (max-width : 1390px) {
         display: none;
