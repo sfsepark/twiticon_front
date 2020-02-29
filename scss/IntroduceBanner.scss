@@ -1,4 +1,84 @@
+@font-face { font-family: 'Arita-dotum-Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff'); font-weight: normal; font-style: normal; }
+
 .introduce-banner-bg{
     width: 100%;
     height: 336.3px;
+    background-color: #ffffff;
+    position: relative;
+    background-image: url(https://twiticon.com/images/portal_banner_bg.png);
+}
+
+.introduce-banner-image-bg{
+    width: 100%;
+    height: 336.3px;
+    background-color: rgba($color: #ffffff, $alpha: 0.9);
+    display: inline-block;
+    position: relative;
+    overflow: visible;
+    text-align: center;
+}
+
+.introduce-banner-magenta{
+    position: absolute;
+    width: 150vw;
+    min-width: 2100px;
+    height: 226px;
+    display: block;
+    transform: translateX(-50%) rotate(-5deg);
+    background-color: rgba(213, 39, 255, 0.54);
+    //background: linear-gradient(to right, transparent 0% , rgba(213, 39, 255, 0.54) 10% , rgba(213, 39, 255, 0.54) 90% , transparent);
+    top: 26px;
+    left: calc(50% - 163px);
+    z-index: 2;
+}
+
+.introduce-banner-contents-container{
+    position: relative;
+    display: inline-block;
+    z-index: 100;
+    margin-top: 86px;
+    text-align: center;
+}
+
+.introduce-banner-contents{
+    display: inline-block;
+    vertical-align: top;
+}
+.introduce-banner-contents-1{
+    display: block;
+    width: 445px;
+    height: 55px;
+    font-family: 'Arita-dotum-Medium';
+    font-size: 42px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.21;
+    letter-spacing: normal;
+    text-align: center;
+    color: #ffffff;
+}
+.introduce-banner-contents-2{
+    display: block;
+    width: 445px;
+    height: 69px;
+    font-family: 'Arita-dotum-Medium';
+    font-size: 62px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.19;
+    letter-spacing: normal;
+    text-align: center;
+    color: #000000;
+}
+.introduce-download-button{
+    width: 280px;
+    height: 85px;
+    display: inline-block;
+    margin-top: 6px;
+    margin-left : 39px;
+    border: #707070 1px solid;
+    box-shadow: 0 3px 6px 0 rgba($color: #000000, $alpha: 0.16) ;
+    object-fit: cover;
 }

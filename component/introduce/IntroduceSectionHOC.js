@@ -1,9 +1,9 @@
 
 
-export default (title, contents, image) => {
+export default (className, title, contents, image) => {
     return function(){
         return (
-            <div className = 'introduce-section'>
+            <div className = {'introduce-section ' + className}>
                 <div className = 'introduce-section-title'>
                     {title}
                 </div>
