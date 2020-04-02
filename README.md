@@ -4,7 +4,7 @@
 
 https://twiticon.com
 
-# 혼자서 기획 개발 디자인 전부다 함
+# 개발 및 
 
 zeplin과 xd를 이용하여 디자인부터 시작 : https://scene.zeplin.io/project/5d946e78b311286125338b96
 
