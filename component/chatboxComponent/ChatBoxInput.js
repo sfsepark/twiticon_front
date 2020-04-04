@@ -25,7 +25,7 @@ export default class ChatBoxInput extends React.Component{
         this.chatChangeHandler = this.chatChangeHandler.bind(this);
 
         this.CHATBOX_CHAT_INPUT_CLASSNAME = 'chatbox-chat-input' + ( typeof(props.type) === 'string' ? ('-' + props.type)  : '-unique' );
-        this.CHATBOX_SEND_BUTTON_CLASSNAME = 'chat-box-send-button' + ( typeof(props.type) === 'string' ? ('-' + props.type) : '-unique' );
+        this.CHATBOX_SEND_BUTTON_CLASSNAME = 'chatbox-send-button' + ( typeof(props.type) === 'string' ? ('-' + props.type) : '-unique' );
     }
 
     chatChangeHandler(msg){
@@ -108,7 +108,7 @@ export default class ChatBoxInput extends React.Component{
 
                 emoteData.aliasLoad(response);
 
-                if(tcf.register('chatbox-chat-input',_this.chatChangeHandler)){
+                if(tcf.register(_this.CHATBOX_CHAT_INPUT_CLASSNAME ,_this.chatChangeHandler)){
                     tcf.chatTarget.chat_input.addEventListener('click',autoComplete.onClick);
                     //newChat.chat_input.addEventListener('focusout',autoComplete.onFocusout);
                     tcf.chatTarget.chat_input.addEventListener('keydown', autoComplete.emotePickerChoiceEventListener);
@@ -124,6 +124,7 @@ export default class ChatBoxInput extends React.Component{
                     tcf.chatTarget.chat_input.click();
                 }
                 else{
+                    console.log('fail to load chatbox input');
                 }
 
             })
