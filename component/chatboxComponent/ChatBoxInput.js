@@ -23,6 +23,9 @@ export default class ChatBoxInput extends React.Component{
         this.registerLog = this.registerLog.bind(this);
         this.turnOffLog = this.turnOffLog.bind(this);
         this.chatChangeHandler = this.chatChangeHandler.bind(this);
+
+        this.CHATBOX_CHAT_INPUT_CLASSNAME = 'chatbox-chat-input' + ( typeof(props.type) === 'string' ? ('-' + props.type)  : '-unique' );
+        this.CHATBOX_SEND_BUTTON_CLASSNAME = 'chat-box-send-button' + ( typeof(props.type) === 'string' ? ('-' + props.type) : '-unique' );
     }
 
     chatChangeHandler(msg){
@@ -32,14 +35,14 @@ export default class ChatBoxInput extends React.Component{
     }
 
     registerSendEventListener(listener){
-        const chatInput = document.getElementsByClassName('chatbox-chat-input')[0];
+        const chatInput = document.getElementsByClassName(this.CHATBOX_CHAT_INPUT_CLASSNAME)[0];
         chatInput.addEventListener('keypress', (e) => {
             if(e.keyCode == 13){
                 listener(e);
                 e.preventDefault();
             }
         })
-        const sendButton = document.getElementsByClassName('chatbox-send-button')[0];
+        const sendButton = document.getElementsByClassName(this.CHATBOX_SEND_BUTTON_CLASSNAME)[0];
         sendButton.addEventListener('click', (e) => listener(e));
     }
 
@@ -136,11 +139,11 @@ export default class ChatBoxInput extends React.Component{
                     turnOff = {this.turnOffLog}
                 />
                 <div className = {'chatbox-chat-input-wrapper '+ (this.state.logToggle ? 'chatbox-chat-input-alert' : '')}>
-                    <textarea className = 'chatbox-chat-input ' 
+                    <textarea className = {'chatbox-chat-input ' + this.CHATBOX_CHAT_INPUT_CLASSNAME}
                         value = {this.state.chat}
                         onChange = {(e) => this.chatChangeHandler(e.target.value)}/>
                 </div>
-                <div className = 'chatbox-send-button'>
+                <div className = {'chatbox-send-button ' + this.CHATBOX_SEND_BUTTON_CLASSNAME}>
                     채팅
                 </div>
             </div>
