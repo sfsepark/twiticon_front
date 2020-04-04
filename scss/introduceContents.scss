@@ -36,3 +36,30 @@
     height: 368.1px;
     background-color: #faeefc;
 }
+
+.introduce-section-first .introduce-section-title{
+    margin-top : 128px;
+}
+
+.introduce-section-title>*{
+    vertical-align: text-top;
+}
+
+.introduce-title-txt{
+    margin-left : 8px;
+}
+
+.introduce-chatbox{
+    width: 348px;
+    height: 203px;
+    border: solid 1px #d9d9de;
+    background-color: #fafafa;
+    margin-top : 116px;
+}
+
+.introduce-chatbox .chatbox-chat-input-container{
+    position: relative;
+    overflow: visible;
+    margin-top : 100px;
+}
+

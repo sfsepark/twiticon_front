@@ -137,7 +137,8 @@ export default class MyApp extends App{
                         : '')
                         }>
                         <Component url = {createUrl(router)} {...pageProps} />
-                        {   pageProps.isMobile ? null :
+                        {   
+                            pageProps.isMobile ? null :
                             <ChatBox width = {300} height = {
                                 router.route == '/' || router.route == '/index' || router.route == '/follow' || router.route == '/explore'
                                 ? 460
