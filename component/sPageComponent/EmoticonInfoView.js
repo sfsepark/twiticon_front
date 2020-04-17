@@ -10,6 +10,10 @@ import ButtonPannel from './emoteViewComponent/ButtonPannel'
 import AliasContainer from './emoteViewComponent/AliasContainer';
 import EmoteTitle from './emoteViewComponent/EmoteTitle';
 
+import Router from 'next/router';
+
+import cookies from '../../methods/cookies'
+
 class EmoticonInfoView extends React.Component{
     constructor(props){
         super(props);
@@ -73,10 +77,21 @@ class EmoticonInfoView extends React.Component{
 
     handleClickEditState(){
         if(this.state.dispatch == 0){
-            var curState = JSON.parse(JSON.stringify(this.state));
-            curState.edit = !curState.edit;
-            curState.info.alias_list = JSON.parse(JSON.stringify(this.old_alias));
-            this.setState(curState);
+            if(this.props.twitchToken == null){
+                let result = confirm('로그인 후 진행 가능합니다. \n로그인하시겠습니까?');
+
+                if(result){
+                    cookies.setCookie('history', window.location.pathname);
+                    Router.push("/login");
+                }
+            }
+            else{
+                var curState = JSON.parse(JSON.stringify(this.state));
+                curState.edit = !curState.edit;
+                curState.info.alias_list = JSON.parse(JSON.stringify(this.old_alias));
+                this.setState(curState);
+            }
+
         }
     }
 
@@ -126,6 +141,8 @@ class EmoticonInfoView extends React.Component{
 
         }
 
+
+
         if(this.state.dispatch == 0){
             switchDispatchState(1);
 
@@ -153,12 +170,13 @@ class EmoticonInfoView extends React.Component{
                         'twitch-auth' : twitch_token,
                         'Content-Type': 'application/json'
                     }
-                }
-                ).then(response => response.json()
+                }).then(res => res.json()
                 ).then(response => {
+
     
                     if(response.hasOwnProperty('error')){
-                        alert(response.msg);
+                        let msg = response.msg ? response.msg : response.message;
+                        alert(msg);
                         failSubmit();
                     }
                     else{
