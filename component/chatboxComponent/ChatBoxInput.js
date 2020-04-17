@@ -1,7 +1,7 @@
 import '../../scss/chatbox.scss'
 import '../../scss/twiticon/style.css'
 
-import React from 'React'
+import React from 'react'
 
 import chatUsingTmi from '../../methods/chat_using_tmi'
 import ChatBoxAlert from './ChatBoxAlert';
