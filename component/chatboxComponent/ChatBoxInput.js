@@ -6,10 +6,8 @@ import React from 'React'
 import chatUsingTmi from '../../methods/chat_using_tmi'
 import ChatBoxAlert from './ChatBoxAlert';
 
-import twiticonPortal from '../../methods/twiticon_portal/backend/twiticon_portal'
-import tcf from '../../methods/twiticon_portal/frontend/tcf_for_twiticon';
-import emoteData from '../../methods/twiticon_portal/frontend/emote_data'
-import autoComplete from '../../methods/twiticon_portal/frontend/auto_complete'
+import portal_for_twiticon from '../../methods/twiticon_portal/frontend/portal_for_twiticon';
+import shortcut_background from '../../methods/twiticon_portal/backend/shortcut_background';
 
 export default class ChatBoxInput extends React.Component{
     constructor(props){
@@ -23,9 +21,12 @@ export default class ChatBoxInput extends React.Component{
         this.registerLog = this.registerLog.bind(this);
         this.turnOffLog = this.turnOffLog.bind(this);
         this.chatChangeHandler = this.chatChangeHandler.bind(this);
+        this.registerSendEventListener = this.registerSendEventListener.bind(this);
 
         this.CHATBOX_CHAT_INPUT_CLASSNAME = 'chatbox-chat-input' + ( typeof(props.type) === 'string' ? ('-' + props.type)  : '-unique' );
         this.CHATBOX_SEND_BUTTON_CLASSNAME = 'chatbox-send-button' + ( typeof(props.type) === 'string' ? ('-' + props.type) : '-unique' );
+
+        this.twiticonPortal = portal_for_twiticon();
     }
 
     chatChangeHandler(msg){
@@ -93,42 +94,14 @@ export default class ChatBoxInput extends React.Component{
         }
 
         //트위티콘 차원문 작동 시작
-        if(this.props.cookie.userId && this.props.cookie.twitchToken){
-            twiticonPortal.init({
-                authToken : this.props.cookie.twitchToken,
-                id : this.props.cookie.userId
-            })
-        }
-        else{
-            twiticonPortal.init(null);
-        }
 
-        ((_this) => {
-            twiticonPortal.refresh((response) => {
+        shortcut_background.get(() => {
+            this.twiticonPortal.register(this.CHATBOX_CHAT_INPUT_CLASSNAME, this.chatChangeHandler,this.registerSendEventListener , this.state.chat.length);
+        })
+    }
 
-                emoteData.aliasLoad(response);
-
-                if(tcf.register(_this.CHATBOX_CHAT_INPUT_CLASSNAME ,_this.chatChangeHandler)){
-                    tcf.chatTarget.chat_input.addEventListener('click',autoComplete.onClick);
-                    //newChat.chat_input.addEventListener('focusout',autoComplete.onFocusout);
-                    tcf.chatTarget.chat_input.addEventListener('keydown', autoComplete.emotePickerChoiceEventListener);
-                    tcf.chatTarget.chat_input.addEventListener('input', autoComplete.autoCompleteEventListener ); 
-                    tcf.chatTarget.chat_input.addEventListener('keydown',autoComplete.keyDownListener);
-                    tcf.chatTarget.chat_input.addEventListener('keyup',autoComplete.keyUpListener);
-                    tcf.chatTarget.chat_input.addEventListener('input',autoComplete.emptyCheck);
-
-                    registerSendEventListener((e) => autoComplete.clearChat());
-
-                    tcf.chatTarget.chat_input.selectionStart  = _this.state.chat.length
-                    tcf.chatTarget.chat_input.selectionEnd = _this.state.chat.length
-                    tcf.chatTarget.chat_input.click();
-                }
-                else{
-                    console.log('fail to load chatbox input');
-                }
-
-            })
-        })(this)
+    componentWillUnmount(){
+        this.twiticonPortal.destroy();
     }
 
     render(){

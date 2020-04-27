@@ -1,7 +1,6 @@
-import tcf from './tcf_for_twiticon'
 import emote_data from './emote_data'
 
-export default (function(){    
+export default (function(tcf){    
 
     var cc_id = 'caret_span';
 
@@ -320,4 +319,4 @@ export default (function(){
     }
     
     
-})();
+});

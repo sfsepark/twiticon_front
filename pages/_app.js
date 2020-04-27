@@ -7,6 +7,9 @@ import Banner from '../component/Banner.js';
 import ChatBox from '../component/chatboxComponent/ChatBox';
 
 import mobileCheck from '../methods/mobileCheck'
+import alias_info from '../methods/twiticon_portal/backend/alias_info';
+import emote_data from '../methods/twiticon_portal/frontend/emote_data';
+import shortcut_background from '../methods/twiticon_portal/backend/shortcut_background';
 
 const mainPageRoutes = ['/','/index','/follow','/explore']
 const chatBoxHideRoutes = ['/portal']
@@ -45,6 +48,8 @@ export default class MyApp extends App{
         super(props);
 
         this.mainPageScrollEvent = this.mainPageScrollEvent.bind(this);
+
+
     }
 
     async mainPageScrollEvent(event) {
@@ -69,6 +74,25 @@ export default class MyApp extends App{
                 mainDOM.addEventListener('scroll',this.mainPageScrollEvent);
             }
         }
+
+        //트위티콘 차원문 초기화
+
+        const { pageProps } = this.props;
+
+        if( pageProps.cookie.userId &&  pageProps.cookie.twitchToken){
+            shortcut_background.init({
+                authToken :  pageProps.cookie.twitchToken,
+                id :  pageProps.cookie.userId
+            })
+        }
+        else{
+            shortcut_background.init(null);
+        }
+
+        alias_info.refresh((response) => {
+            emote_data.aliasLoad(response);
+        });
+
     }
 
     componentDidUpdate(prevProps,prevState){
