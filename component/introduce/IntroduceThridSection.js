@@ -8,7 +8,9 @@ export default (props) => {
          <div className = 'introduce-section-third__title-text'>
             너무나도 간단한 사용법
         </div>,
-        null,
+        <div className = 'introduce-section-third__image'>
+        <video src="https://sfsepark.github.io/images/twiticon_portal_demo.mp4" autoPlay loop muted></video>
+        </div>,
         <div className = 'introduce-section-third__content'>
             이모티콘 선택기에서 느릿느릿 이모티콘을 찾을 필요가 없습니다!<br/>
             채팅창에서 <img src = 'https://static-cdn.jtvnw.net/emoticons/v1/69/1.0'/>  '블러드트레일' 이라고 입력해보세요 <br/>
