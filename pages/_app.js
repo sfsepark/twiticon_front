@@ -12,7 +12,7 @@ import emote_data from '../methods/twiticon_portal/frontend/emote_data';
 import shortcut_background from '../methods/twiticon_portal/backend/shortcut_background';
 
 const mainPageRoutes = ['/','/index','/follow','/explore']
-const chatBoxHideRoutes = ['/extension']
+const chatBoxHideRoutes = ['/introduce']
 
 export default class MyApp extends App{
     static async getInitialProps({ Component, router, ctx }) {
