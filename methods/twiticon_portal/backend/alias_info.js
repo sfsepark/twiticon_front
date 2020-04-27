@@ -304,10 +304,6 @@ export default (function(){
     }
 
     return {
-        init : function(user_info){
-            userInfo.register(user_info)
-            emoteInfo.refresh();
-        },
         get : function(callback){
             refreshPromise.then(function(emoteData){
                 callback(emoteData);

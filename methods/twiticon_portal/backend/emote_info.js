@@ -155,7 +155,6 @@ export default (function(){
                     try{
                         EmoteAvailableList = JSON.parse(xhttp.responseText);
                         EmoteAvailableList = {"emoticon_sets" : {0 : EmoteAvailableList['emotes']}}
-                        console.log(EmoteAvailableList);
 
                         sortEmoteAvailableList();
                         replaceRegexEmote();
