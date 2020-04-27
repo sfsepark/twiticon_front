@@ -53,9 +53,9 @@ const Navbar  = function(props){
                 <div className = "header-layout">
                     <NavbarMenu url = '/explore' menu = '탐색' active = {props.active == 'explore'}/>
                     {profile ? <NavbarMenu url = '/follow' menu = '팔로잉' active = {props.active == 'follow'}/> : null}
-                    <NavbarMenu url = '/basic' menu = {'이모티콘'} active = {props.active == 'basic'}/>
-                    <NavbarMenu url = '/notice' menu = '공지사항' active = {props.active == 'notice'}/>
-                    <NavbarMenu url = '/portal' menu = '크롬익스텐션' active = {props.active == 'portal'}/>
+                    {/*<NavbarMenu url = '/basic' menu = {'이모티콘'} active = {props.active == 'basic'}/>
+                    <NavbarMenu url = '/notice' menu = '공지사항' active = {props.active == 'notice'}/>*/}
+                    <NavbarMenu url = '/extension' menu = '크롬익스텐션' active = {props.active == 'portal'}/>
                     {userInfo}
                 </div>
             </div>
