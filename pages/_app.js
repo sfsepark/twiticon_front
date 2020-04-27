@@ -3,6 +3,9 @@ import Head from 'next/head'
 import Navbar from '../component/NavBar/Navbar'
 import next_cookies from 'next-cookies'
 
+import Router from "next/router";
+import withGA from "next-ga";
+
 import Banner from '../component/Banner.js';
 import ChatBox from '../component/chatboxComponent/ChatBox';
 
@@ -14,7 +17,7 @@ import shortcut_background from '../methods/twiticon_portal/backend/shortcut_bac
 const mainPageRoutes = ['/','/index','/follow','/explore']
 const chatBoxHideRoutes = ['/introduce']
 
-export default class MyApp extends App{
+class MyApp extends App{
     static async getInitialProps({ Component, router, ctx }) {
 
         let pageProps = {}
@@ -179,3 +182,6 @@ export default class MyApp extends App{
         )
     }
 }
+
+
+export default withGA('UA-164794398-1',Router)(MyApp);
