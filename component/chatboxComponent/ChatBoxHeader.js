@@ -5,7 +5,7 @@ export default function(){
     return (
         <div className = 'chatbox-header-container'>
             <div className = 'chatbox-header-nav'>
-                <Link href = '/portal'>
+                <Link href = '/extension'>
                     <a>
                     <div className = 'flex chatbox-header-nav-button'>
                         <img src = "https://twiticon.com/images/favicon.ico?v=2"/>

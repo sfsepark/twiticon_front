@@ -66,7 +66,7 @@ export default (props) => {
                 {profile ? <NavbarHamburgerMenu url = '/follow' menu = '팔로잉' active = {props.active == 'follow'} onoff = {onoff}/> : null}
                 <NavbarHamburgerMenu url = '/basic' menu = {'이모티콘'} active = {props.active == 'basic'} onoff = {onoff}/>
                 <NavbarHamburgerMenu url = '/notice' menu = '공지사항' active = {props.active == 'notice'} onoff = {onoff}/>
-                <NavbarHamburgerMenu url = '/portal' menu = '크롬익스텐션' active = {props.active == 'portal'} onoff = {onoff}/>
+                <NavbarHamburgerMenu url = '/extension' menu = '크롬익스텐션' active = {props.active == 'portal'} onoff = {onoff}/>
                 
             </div>
         </div>

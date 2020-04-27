@@ -21,7 +21,7 @@ export default (props) => {
     else if(props.url.pathname == '/follow'){
         active = 'follow'
     }
-    else if(props.url.pathname == '/portal'){
+    else if(props.url.pathname == '/extension'){
         active = 'portal'
     }
     else if(props.url.pathname == '/notice'){
