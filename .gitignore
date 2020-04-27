@@ -1,4 +1,5 @@
 URL/index.js
+pages/test.js
 node_modules
 logs/access_log
 *.log
@@ -91,3 +92,5 @@ public/
 
 # DynamoDB Local files
 .dynamodb/
+URL/index.js
+URL/index.js

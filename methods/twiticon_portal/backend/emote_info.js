@@ -148,12 +148,13 @@ export default (function(){
                 xhttp.send(null);
             }
             else{
-                var url = 'https://api.twitch.tv/kraken/chat/emoticon_images?emotesets=0';
+                var url = 'https://api.twitchemotes.com/api/v4/channels/0';
                 var xhttp = new XMLHttpRequest();
 
                 xhttp.onload = function() {
                     try{
                         EmoteAvailableList = JSON.parse(xhttp.responseText);
+                        EmoteAvailableList = {"emoticon_sets" : {0 : EmoteAvailableList['emotes']}}
 
                         sortEmoteAvailableList();
                         replaceRegexEmote();
@@ -172,8 +173,8 @@ export default (function(){
                     callbackError(callback);
                 };
                 xhttp.open('GET', url, true);
-                xhttp.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
-                xhttp.setRequestHeader('Client-ID', client_id);
+                //xhttp.setRequestHeader('Accept', 'application/vnd.twitchtv.v5+json');
+                //xhttp.setRequestHeader('Client-ID', 'wx5a3i0p911dxfyd0eec9anoyy4g5s');
                 xhttp.send(null);
             }
             

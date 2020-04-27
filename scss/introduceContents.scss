@@ -1,0 +1,224 @@
+@font-face { font-family: 'Arita-dotum-Medium'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+.introduce-contents-container{
+    width: 100%;
+    overflow: visible;
+    position: relative;
+}
+
+.introduce-section-container{
+    text-align: left;
+    width : 1322px;
+    padding-left : calc(50% - 661px);
+    padding-right : calc(50% - 661px);
+    position: relative;
+}
+
+.introduce-section-title{
+    display: block;
+}
+
+.introduce-section-image{
+    position: absolute;
+    top : 0;
+    right: calc(50% - 661px);
+}
+
+.introduce-contents-top{
+    position: absolute;
+    width: 1322px;
+    height: 120px;
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.44);
+    background-color: #ffffff;
+    top: -60px;
+    left : calc(50% - 661px);
+    z-index: 1000;
+    text-align: left;
+}
+
+.introduce-title-txt{
+    width: 616px;
+    height: 51px;
+    font-family: 'Arita-dotum-Medium';
+    font-size: 40px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.introduce-section-first{
+    height: 368.1px;
+    background-color: #faeefc;
+}
+
+.introduce-section-first .introduce-section-title{
+    margin-top : 128px;
+}
+
+.introduce-section-title>*{
+    vertical-align: text-top;
+}
+
+.introduce-title-txt{
+    margin-left : 8px;
+}
+
+.introduce-chatbox{
+    width: 348px;
+    height: 203px;
+    border: solid 1px #d9d9de;
+    background-color: #fafafa;
+    margin-top : 116px;
+}
+
+.introduce-chatbox .chatbox-chat-input-container{
+    position: relative;
+    overflow: visible;
+    margin-top : 100px;
+}
+
+.introduce-section-first__content{
+    width: 602px;
+    height: 85px;
+    font-family: "Noto Sans KR",sans-serif;;
+    font-size: 25px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.48;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+    margin-top : 47px;
+    display: block;
+}
+
+.introduce-section-image .chatbox-send-button-introduce{
+    text-align: center;
+}
+
+.introduce-contents-top>*{
+    vertical-align: top;
+}
+
+.introduce-contents-top__logo-image{
+    margin-left : 45px;
+    margin-top : 32px;
+    width: 59px;
+    height: 59px;
+    object-fit: contain;
+}
+
+.introduce-contents-top .header-logo{
+    margin-top: 38px;
+    margin-left: 13px;
+}
+
+.introduce-contents-top__logo-text{
+    width: 115px;
+    height: 45px;
+    font-family: "Godo";
+    font-size: 40px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    margin-left : 7px;
+    margin-top: 38px;
+}
+
+.introduce-cotents-top__content-text{
+    display: inline-block;
+    margin-top: 39px;
+    margin-left : 142px;
+
+    height: 45px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 25px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.48;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
+
+.introduce-section-second{
+    height: 341px;
+    background-color: #ffffff;
+}
+
+.introduce-section-second__title-text{
+    width: 742px;
+    height: 51px;
+    font-family: 'Arita-dotum-Medium';
+    font-size: 40px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    margin-top: 61px;
+}
+
+.introduce-section-second__content{
+    width: 749px;
+    height: 120px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 25px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.48;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    margin-top : 45px;
+}
+
+.introduce-section-third{
+    height: 374px;
+    background-color: #faeefc;
+}
+
+.introduce-section-third__title-text{
+    width: 801px;
+    height: 51px;
+    font-family: 'Arita-dotum-Medium';
+    font-size: 40px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+
+    margin-top : 72px;
+    margin-bottom: 36px;
+}
+
+.introduce-section-third__content{
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 25px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.48;
+    letter-spacing: normal;
+    text-align: left;
+    color: #000000;
+}
