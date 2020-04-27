@@ -22,7 +22,8 @@ export default (props) => {
         </div>,
         <div className = 'introduce-section-first__content'>
             PC에서 크롬익스텐션을 설치하고 트위치에 접속하면<br></br>
-            모든 실시간 채팅창에서 바로 사용이 가능합니다.
+            모든 실시간 채팅창에서 바로 사용이 가능합니다.<br/>
+            오른쪽 채팅창에서 체험해보세요.
         </div>
         
     );
