@@ -72,10 +72,24 @@ class StreamerInfo extends React.Component{
             }
         */
 
+        let emoteNameList = '' 
+        let nonAliasEmoteNameList = ''
+        Object.values(this.props.emoticonInfo).forEach(emote_set => {
+            emote_set.forEach(emote => {
+                if(emote.alias_list.length > 0)
+                    emoteNameList += `${emote.name}(${emote.alias_list[0]}) `;
+                else
+                    nonAliasEmoteNameList += `${emote.name} `
+            })
+        })
+
+        emoteNameList += nonAliasEmoteNameList;
+
         return (
             <div className = 'streamer-info'>
                 <Head>
-                    <title>{this.props.channelInfo.display_name+ '- 트위티콘'} </title>
+                    <title>{`트위티콘 - ${this.props.channelInfo.display_name} (${this.props.channelInfo.name}) 님의 이모티콘과 한글 별칭`} </title>
+                    <meta name = "description" content = {`${this.props.channelInfo.display_name}(${this.props.channelInfo.name}) 님의 이모티콘 - ${emoteNameList}`}></meta>
                 </Head>
                 <div className = 'streamer-info-header'>
                     <div className = 'streamer-info-header-flex  streamer-info-container'>
