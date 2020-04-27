@@ -1,9 +1,11 @@
 import '../../scss/introduceContents.scss'
 import IntroduceSectionHOC from './IntroduceSectionHOC';
 import ChatBoxInput from '../chatboxComponent/ChatBoxInput';
+import {baseURL} from '../../URL'
+import Logo from '../Logo';
 
 export default (props) => {
-    let FirstSection = IntroduceSectionHOC(
+    const FirstSection = IntroduceSectionHOC(
         'introduce-section-first',
         <React.Fragment>
             <svg xmlns="http://www.w3.org/2000/svg" id="logo-_-wordmark-extruded-_-purple" data-name="logo-/-wordmark-extruded-/-purple" width="119" height="39.666" viewBox="0 0 119 39.666">
@@ -18,16 +20,36 @@ export default (props) => {
         </React.Fragment>,
         <div className = 'introduce-chatbox'>
             <ChatBoxInput cookie = {props.cookie} type = 'introduce'/>
+        </div>,
+        <div className = 'introduce-section-first__content'>
+            PC에서 크롬익스텐션을 설치하고 트위치에 접속하면<br></br>
+            모든 실시간 채팅창에서 바로 사용이 가능합니다.
         </div>
         
     );
 
+    const SecondSeciton = IntroduceSectionHOC(
+        'introduce-section-second',
+        <div className = 'introduce-section-second__title-text'>
+            5000개 이상의 구독이모티콘에 준비된 별명
+        </div>
+    )
+
     return (
         <div className = 'introduce-contents-container'>
             <div className = 'introduce-contents-top'>
+                <img className = 'introduce-contents-top__logo-image' src = {baseURL + '/images/portal_128.png'}/>
+                <Logo main = {false}/>
+                <div className = 'introduce-contents-top__logo-text'>
+                    차원문
+                </div>
+                <div className = 'introduce-cotents-top__content-text'>
+                    트위치 채팅창에서 트위치 이모티콘을  한글로 입력할 수 있는 서비스입니다
+                </div>
 
             </div>
             <FirstSection/>
+            <SecondSeciton/>
         </div>
     );
 }
