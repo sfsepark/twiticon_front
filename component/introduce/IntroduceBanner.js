@@ -17,7 +17,9 @@ export default () => {
                             번역해드립니다
                         </div>
                     </div>
-                    <img className = 'introduce-download-button' src = 'https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_496x150.png'/>
+                    <a href = 'https://chrome.google.com/webstore/detail/hiiacklliopliehdgadldnhhpghlahla' target = '_blank'>
+                        <img className = 'introduce-download-button' src = 'https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_496x150.png'/>
+                    </a>
                 </div>
             </div>
         </div>
